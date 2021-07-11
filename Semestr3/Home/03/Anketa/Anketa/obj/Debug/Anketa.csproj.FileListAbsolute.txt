@@ -1,0 +1,13 @@
+D:\IT\C#\Semestr3\Home\03\Anketa\Anketa\obj\Debug\Anketa.csprojAssemblyReference.cache
+D:\IT\C#\Semestr3\Home\03\Anketa\Anketa\obj\Debug\Anketa.Form1.resources
+D:\IT\C#\Semestr3\Home\03\Anketa\Anketa\obj\Debug\Anketa.Properties.Resources.resources
+D:\IT\C#\Semestr3\Home\03\Anketa\Anketa\obj\Debug\Anketa.csproj.GenerateResource.cache
+D:\IT\C#\Semestr3\Home\03\Anketa\Anketa\obj\Debug\Anketa.csproj.CoreCompileInputs.cache
+D:\IT\C#\Semestr3\Home\03\Anketa\Anketa\bin\Debug\Anketa.exe.config
+D:\IT\C#\Semestr3\Home\03\Anketa\Anketa\bin\Debug\Anketa.exe
+D:\IT\C#\Semestr3\Home\03\Anketa\Anketa\bin\Debug\Anketa.pdb
+D:\IT\C#\Semestr3\Home\03\Anketa\Anketa\obj\Debug\Anketa.exe
+D:\IT\C#\Semestr3\Home\03\Anketa\Anketa\obj\Debug\Anketa.pdb
+D:\IT\C#\Semestr3\Home\03\Anketa\Anketa\bin\Debug\Newtonsoft.Json.dll
+D:\IT\C#\Semestr3\Home\03\Anketa\Anketa\bin\Debug\Newtonsoft.Json.xml
+D:\IT\C#\Semestr3\Home\03\Anketa\Anketa\obj\Debug\Anketa.csproj.CopyComplete
