@@ -1,0 +1,10 @@
+D:\IT\C#\Semestr3\Home\03\AdoNET\AdoNET\bin\Debug\AdoNET.exe.config
+D:\IT\C#\Semestr3\Home\03\AdoNET\AdoNET\bin\Debug\AdoNET.exe
+D:\IT\C#\Semestr3\Home\03\AdoNET\AdoNET\bin\Debug\AdoNET.pdb
+D:\IT\C#\Semestr3\Home\03\AdoNET\AdoNET\obj\Debug\AdoNET.csprojAssemblyReference.cache
+D:\IT\C#\Semestr3\Home\03\AdoNET\AdoNET\obj\Debug\AdoNET.Form1.resources
+D:\IT\C#\Semestr3\Home\03\AdoNET\AdoNET\obj\Debug\AdoNET.Properties.Resources.resources
+D:\IT\C#\Semestr3\Home\03\AdoNET\AdoNET\obj\Debug\AdoNET.csproj.GenerateResource.cache
+D:\IT\C#\Semestr3\Home\03\AdoNET\AdoNET\obj\Debug\AdoNET.csproj.CoreCompileInputs.cache
+D:\IT\C#\Semestr3\Home\03\AdoNET\AdoNET\obj\Debug\AdoNET.exe
+D:\IT\C#\Semestr3\Home\03\AdoNET\AdoNET\obj\Debug\AdoNET.pdb
