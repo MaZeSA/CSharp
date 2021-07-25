@@ -1,0 +1,30 @@
+F:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm\CreateFile\CreateFile\obj\Debug\CreateFile.csprojAssemblyReference.cache
+F:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm\CreateFile\CreateFile\obj\Debug\CreateFile.Form1.resources
+F:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm\CreateFile\CreateFile\obj\Debug\CreateFile.Properties.Resources.resources
+F:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm\CreateFile\CreateFile\obj\Debug\CreateFile.csproj.GenerateResource.cache
+F:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm\CreateFile\CreateFile\obj\Debug\CreateFile.csproj.CoreCompileInputs.cache
+F:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm\CreateFile\CreateFile\bin\Debug\CreateFile.exe.config
+F:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm\CreateFile\CreateFile\bin\Debug\CreateFile.exe
+F:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm\CreateFile\CreateFile\bin\Debug\CreateFile.pdb
+F:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm\CreateFile\CreateFile\obj\Debug\CreateFile.exe
+F:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm\CreateFile\CreateFile\obj\Debug\CreateFile.pdb
+f:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm (Datasource, ChakedListBox, ToolStrip, SplitConteiner, HScrollBar, ImageList)_Відєднений режим ADO.NET\CreateFile\CreateFile\bin\Debug\CreateFile.exe.config
+f:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm (Datasource, ChakedListBox, ToolStrip, SplitConteiner, HScrollBar, ImageList)_Відєднений режим ADO.NET\CreateFile\CreateFile\bin\Debug\CreateFile.exe
+f:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm (Datasource, ChakedListBox, ToolStrip, SplitConteiner, HScrollBar, ImageList)_Відєднений режим ADO.NET\CreateFile\CreateFile\bin\Debug\CreateFile.pdb
+f:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm (Datasource, ChakedListBox, ToolStrip, SplitConteiner, HScrollBar, ImageList)_Відєднений режим ADO.NET\CreateFile\CreateFile\obj\Debug\CreateFile.csprojAssemblyReference.cache
+f:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm (Datasource, ChakedListBox, ToolStrip, SplitConteiner, HScrollBar, ImageList)_Відєднений режим ADO.NET\CreateFile\CreateFile\obj\Debug\CreateFile.Form1.resources
+f:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm (Datasource, ChakedListBox, ToolStrip, SplitConteiner, HScrollBar, ImageList)_Відєднений режим ADO.NET\CreateFile\CreateFile\obj\Debug\CreateFile.Properties.Resources.resources
+f:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm (Datasource, ChakedListBox, ToolStrip, SplitConteiner, HScrollBar, ImageList)_Відєднений режим ADO.NET\CreateFile\CreateFile\obj\Debug\CreateFile.csproj.GenerateResource.cache
+f:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm (Datasource, ChakedListBox, ToolStrip, SplitConteiner, HScrollBar, ImageList)_Відєднений режим ADO.NET\CreateFile\CreateFile\obj\Debug\CreateFile.csproj.CoreCompileInputs.cache
+f:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm (Datasource, ChakedListBox, ToolStrip, SplitConteiner, HScrollBar, ImageList)_Відєднений режим ADO.NET\CreateFile\CreateFile\obj\Debug\CreateFile.exe
+f:\YURKO\SHAG\Project C#\14_11072021_Lab_WindowsForm (Datasource, ChakedListBox, ToolStrip, SplitConteiner, HScrollBar, ImageList)_Відєднений режим ADO.NET\CreateFile\CreateFile\obj\Debug\CreateFile.pdb
+D:\IT\C#\Semestr3\Home\05\Homework_File\CreateFile\bin\Debug\CreateFile.exe.config
+D:\IT\C#\Semestr3\Home\05\Homework_File\CreateFile\bin\Debug\CreateFile.exe
+D:\IT\C#\Semestr3\Home\05\Homework_File\CreateFile\bin\Debug\CreateFile.pdb
+D:\IT\C#\Semestr3\Home\05\Homework_File\CreateFile\obj\Debug\CreateFile.csprojAssemblyReference.cache
+D:\IT\C#\Semestr3\Home\05\Homework_File\CreateFile\obj\Debug\CreateFile.Form1.resources
+D:\IT\C#\Semestr3\Home\05\Homework_File\CreateFile\obj\Debug\CreateFile.Properties.Resources.resources
+D:\IT\C#\Semestr3\Home\05\Homework_File\CreateFile\obj\Debug\CreateFile.csproj.GenerateResource.cache
+D:\IT\C#\Semestr3\Home\05\Homework_File\CreateFile\obj\Debug\CreateFile.csproj.CoreCompileInputs.cache
+D:\IT\C#\Semestr3\Home\05\Homework_File\CreateFile\obj\Debug\CreateFile.exe
+D:\IT\C#\Semestr3\Home\05\Homework_File\CreateFile\obj\Debug\CreateFile.pdb
