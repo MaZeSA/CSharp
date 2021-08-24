@@ -1,0 +1,7 @@
+D:\Git\Semestr3\Home\06 Linq\linq\linq\bin\Debug\linq.exe.config
+D:\Git\Semestr3\Home\06 Linq\linq\linq\bin\Debug\linq.exe
+D:\Git\Semestr3\Home\06 Linq\linq\linq\bin\Debug\linq.pdb
+D:\Git\Semestr3\Home\06 Linq\linq\linq\obj\Debug\linq.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\06 Linq\linq\linq\obj\Debug\linq.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\06 Linq\linq\linq\obj\Debug\linq.exe
+D:\Git\Semestr3\Home\06 Linq\linq\linq\obj\Debug\linq.pdb
