@@ -62,17 +62,24 @@ namespace TextEditor
       
         bool Save(SaveFileDialog saveDialog)
         {
-            if (saveDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                if (Path.GetExtension(saveDialog.FileName) == ".txt")
+                if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    richTextBox1.SaveFile(saveDialog.FileName, RichTextBoxStreamType.UnicodePlainText);
+                    if (Path.GetExtension(saveDialog.FileName) == ".txt")
+                    {
+                        richTextBox1.SaveFile(saveDialog.FileName, RichTextBoxStreamType.UnicodePlainText);
+                    }
+                    else
+                    {
+                        richTextBox1.SaveFile(saveDialog.FileName);
+                    }
+                    return true;
                 }
-                else
-                {
-                    richTextBox1.SaveFile(saveDialog.FileName);
-                }
-                return true;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return false;
         }
