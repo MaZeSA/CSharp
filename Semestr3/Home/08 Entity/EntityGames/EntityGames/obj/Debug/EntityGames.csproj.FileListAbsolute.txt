@@ -1,0 +1,15 @@
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\bin\Debug\EntityGames.exe.config
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\bin\Debug\EntityGames.exe
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\bin\Debug\EntityGames.pdb
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\bin\Debug\EntityFramework.dll
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\bin\Debug\EntityFramework.SqlServer.dll
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\bin\Debug\EntityFramework.xml
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\bin\Debug\EntityFramework.SqlServer.xml
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\obj\Debug\EntityGames.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\obj\Debug\EntityGames.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\obj\Debug\EntityGames.csproj.CopyComplete
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\obj\Debug\EntityGames.exe
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\obj\Debug\EntityGames.pdb
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\obj\Debug\EntityGames.Migrations.InitialCreate.resources
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\obj\Debug\EntityGames.csproj.GenerateResource.cache
+D:\Git\Semestr3\Home\08 Entity\EntityGames\EntityGames\obj\Debug\EntityGames.Migrations.Changebase.resources
