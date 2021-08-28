@@ -1,0 +1,13 @@
+D:\Git\Semestr3\Home\09 BearleyBreak\BarleyBreak\BarleyBreak\bin\Debug\BarleyBreak.exe.config
+D:\Git\Semestr3\Home\09 BearleyBreak\BarleyBreak\BarleyBreak\bin\Debug\BarleyBreak.exe
+D:\Git\Semestr3\Home\09 BearleyBreak\BarleyBreak\BarleyBreak\bin\Debug\BarleyBreak.pdb
+D:\Git\Semestr3\Home\09 BearleyBreak\BarleyBreak\BarleyBreak\obj\Debug\BarleyBreak.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\09 BearleyBreak\BarleyBreak\BarleyBreak\obj\Debug\BarleyBreak.PictureBoxUser.resources
+D:\Git\Semestr3\Home\09 BearleyBreak\BarleyBreak\BarleyBreak\obj\Debug\BarleyBreak.Properties.Resources.resources
+D:\Git\Semestr3\Home\09 BearleyBreak\BarleyBreak\BarleyBreak\obj\Debug\BarleyBreak.csproj.GenerateResource.cache
+D:\Git\Semestr3\Home\09 BearleyBreak\BarleyBreak\BarleyBreak\obj\Debug\BarleyBreak.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\09 BearleyBreak\BarleyBreak\BarleyBreak\obj\Debug\BarleyBreak.exe
+D:\Git\Semestr3\Home\09 BearleyBreak\BarleyBreak\BarleyBreak\obj\Debug\BarleyBreak.pdb
+D:\Git\Semestr3\Home\09 BearleyBreak\BarleyBreak\BarleyBreak\obj\Debug\BarleyBreak.Form1.resources
+D:\Git\Semestr3\Home\09 BearleyBreak\BarleyBreak\BarleyBreak\obj\Debug\BarleyBreak.StartMenu.resources
+D:\Git\Semestr3\Home\09 BearleyBreak\BarleyBreak\BarleyBreak\obj\Debug\BarleyBreak.GameFild.resources
