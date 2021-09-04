@@ -1,0 +1,15 @@
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\AdoForm.BLL.dll.config
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\AdoForm.BLL.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\AdoForm.BLL.pdb
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\AdoForm.DAL.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\AutoMapper.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\EntityFramework.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\AdoForm.DAL.pdb
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\AdoForm.DAL.dll.config
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\AutoMapper.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\EntityFramework.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\obj\Debug\AdoForm.BLL.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\obj\Debug\AdoForm.BLL.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\obj\Debug\AdoForm.BLL.csproj.CopyComplete
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\obj\Debug\AdoForm.BLL.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\obj\Debug\AdoForm.BLL.pdb
