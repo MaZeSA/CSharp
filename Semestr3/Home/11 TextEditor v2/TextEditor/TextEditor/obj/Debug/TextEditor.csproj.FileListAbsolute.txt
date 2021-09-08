@@ -1,0 +1,21 @@
+D:\Git\Semestr3\Home\07 TextEditor\TextEditor\TextEditor\bin\Debug\TextEditor.exe.config
+D:\Git\Semestr3\Home\07 TextEditor\TextEditor\TextEditor\bin\Debug\TextEditor.exe
+D:\Git\Semestr3\Home\07 TextEditor\TextEditor\TextEditor\bin\Debug\TextEditor.pdb
+D:\Git\Semestr3\Home\07 TextEditor\TextEditor\TextEditor\obj\Debug\TextEditor.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\07 TextEditor\TextEditor\TextEditor\obj\Debug\TextEditor.Form1.resources
+D:\Git\Semestr3\Home\07 TextEditor\TextEditor\TextEditor\obj\Debug\TextEditor.Properties.Resources.resources
+D:\Git\Semestr3\Home\07 TextEditor\TextEditor\TextEditor\obj\Debug\TextEditor.csproj.GenerateResource.cache
+D:\Git\Semestr3\Home\07 TextEditor\TextEditor\TextEditor\obj\Debug\TextEditor.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\07 TextEditor\TextEditor\TextEditor\obj\Debug\TextEditor.exe
+D:\Git\Semestr3\Home\07 TextEditor\TextEditor\TextEditor\obj\Debug\TextEditor.pdb
+D:\Git\Semestr3\Home\11 TextEditor v2\TextEditor\TextEditor\bin\Debug\TextEditor.exe.config
+D:\Git\Semestr3\Home\11 TextEditor v2\TextEditor\TextEditor\bin\Debug\TextEditor.exe
+D:\Git\Semestr3\Home\11 TextEditor v2\TextEditor\TextEditor\bin\Debug\TextEditor.pdb
+D:\Git\Semestr3\Home\11 TextEditor v2\TextEditor\TextEditor\obj\Debug\TextEditor.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\11 TextEditor v2\TextEditor\TextEditor\obj\Debug\TextEditor.Form1.resources
+D:\Git\Semestr3\Home\11 TextEditor v2\TextEditor\TextEditor\obj\Debug\TextEditor.Properties.Resources.resources
+D:\Git\Semestr3\Home\11 TextEditor v2\TextEditor\TextEditor\obj\Debug\TextEditor.csproj.GenerateResource.cache
+D:\Git\Semestr3\Home\11 TextEditor v2\TextEditor\TextEditor\obj\Debug\TextEditor.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\11 TextEditor v2\TextEditor\TextEditor\obj\Debug\TextEditor.exe
+D:\Git\Semestr3\Home\11 TextEditor v2\TextEditor\TextEditor\obj\Debug\TextEditor.pdb
+D:\Git\Semestr3\Home\11 TextEditor v2\TextEditor\TextEditor\obj\Debug\TextEditor.Child.resources
