@@ -1,26 +1,26 @@
 ﻿using System;
 using System.Windows.Forms;
-using AdoForm.BLL.Servises;
+using EntityForm.BLL.Servises;
 using System.Collections.ObjectModel;
-using AdoForm.BLL.Model;
+using EntityForm.BLL.Model;
 using System.Collections.Generic;
 
-namespace AdoForm3LayerClient
+namespace EntityForm3LayerClient
 {
     public partial class Form1 : Form
     {
-        private readonly IAdoFormServises adoFormServises;
+        private readonly IEntityFormServises adoFormServises;
         public ObservableCollection<EmployeeDTO> Employees { get; set; } = new ObservableCollection<EmployeeDTO>(); 
         public IEnumerable<PositionDTO> Positions { get; set; } = new ObservableCollection<PositionDTO>(); 
         public IEnumerable<TaskDTO> Tasks { get; set; } = new ObservableCollection<TaskDTO>();
 
-        public Form1(IAdoFormServises _adoFormServises)
+        public Form1(IEntityFormServises _adoFormServises)
         {
             InitializeComponent();
             adoFormServises = _adoFormServises;
             
         }
-        private void UpdateBooks(IAdoFormServises _adoFormServises)
+        private void UpdateBooks(IEntityFormServises _adoFormServises)
         {
             Employees.Clear();
             var temp = _adoFormServises.GetEmployees();

@@ -1,5 +1,5 @@
 ﻿
-namespace AdoForm3LayerClient
+namespace EntityForm3LayerClient
 {
     partial class Form1
     {

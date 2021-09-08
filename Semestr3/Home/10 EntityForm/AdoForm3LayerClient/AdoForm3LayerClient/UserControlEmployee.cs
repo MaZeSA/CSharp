@@ -1,5 +1,5 @@
-﻿using AdoForm.BLL.Model;
-using AdoForm.DAL.Entities;
+﻿using EntityForm.BLL.Model;
+using EntityForm.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdoForm3LayerClient
+namespace EntityForm3LayerClient
 {
     public partial class UserControlEmployee : UserControl
     {

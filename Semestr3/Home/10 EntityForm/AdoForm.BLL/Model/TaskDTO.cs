@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdoForm.BLL.Model
+namespace EntityForm.BLL.Model
 {
    public class TaskDTO
     {

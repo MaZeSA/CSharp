@@ -1,0 +1,15 @@
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\AutoMapper.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\EntityFramework.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\AutoMapper.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\EntityFramework.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\obj\Debug\EntityForm.BLL.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\obj\Debug\EntityForm.BLL.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\obj\Debug\EntityForm.BLL.csproj.CopyComplete
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\EntityForm.BLL.dll.config
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\EntityForm.BLL.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\EntityForm.BLL.pdb
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\EntityForm.DAL.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\EntityForm.DAL.pdb
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\bin\Debug\EntityForm.DAL.dll.config
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\obj\Debug\EntityForm.BLL.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\obj\Debug\EntityForm.BLL.pdb

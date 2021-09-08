@@ -1,18 +1,14 @@
-﻿using AdoForm.BLL.Servises;
-using AdoForm.BLL.Utils;
-using AdoForm.DAL;
-using AdoForm.DAL.Entities;
-using AdoForm.DAL.Repository;
-using Autofac;
+﻿using Autofac;
 using AutoMapper;
+using EntityForm.BLL.Servises;
+using EntityForm.BLL.Utils;
+using EntityForm.DAL;
+using EntityForm.DAL.Repository;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdoForm3LayerClient
+namespace EntityForm3LayerClient
 {
     static class Program
     {
@@ -28,9 +24,9 @@ namespace AdoForm3LayerClient
                 Application.SetCompatibleTextRenderingDefault(false);
 
                 var builder = new ContainerBuilder();
-                builder.RegisterType<AdoDALContext>().As<DbContext>().SingleInstance();
+                builder.RegisterType<EntityDALContext>().As<DbContext>().SingleInstance();
                 builder.RegisterGeneric(typeof(EFRepository<>)).As(typeof(IGenericRepository<>));
-                builder.RegisterType<AdoFormServises>().As<IAdoFormServises>();
+                builder.RegisterType<EntityFormServises>().As<IEntityFormServises>();
                 builder.RegisterType<Form1>().AsSelf();
 
                 var config = new MapperConfiguration(cgf => cgf.AddProfile(new MapperConfig()));

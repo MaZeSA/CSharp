@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using AdoForm.BLL.Model;
-using AdoForm.DAL.Entities;
+using EntityForm.BLL.Model;
+using EntityForm.DAL.Entities;
 using System.Collections.Generic;
 
-namespace AdoForm.BLL.Utils
+namespace EntityForm.BLL.Utils
 {
    public class MapperConfig : Profile
     {

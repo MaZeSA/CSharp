@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdoForm.BLL.Model
+namespace EntityForm.BLL.Model
 {
    public class EmployeeDTO
     {
@@ -15,7 +15,7 @@ namespace AdoForm.BLL.Model
         public double Salary { get; set; }
         public PositionDTO Position  { get; set; }
         public List<TaskDTO> Tasks { get; set; }
-
+      //  public int PositionId { get; set; }
         public string GetDispay => $"ID[{Id}] {Name} {Surname} Age[{Age}] Salary[{Salary}]";
 
     }

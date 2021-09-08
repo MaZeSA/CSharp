@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoForm3LayerClient", "AdoForm3LayerClient\AdoForm3LayerClient.csproj", "{CB8380B3-450C-41F6-852E-2B5C1182B882}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityForm3LayerClient", "AdoForm3LayerClient\EntityForm3LayerClient.csproj", "{CB8380B3-450C-41F6-852E-2B5C1182B882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoForm.DAL", "D:\Git\Semestr3\Home\10 EntityForm\AdoForm.DAL\AdoForm.DAL.csproj", "{CEA693CA-FA8C-4CFC-9019-9461EB9DF647}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityForm.DAL", "..\AdoForm.DAL\EntityForm.DAL.csproj", "{CEA693CA-FA8C-4CFC-9019-9461EB9DF647}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoForm.BLL", "D:\Git\Semestr3\Home\10 EntityForm\AdoForm.BLL\AdoForm.BLL.csproj", "{9609EF84-659E-4C30-BE03-9256CB1B09E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityForm.BLL", "..\AdoForm.BLL\EntityForm.BLL.csproj", "{9609EF84-659E-4C30-BE03-9256CB1B09E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

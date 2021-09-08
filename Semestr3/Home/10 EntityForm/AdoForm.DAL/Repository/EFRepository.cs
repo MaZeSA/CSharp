@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AdoForm.DAL.Repository
+namespace EntityForm.DAL.Repository
 {
     public class EFRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace AdoForm.DAL.Entities
+namespace EntityForm.DAL.Entities
 {
-   public class Employee
+    public class Employee
     {
         public Employee()
         {
@@ -20,8 +15,8 @@ namespace AdoForm.DAL.Entities
         public int Age { get; set; }
         public double Salary { get; set; }
 
-        [ForeignKey(nameof(Position))]
-        public int PositionId { get; set; }
+        //[ForeignKey(nameof(Position))]
+        //public int PositionId { get; set; }
 
         // Навігаційні властивості
         public virtual Position Position { get; set; }
