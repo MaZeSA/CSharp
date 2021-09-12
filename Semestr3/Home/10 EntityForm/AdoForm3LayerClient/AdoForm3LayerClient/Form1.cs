@@ -62,7 +62,7 @@ namespace EntityForm3LayerClient
             }
             buttonNew.Enabled = true;
 
-            Status();
+            Status("Connected");
         }
         void Status(string msg= "OK")
         {

@@ -93,7 +93,7 @@ namespace EntityForm3LayerClient
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 13);
+            this.label1.Location = new System.Drawing.Point(3, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 6;
@@ -105,7 +105,7 @@ namespace EntityForm3LayerClient
             this.buttonLoad.Name = "buttonLoad";
             this.buttonLoad.Size = new System.Drawing.Size(168, 23);
             this.buttonLoad.TabIndex = 7;
-            this.buttonLoad.Text = "Load/Update";
+            this.buttonLoad.Text = "Connect/Update";
             this.buttonLoad.UseVisualStyleBackColor = true;
             this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
@@ -260,7 +260,7 @@ namespace EntityForm3LayerClient
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Name = "Form1";
-            this.Text = "3Layer ADO (Налаштовано на сервер ШАГа, який регулярно не працює)";
+            this.Text = "3Layer Entity";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);

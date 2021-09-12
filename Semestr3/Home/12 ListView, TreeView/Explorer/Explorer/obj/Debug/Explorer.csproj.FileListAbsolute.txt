@@ -1,0 +1,10 @@
+D:\Git\Semestr3\Home\12 ListView, TreeView\Explorer\Explorer\bin\Debug\Explorer.exe.config
+D:\Git\Semestr3\Home\12 ListView, TreeView\Explorer\Explorer\bin\Debug\Explorer.exe
+D:\Git\Semestr3\Home\12 ListView, TreeView\Explorer\Explorer\bin\Debug\Explorer.pdb
+D:\Git\Semestr3\Home\12 ListView, TreeView\Explorer\Explorer\obj\Debug\Explorer.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\12 ListView, TreeView\Explorer\Explorer\obj\Debug\Explorer.Form1.resources
+D:\Git\Semestr3\Home\12 ListView, TreeView\Explorer\Explorer\obj\Debug\Explorer.Properties.Resources.resources
+D:\Git\Semestr3\Home\12 ListView, TreeView\Explorer\Explorer\obj\Debug\Explorer.csproj.GenerateResource.cache
+D:\Git\Semestr3\Home\12 ListView, TreeView\Explorer\Explorer\obj\Debug\Explorer.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\12 ListView, TreeView\Explorer\Explorer\obj\Debug\Explorer.exe
+D:\Git\Semestr3\Home\12 ListView, TreeView\Explorer\Explorer\obj\Debug\Explorer.pdb
