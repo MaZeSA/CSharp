@@ -1,0 +1,84 @@
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\Autofac.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\AutoMapper.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityFramework.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityFramework.SqlServer.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Buffers.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Memory.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Numerics.Vectors.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\Autofac.pdb
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\Autofac.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\AutoMapper.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityFramework.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityFramework.SqlServer.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Buffers.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Memory.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Numerics.Vectors.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.Form1.resources
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.UserControlEmployee.resources
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.csproj.GenerateResource.cache
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.csproj.CopyComplete
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm3LayerClient.exe.config
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm3LayerClient.exe
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm3LayerClient.pdb
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm.BLL.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm.DAL.dll
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm.BLL.pdb
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm.BLL.dll.config
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm.DAL.pdb
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm.DAL.dll.config
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.Properties.Resources.resources
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.exe
+D:\Git\Semestr3\Home\10 EntityForm\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.pdb
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm3LayerClient.exe.config
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm3LayerClient.exe
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm3LayerClient.pdb
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\Autofac.dll
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\AutoMapper.dll
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm.BLL.dll
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm.DAL.dll
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityFramework.dll
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityFramework.SqlServer.dll
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Buffers.dll
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Memory.dll
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Numerics.Vectors.dll
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm.BLL.pdb
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm.BLL.dll.config
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm.DAL.pdb
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityForm.DAL.dll.config
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\Autofac.pdb
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\Autofac.xml
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\AutoMapper.xml
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityFramework.xml
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\EntityFramework.SqlServer.xml
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Buffers.xml
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Memory.xml
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Numerics.Vectors.xml
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.Form1.resources
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.Properties.Resources.resources
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.UserControlEmployee.resources
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.csproj.GenerateResource.cache
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.csproj.CopyComplete
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.exe
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.pdb
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.UserControlPosition.resources
+D:\Git\Semestr3\Home\13 EntityForm Initializer\AdoForm3LayerClient\AdoForm3LayerClient\obj\Debug\EntityForm3LayerClient.UserControlTasks.resources
