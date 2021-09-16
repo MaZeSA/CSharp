@@ -1,0 +1,15 @@
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\bin\Debug\TackManager.exe.config
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\bin\Debug\TackManager.exe
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\bin\Debug\TackManager.pdb
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\obj\Debug\TackManager.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\obj\Debug\MainWindow.g.cs
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\obj\Debug\App.g.cs
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\obj\Debug\TackManager_MarkupCompile.cache
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\obj\Debug\TackManager_MarkupCompile.lref
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\obj\Debug\MainWindow.baml
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\obj\Debug\TackManager.g.resources
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\obj\Debug\TackManager.Properties.Resources.resources
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\obj\Debug\TackManager.csproj.GenerateResource.cache
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\obj\Debug\TackManager.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\obj\Debug\TackManager.exe
+D:\Git\Semestr3\Home\14 TaskManager\TackManager\TackManager\obj\Debug\TackManager.pdb

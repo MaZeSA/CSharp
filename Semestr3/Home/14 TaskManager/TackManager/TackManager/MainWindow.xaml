@@ -1,0 +1,39 @@
+﻿<Window x:Class="TackManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TackManager"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="601.25" Width="605" Closing="Window_Closing">
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <Label>Run:</Label>     
+            <Button Click="Button_Click" DockPanel.Dock="Right" HorizontalAlignment="Right">Start Process</Button>
+            <TextBox Name="textBoxStart"></TextBox>
+        </DockPanel>  
+        <StackPanel Name="stackPanelBottom" IsEnabled="False" DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Click="Button_Click_2" Margin="5" Padding="4">Stop process by name</Button>
+            <Button Click="Button_Click_3" Margin="5" Padding="4">Stop process by Id</Button>
+        </StackPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                 <Button Click="Button_Click_1" DockPanel.Dock="Top" Padding="5" HorizontalAlignment="Left">Start</Button>
+                <Label Name="statusLabel"></Label>
+            </StackPanel>
+             <ListView Name="listView1" SelectionChanged="listView1_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=ProcessName}"></GridViewColumn>
+                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Path=Id}"></GridViewColumn>
+                        <GridViewColumn Header="Threads count" DisplayMemberBinding="{Binding Path=Threads.Count}"></GridViewColumn>
+                        <GridViewColumn Header="Base priority" DisplayMemberBinding="{Binding Path=BasePriority}"></GridViewColumn>
+                        <GridViewColumn Header="Handle count" DisplayMemberBinding="{Binding Path=HandleCount}"></GridViewColumn>
+                        <GridViewColumn Header="Start time" DisplayMemberBinding="{Binding Path=StartTime}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+     
+    </DockPanel>
+</Window>
