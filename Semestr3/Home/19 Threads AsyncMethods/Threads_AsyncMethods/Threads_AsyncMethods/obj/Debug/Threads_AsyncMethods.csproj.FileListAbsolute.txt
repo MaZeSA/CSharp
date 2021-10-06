@@ -1,0 +1,14 @@
+D:\Git\Semestr3\Home\19 Threads AsyncMethods\Threads_AsyncMethods\Threads_AsyncMethods\bin\Debug\Threads_AsyncMethods.exe.config
+D:\Git\Semestr3\Home\19 Threads AsyncMethods\Threads_AsyncMethods\Threads_AsyncMethods\bin\Debug\Threads_AsyncMethods.exe
+D:\Git\Semestr3\Home\19 Threads AsyncMethods\Threads_AsyncMethods\Threads_AsyncMethods\bin\Debug\Threads_AsyncMethods.pdb
+D:\Git\Semestr3\Home\19 Threads AsyncMethods\Threads_AsyncMethods\Threads_AsyncMethods\obj\Debug\MainWindow.g.cs
+D:\Git\Semestr3\Home\19 Threads AsyncMethods\Threads_AsyncMethods\Threads_AsyncMethods\obj\Debug\App.g.cs
+D:\Git\Semestr3\Home\19 Threads AsyncMethods\Threads_AsyncMethods\Threads_AsyncMethods\obj\Debug\Threads_AsyncMethods_MarkupCompile.cache
+D:\Git\Semestr3\Home\19 Threads AsyncMethods\Threads_AsyncMethods\Threads_AsyncMethods\obj\Debug\Threads_AsyncMethods_MarkupCompile.lref
+D:\Git\Semestr3\Home\19 Threads AsyncMethods\Threads_AsyncMethods\Threads_AsyncMethods\obj\Debug\MainWindow.baml
+D:\Git\Semestr3\Home\19 Threads AsyncMethods\Threads_AsyncMethods\Threads_AsyncMethods\obj\Debug\Threads_AsyncMethods.g.resources
+D:\Git\Semestr3\Home\19 Threads AsyncMethods\Threads_AsyncMethods\Threads_AsyncMethods\obj\Debug\Threads_AsyncMethods.Properties.Resources.resources
+D:\Git\Semestr3\Home\19 Threads AsyncMethods\Threads_AsyncMethods\Threads_AsyncMethods\obj\Debug\Threads_AsyncMethods.csproj.GenerateResource.cache
+D:\Git\Semestr3\Home\19 Threads AsyncMethods\Threads_AsyncMethods\Threads_AsyncMethods\obj\Debug\Threads_AsyncMethods.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\19 Threads AsyncMethods\Threads_AsyncMethods\Threads_AsyncMethods\obj\Debug\Threads_AsyncMethods.exe
+D:\Git\Semestr3\Home\19 Threads AsyncMethods\Threads_AsyncMethods\Threads_AsyncMethods\obj\Debug\Threads_AsyncMethods.pdb
