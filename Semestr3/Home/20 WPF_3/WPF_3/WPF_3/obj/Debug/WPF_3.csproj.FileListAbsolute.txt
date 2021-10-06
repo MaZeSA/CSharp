@@ -1,0 +1,15 @@
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\bin\Debug\WPF_3.exe.config
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\bin\Debug\WPF_3.exe
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\bin\Debug\WPF_3.pdb
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\obj\Debug\WPF_3.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\obj\Debug\MainWindow.g.cs
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\obj\Debug\App.g.cs
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\obj\Debug\WPF_3_MarkupCompile.cache
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\obj\Debug\WPF_3_MarkupCompile.lref
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\obj\Debug\MainWindow.baml
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\obj\Debug\WPF_3.g.resources
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\obj\Debug\WPF_3.Properties.Resources.resources
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\obj\Debug\WPF_3.csproj.GenerateResource.cache
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\obj\Debug\WPF_3.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\obj\Debug\WPF_3.exe
+D:\Git\Semestr3\Home\20 WPF_3\WPF_3\WPF_3\obj\Debug\WPF_3.pdb
