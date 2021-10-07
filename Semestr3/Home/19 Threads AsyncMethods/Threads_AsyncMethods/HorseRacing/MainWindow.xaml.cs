@@ -43,8 +43,6 @@ namespace HorseRacing
             var _stopWatch = new Stopwatch();
             _stopWatch.Start();
 
-            int speed = 100;
-
             for (int i = 0; i < 100; i++)
             {
                 this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
@@ -52,8 +50,7 @@ namespace HorseRacing
                     (progressBar as ProgressBar).Value++;
                 });
 
-                speed = random.Next(0, 200);
-                Thread.Sleep(speed);
+                Thread.Sleep(random.Next(0, 200));
             }
 
             _stopWatch.Stop();
