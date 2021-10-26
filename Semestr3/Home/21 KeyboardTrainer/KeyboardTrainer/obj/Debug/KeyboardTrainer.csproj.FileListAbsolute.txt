@@ -1,0 +1,14 @@
+D:\Git\Semestr3\Home\21 KeyboardTrainer\KeyboardTrainer\bin\Debug\KeyboardTrainer.exe.config
+D:\Git\Semestr3\Home\21 KeyboardTrainer\KeyboardTrainer\bin\Debug\KeyboardTrainer.exe
+D:\Git\Semestr3\Home\21 KeyboardTrainer\KeyboardTrainer\bin\Debug\KeyboardTrainer.pdb
+D:\Git\Semestr3\Home\21 KeyboardTrainer\KeyboardTrainer\obj\Debug\MainWindow.baml
+D:\Git\Semestr3\Home\21 KeyboardTrainer\KeyboardTrainer\obj\Debug\MainWindow.g.cs
+D:\Git\Semestr3\Home\21 KeyboardTrainer\KeyboardTrainer\obj\Debug\App.g.cs
+D:\Git\Semestr3\Home\21 KeyboardTrainer\KeyboardTrainer\obj\Debug\KeyboardTrainer_MarkupCompile.cache
+D:\Git\Semestr3\Home\21 KeyboardTrainer\KeyboardTrainer\obj\Debug\KeyboardTrainer.g.resources
+D:\Git\Semestr3\Home\21 KeyboardTrainer\KeyboardTrainer\obj\Debug\KeyboardTrainer.Properties.Resources.resources
+D:\Git\Semestr3\Home\21 KeyboardTrainer\KeyboardTrainer\obj\Debug\KeyboardTrainer.csproj.GenerateResource.cache
+D:\Git\Semestr3\Home\21 KeyboardTrainer\KeyboardTrainer\obj\Debug\KeyboardTrainer.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\21 KeyboardTrainer\KeyboardTrainer\obj\Debug\KeyboardTrainer.exe
+D:\Git\Semestr3\Home\21 KeyboardTrainer\KeyboardTrainer\obj\Debug\KeyboardTrainer.pdb
+D:\Git\Semestr3\Home\21 KeyboardTrainer\KeyboardTrainer\obj\Debug\KeyboardTrainer.csprojAssemblyReference.cache
