@@ -1,0 +1,31 @@
+﻿<Window x:Class="ThreadSync.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ThreadSync"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DockPanel>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                <Label Width="200" Content="Counter"></Label>
+                <Label Width="200" Content="Factorial"></Label>
+                <Label Width="200" Content="Pow"></Label>
+                <Label Width="200" Content="Fibonacci"></Label>
+            </StackPanel>
+            <ListBox x:Name="ListBox1">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="200" Content="{Binding Counter}"></Label>
+                            <Label Width="200" Content="{Binding Factorial}"></Label>
+                            <Label Width="200" Content="{Binding Pow}"></Label>
+                            <Label Width="200" Content="{Binding Fibonacci}"></Label>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+    </Grid>
+</Window>
