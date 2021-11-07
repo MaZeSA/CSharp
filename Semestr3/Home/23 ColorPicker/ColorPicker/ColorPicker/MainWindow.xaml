@@ -31,10 +31,10 @@
         <Label Grid.Column="1" Grid.Row="2" Content="{Binding ElementName=slider_G, Path=Value}"></Label>
         <Label Grid.Column="1" Grid.Row="3" Content="{Binding ElementName=slider_B, Path=Value}"></Label>
 
-        <Slider x:Name="slider_A" Value="{Binding A}" Grid.Column="2" Minimum="0" Maximum="255" TickFrequency="1" SmallChange="1" IsSnapToTickEnabled="True"></Slider>
-        <Slider x:Name="slider_R" Value="{Binding R}" Grid.Column="2" Grid.Row="1" Minimum="0" Maximum="255" TickFrequency="1" IsSnapToTickEnabled="True"></Slider>
-        <Slider x:Name="slider_G" Value="{Binding G}" Grid.Column="2" Grid.Row="2" Minimum="0" Maximum="255" TickFrequency="1" IsSnapToTickEnabled="True"></Slider>
-        <Slider x:Name="slider_B" Value="{Binding B}" Grid.Column="2" Grid.Row="3" Minimum="0" Maximum="255" TickFrequency="1" IsSnapToTickEnabled="True"></Slider>
+        <Slider x:Name="slider_A" Value="{Binding A}" IsEnabled="{Binding Enable_A}" Grid.Column="2" Minimum="0" Maximum="255" TickFrequency="1" SmallChange="1" IsSnapToTickEnabled="True"></Slider>
+        <Slider x:Name="slider_R" Value="{Binding R}" IsEnabled="{Binding Enable_R}" Grid.Column="2" Grid.Row="1" Minimum="0" Maximum="255" TickFrequency="1" IsSnapToTickEnabled="True"></Slider>
+        <Slider x:Name="slider_G" Value="{Binding G}" IsEnabled="{Binding Enable_G}" Grid.Column="2" Grid.Row="2" Minimum="0" Maximum="255" TickFrequency="1" IsSnapToTickEnabled="True"></Slider>
+        <Slider x:Name="slider_B" Value="{Binding B}" IsEnabled="{Binding Enable_B}" Grid.Column="2" Grid.Row="3" Minimum="0" Maximum="255" TickFrequency="1" IsSnapToTickEnabled="True"></Slider>
 
         <Border Grid.Column="3" Grid.RowSpan="4" Margin="5" Background="{Binding LabelSolidColorBrush}"></Border>
         <Button Grid.Row="4" Margin="5" Click="Button_Click_1">Add</Button>

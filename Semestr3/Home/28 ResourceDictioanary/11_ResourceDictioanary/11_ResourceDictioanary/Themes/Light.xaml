@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="WindowStyle" TargetType="StackPanel">
+        <Setter Property="Background" Value="White"/>
+    </Style>
+    <Style x:Key="ButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="LightBlue"/>
+        <Setter Property="Width" Value="150"/>
+    </Style>
+    <Style x:Key="StackStyle" TargetType="StackPanel">
+        <Setter Property="Background" Value="LightSkyBlue"/>
+    </Style>
+    <SolidColorBrush x:Key="AmbulanceColor" Color="DarkBlue"/>
+    <SolidColorBrush x:Key="FrameColor" Color="LightYellow"/>
+</ResourceDictionary>

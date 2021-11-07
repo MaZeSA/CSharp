@@ -1,0 +1,15 @@
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\bin\Debug\TPL.exe.config
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\bin\Debug\TPL.exe
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\bin\Debug\TPL.pdb
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\obj\Debug\TPL.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\obj\Debug\MainWindow.g.cs
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\obj\Debug\App.g.cs
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\obj\Debug\TPL_MarkupCompile.cache
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\obj\Debug\TPL_MarkupCompile.lref
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\obj\Debug\MainWindow.baml
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\obj\Debug\TPL.g.resources
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\obj\Debug\TPL.Properties.Resources.resources
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\obj\Debug\TPL.csproj.GenerateResource.cache
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\obj\Debug\TPL.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\obj\Debug\TPL.exe
+D:\Git\Semestr3\Home\27 TPL\TPL\TPL\obj\Debug\TPL.pdb
