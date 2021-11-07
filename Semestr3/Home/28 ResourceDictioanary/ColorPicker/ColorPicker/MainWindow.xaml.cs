@@ -82,7 +82,7 @@ namespace ColorPicker
                     enabled_A = value;
 
                     if (!value)
-                    { A = 0; }
+                    { A = 255; }
                     NotifyPropertyChanged();
                 }
                 get => enabled_A;
