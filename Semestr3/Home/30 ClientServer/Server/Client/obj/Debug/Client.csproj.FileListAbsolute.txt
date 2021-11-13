@@ -1,0 +1,16 @@
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\obj\Debug\MainWindow.g.cs
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\obj\Debug\App.g.cs
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\obj\Debug\Client_MarkupCompile.cache
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\obj\Debug\Client_MarkupCompile.lref
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\obj\Debug\Client.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\bin\Debug\Client.exe.config
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\bin\Debug\Client.exe
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\bin\Debug\Client.pdb
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\obj\Debug\MainWindow.baml
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\obj\Debug\Client.g.resources
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\obj\Debug\Client.Properties.Resources.resources
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\obj\Debug\Client.csproj.GenerateResource.cache
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\obj\Debug\Client.exe
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\obj\Debug\Client.pdb
+D:\Git\Semestr3\Home\30 ClientServer\Server\Client\obj\Debug\GeneratedInternalTypeHelper.g.cs
