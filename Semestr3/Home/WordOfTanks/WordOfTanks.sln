@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordOfTanks", "WordOfTanks\WordOfTanks.csproj", "{9484C594-763F-434C-B0B2-739106D035F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TanksLib", "TanksLib\TanksLib.csproj", "{F75BBC59-7B70-4A85-8411-024934A20CE5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9484C594-763F-434C-B0B2-739106D035F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9484C594-763F-434C-B0B2-739106D035F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9484C594-763F-434C-B0B2-739106D035F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9484C594-763F-434C-B0B2-739106D035F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F75BBC59-7B70-4A85-8411-024934A20CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F75BBC59-7B70-4A85-8411-024934A20CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F75BBC59-7B70-4A85-8411-024934A20CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F75BBC59-7B70-4A85-8411-024934A20CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {784AD8C7-EFCF-46A8-8ED1-EEF0D5AC4DF3}
+	EndGlobalSection
+EndGlobal
