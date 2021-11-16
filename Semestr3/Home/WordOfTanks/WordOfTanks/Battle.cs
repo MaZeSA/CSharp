@@ -33,6 +33,13 @@ namespace WordOfTanks
             var mover = winner == MowerLeft.Tank ? MowerRight : MowerLeft;
             mover.Visibility = Visibility.Collapsed;
         }
+
+        public void Win(Tank winner)
+        {
+            var mover = winner == MowerLeft.Tank ? MowerLeft : MowerRight;
+            mover.WinnerVisibility = Visibility.Visible;
+        }
+
     }
     public class Mower : INotifyPropertyChanged
     {
@@ -44,12 +51,23 @@ namespace WordOfTanks
         Visibility visibility = Visibility.Visible;
         public Visibility Visibility
         {
-            set 
+            set
             {
                 visibility = value;
                 OnNotify();
             }
             get => visibility;
+        }
+
+        Visibility winnervisibility = Visibility.Collapsed;
+        public Visibility WinnerVisibility
+        {
+            set
+            {
+                winnervisibility = value;
+                OnNotify();
+            }
+            get => winnervisibility;
         }
 
         Thickness thickness = new Thickness(0);

@@ -5,12 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WordOfTanks"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="WordOfTanks" Height="376" Width="902" Name="mainWindow">
     <Window.Resources>
         <local:Game x:Key="Game"/>
     </Window.Resources>
     <DockPanel DataContext="{StaticResource Game}">
-        <ItemsControl ItemsSource="{Binding Battles}">
+        <DockPanel DataContext="{Binding GameСontrol}" DockPanel.Dock="Top">
+             <Button Command="{Binding Command}" CommandParameter="{x:Reference Name=mainWindow}" Padding="5" Width="200" Content="{Binding TextButton}"></Button>
+        </DockPanel>
+        <ItemsControl ItemsSource="{Binding Battles}" Margin="2, 5">
             <ItemsControl.ItemsPanel >
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Vertical"/>
@@ -19,11 +22,17 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <DockPanel Margin="0, 5" LastChildFill="False">
-                        <DockPanel>
-                            <Image Height="50" Width="90" DataContext="{Binding MowerLeft}" Margin="{Binding Thickness}" Visibility="{Binding Visibility}" Source="TankLeft.png" />
+                        <DockPanel DataContext="{Binding MowerLeft}">
+                            <Grid>
+                                <TextBlock Visibility="{Binding WinnerVisibility}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="36" Foreground="#FFBB2C2C">Winner!!</TextBlock>
+                                <Image Height="50" Width="90" Margin="{Binding Thickness}" Visibility="{Binding Visibility}" Source="TankLeft.png" HorizontalAlignment="Left" />
+                            </Grid>
                         </DockPanel>
-                        <DockPanel DockPanel.Dock="Right">
-                            <Image Height="50" Width="90" DataContext="{Binding MowerRight}" Margin="{Binding Thickness}" Visibility="{Binding Visibility}" Source="TankRight.png" DockPanel.Dock="Right" />
+                        <DockPanel DockPanel.Dock="Right" DataContext="{Binding MowerRight}">
+                            <Grid>
+                                <TextBlock Visibility="{Binding WinnerVisibility}" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="36" Foreground="#FFBB2C2C">Winner!!</TextBlock>
+                                <Image Height="50" Width="90" Margin="{Binding Thickness}" Visibility="{Binding Visibility}" Source="TankRight.png" DockPanel.Dock="Right" HorizontalAlignment="Right" />
+                            </Grid>
                         </DockPanel>
                     </DockPanel>
                 </DataTemplate>
