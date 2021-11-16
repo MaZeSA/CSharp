@@ -1,0 +1,5 @@
+C:\Users\MaZeSa\source\repos\WordOfTanks\TanksLib\bin\Debug\TanksLib.dll
+C:\Users\MaZeSa\source\repos\WordOfTanks\TanksLib\bin\Debug\TanksLib.pdb
+C:\Users\MaZeSa\source\repos\WordOfTanks\TanksLib\obj\Debug\TanksLib.csproj.CoreCompileInputs.cache
+C:\Users\MaZeSa\source\repos\WordOfTanks\TanksLib\obj\Debug\TanksLib.dll
+C:\Users\MaZeSa\source\repos\WordOfTanks\TanksLib\obj\Debug\TanksLib.pdb

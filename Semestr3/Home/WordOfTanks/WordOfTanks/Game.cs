@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TanksLib;
 
@@ -9,30 +11,38 @@ namespace WordOfTanks
 {
     public class Game
     {
-        List<Tank> Tanks_T34 { set; get; } = new List<Tank>(5); 
-        List<Tank> Tanks_Pantera { set; get; } = new List<Tank>(5);
+        public ObservableCollection<Battle> Battles { set; get; } = new ObservableCollection<Battle>();
 
         const int COUNT = 5;
 
         public Game()
         {
-            for(int i =0; i< COUNT; i++)
+            for (int i = 0; i < COUNT; i++)
             {
-                Tanks_T34.Add(new Tank($"T-34 #{i}"));
-                Tanks_Pantera.Add(new Tank($"Pantera #{i}"));
+                Battles.Add(new Battle());
             }
+            StartGames();
         }
 
         public void StartGames()
         {
-            Task[] tasks2 = new Task[COUNT];
-            for (int i = 0; i < COUNT; i++)
-                tasks2[i] = Task.Factory.StartNew(() => Play(Tanks_T34[i], Tanks_Pantera[i]));
-        }
+            List<Task> tasks = new List<Task>();
 
-        private void Play(Tank tank1, Tank tank2)
+            foreach (var battle in Battles)
+            {
+                tasks.Add(Task.Factory.StartNew(() => Play(battle)));
+            }
+        } 
+
+        private void Play(Battle battle)
         {
-            var viner = tank1 ^ tank2;
+            while (battle.Move(792))
+            {
+                Thread.Sleep(50);
+            }
+
+           var vin = battle.GetWinner();
+            battle.KillLoser(vin);
         }
     }
 }

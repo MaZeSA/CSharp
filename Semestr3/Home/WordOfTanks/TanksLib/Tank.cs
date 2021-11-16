@@ -13,21 +13,26 @@ namespace TanksLib
         int Armor { set; get; }
         int Mobilyty { set; get; }
 
+        static Random random = new Random();
+     
         public Tank(string name)
         {
-            Random random = new Random();
-
             Name = name;
             Ammunition = random.Next(0, 100);
             Armor = random.Next(0, 100);
             Mobilyty = random.Next(0, 100);
         }
 
+        public int GetMoveCoeficient()
+        {
+            return Mobilyty / 10;
+        }
+
         public static Tank operator ^(Tank tank1, Tank tank2)
         {
             int res = 0;
 
-            res += tank1.Ammunition > tank2.Ammunition ? 1 : 0; 
+            res += tank1.Ammunition > tank2.Ammunition ? 1 : 0;
             res += tank1.Armor > tank2.Armor ? 1 : 0;
             res += tank1.Mobilyty > tank2.Mobilyty ? 1 : 0;
 

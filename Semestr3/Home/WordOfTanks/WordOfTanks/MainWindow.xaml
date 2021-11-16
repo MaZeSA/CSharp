@@ -6,7 +6,28 @@
         xmlns:local="clr-namespace:WordOfTanks"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Window.Resources>
+        <local:Game x:Key="Game"/>
+    </Window.Resources>
+    <DockPanel DataContext="{StaticResource Game}">
+        <ItemsControl ItemsSource="{Binding Battles}">
+            <ItemsControl.ItemsPanel >
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel Margin="0, 5" LastChildFill="False">
+                        <DockPanel>
+                            <Image Height="50" Width="90" DataContext="{Binding MowerLeft}" Margin="{Binding Thickness}" Visibility="{Binding Visibility}" Source="TankLeft.png" />
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Right">
+                            <Image Height="50" Width="90" DataContext="{Binding MowerRight}" Margin="{Binding Thickness}" Visibility="{Binding Visibility}" Source="TankRight.png" DockPanel.Dock="Right" />
+                        </DockPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DockPanel>
 </Window>
