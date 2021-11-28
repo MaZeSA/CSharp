@@ -1,4 +1,5 @@
 ﻿using Battleship.ViewModel;
+using Battleship.ViewModel.GamePanels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,12 @@ namespace Battleship.Commands
 {
     public class TestCommand : ICommand
     {
-        public TestCommand(ViewContext viewContext)
+        public TestCommand(BaseViewModel viewContext)
         {
             ViewContext = viewContext;
         }
 
-        public ViewContext ViewContext { get; }
+        public BaseViewModel ViewContext { get; }
 
         public event EventHandler CanExecuteChanged;
 
@@ -26,7 +27,7 @@ namespace Battleship.Commands
 
         public void Execute(object parameter)
         {
-            ViewContext.RemoveShip(null);
+         //   ViewContext.RemoveShip(null);
         }
     }
 }

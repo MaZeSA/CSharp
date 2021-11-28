@@ -35,8 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,15 +61,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\CommandClick.cs" />
+    <Compile Include="Commands\CommandForSelectShip.cs" />
     <Compile Include="Commands\TestCommand.cs" />
-    <Compile Include="ViewModel\Pixels\IPixelContent.cs" />
-    <Compile Include="ViewModel\Pixels\Pixel.cs" />
-    <Compile Include="ViewModel\Ships\PhipView.xaml.cs">
-      <DependentUpon>PhipView.xaml</DependentUpon>
+    <Compile Include="Converters\SelectedToVisibility.cs" />
+    <Compile Include="ViewModel\Game.xaml.cs">
+      <DependentUpon>Game.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\GamePanels\ActionViewModel.cs" />
+    <Compile Include="ViewModel\GamePanels\BaseGamePanel.xaml.cs">
+      <DependentUpon>BaseGamePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\GamePanels\BaseViewModel.cs" />
+    <Compile Include="ViewModel\GamePanels\Pixels\Pixel.cs" />
+    <Compile Include="ViewModel\GameView.cs" />
+    <Compile Include="ViewModel\Interfaces\IBoody.cs" />
+    <Compile Include="ViewModel\Interfaces\IClick.cs" />
+    <Compile Include="ViewModel\Interfaces\IVisible.cs" />
+    <Compile Include="ViewModel\Ships\ShipFrigate.cs" />
+    <Compile Include="ViewModel\Ships\ShipView.xaml.cs">
+      <DependentUpon>ShipView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\Ships\Ship.cs" />
     <Compile Include="ViewModel\Ships\ShipCruiser.cs" />
-    <Compile Include="ViewModel\ViewContext.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,7 +96,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ViewModel\Ships\PhipView.xaml">
+    <Page Include="ViewModel\Game.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModel\GamePanels\BaseGamePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModel\Ships\ShipView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -99,6 +127,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
