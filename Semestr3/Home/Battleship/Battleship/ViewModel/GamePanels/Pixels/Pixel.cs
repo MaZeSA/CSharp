@@ -86,11 +86,7 @@ namespace Battleship.ViewModel.GamePanels.Pixels
             get => pixelContent;
         }
 
-        public IBoody Content
-        {
-            get=> PixelContent?.GetBoody(this);
-        }
-
+      
 
         public void UIElement_OnDrop(object sender, DragEventArgs e)
         {

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Battleship.ViewModel.Interfaces
 {
@@ -10,6 +12,7 @@ namespace Battleship.ViewModel.Interfaces
     {
         int Column { set; get; }
         int Row { set; get; }
-        object Content { set; get; }
+        object Content {get; }
+        IVisible ParentObj { get; }
     }
 }

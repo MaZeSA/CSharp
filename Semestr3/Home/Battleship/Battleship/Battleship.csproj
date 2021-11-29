@@ -65,18 +65,21 @@
     <Compile Include="Commands\CommandForSelectShip.cs" />
     <Compile Include="Commands\TestCommand.cs" />
     <Compile Include="Converters\SelectedToVisibility.cs" />
+    <Compile Include="GameModel.cs" />
     <Compile Include="ViewModel\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\GamePanels\ActionViewModel.cs" />
-    <Compile Include="ViewModel\GamePanels\BaseGamePanel.xaml.cs">
-      <DependentUpon>BaseGamePanel.xaml</DependentUpon>
+    <Compile Include="ViewModel\GamePanels\VisualElementsModel.cs" />
+    <Compile Include="ViewModel\GamePanels\Pixels\EntyView.xaml.cs">
+      <DependentUpon>EntyView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\GamePanels\BaseViewModel.cs" />
     <Compile Include="ViewModel\GamePanels\Pixels\Pixel.cs" />
+    <Compile Include="ViewModel\GamePanels\VisulElementController.xaml.cs">
+      <DependentUpon>VisulElementController.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\GamePreparationModel.cs" />
     <Compile Include="ViewModel\GameView.cs" />
     <Compile Include="ViewModel\Interfaces\IBoody.cs" />
-    <Compile Include="ViewModel\Interfaces\IClick.cs" />
     <Compile Include="ViewModel\Interfaces\IVisible.cs" />
     <Compile Include="ViewModel\Ships\ShipFrigate.cs" />
     <Compile Include="ViewModel\Ships\ShipView.xaml.cs">
@@ -100,7 +103,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewModel\GamePanels\BaseGamePanel.xaml">
+    <Page Include="ViewModel\GamePanels\Pixels\EntyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModel\GamePanels\VisulElementController.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

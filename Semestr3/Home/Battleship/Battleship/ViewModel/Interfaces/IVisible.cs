@@ -10,14 +10,10 @@ namespace Battleship.ViewModel.Interfaces
 {
     public interface IVisible
     {
-        BaseViewModel ViewModel { set; get; }
+        List<IBoody> VisulBoodies { get;}
 
-        IBoody GetBoody(Pixel pixel);
-        void Add();
-        void Remove();
         void Move(int param_r, int param_c);
         void Rotate();
-        void ChangeParent(BaseViewModel baseViewModel);
 
     }
 }

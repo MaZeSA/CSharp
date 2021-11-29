@@ -10,27 +10,27 @@ namespace Battleship.ViewModel.Ships
 {
     public class ShipFrigate : Ship
     {
-        public ShipFrigate(BaseViewModel viewContext) : base(viewContext)
+        public ShipFrigate() : base()
         {
             Length = 3;
 
             for (int i = 0; i < Length; i++)
             {
-                Boody.Add(new ShipView(this) { Row = 0, Column = i, Background= Brushes.Brown });
+                VisulBoodies.Add(new ShipView(this) { Row = 0, Column = i, Background= Brushes.Brown });
             }
 
-            Boody[0].Background = Brushes.DeepPink;
+          //  VisulBoodies[0].Background = Brushes.DeepPink;
         }
-        public ShipFrigate(BaseViewModel viewContext, int Row, int Column) : base(viewContext)
+        public ShipFrigate( int Row, int Column) : base()
         {
             Length = 3;
 
             for (int i = 0; i < Length; i++)
             {
-                Boody.Add(new ShipView(this) { Row = 0 + Row, Column = i + Column, Background = Brushes.Brown });
+                VisulBoodies.Add(new ShipView(this) { Row = 0 + Row, Column = i + Column, Background = Brushes.Brown });
             }
 
-            Boody[0].Background = Brushes.DeepPink;
+           // VisulBoodies[0].Background = Brushes.DeepPink;
         }
     }
 }

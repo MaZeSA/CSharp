@@ -14,8 +14,7 @@ namespace Battleship.ViewModel
 {
     public class GameView : INotifyPropertyChanged
     {
-        public BaseViewModel BaseViewModel { set; get; }
-        public ActionViewModel ActionViewModel { set; get; }
+        public VisualElementsModel BaseViewModel { set; get; }
         public ObservableCollection<Ship> Ships { set; get; } = new ObservableCollection<Ship>();
 
       
@@ -27,17 +26,16 @@ namespace Battleship.ViewModel
 
         public GameView()
         {
-            BaseViewModel = new BaseViewModel(this);
-            ActionViewModel = new ActionViewModel(this);
+            //BaseViewModel = new BaseViewModel(this);
 
             CreateShips();
         }
 
         private void CreateShips()
         {
-            ActionViewModel.Ships.Add(new ShipCruiser(ActionViewModel) { Name = "Cruiser" });
-            ActionViewModel.Ships.Add(new ShipCruiser(ActionViewModel, 1, 0) { Name = "Cruiser2" });
-            ActionViewModel.Ships.Add(new ShipFrigate(ActionViewModel, 3, 0) { Name = "Frigate" });
+            //ActionViewModel.Ships.Add(new ShipCruiser(ActionViewModel) { Name = "Cruiser" });
+            //ActionViewModel.Ships.Add(new ShipCruiser(ActionViewModel, 1, 0) { Name = "Cruiser2" });
+            //ActionViewModel.Ships.Add(new ShipFrigate(ActionViewModel, 3, 0) { Name = "Frigate" });
         }
 
     }

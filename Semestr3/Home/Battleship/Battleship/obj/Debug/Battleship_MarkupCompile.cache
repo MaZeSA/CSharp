@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\MaZeSa\Desktop\Battleship\Battleship\App.xaml
-41441731412
+5322906959
 
-22-1818515199
+23-2146619435
 15-2850744
-MainWindow.xaml;ViewModel\Game.xaml;ViewModel\GamePanels\BaseGamePanel.xaml;ViewModel\Ships\ShipView.xaml;
+MainWindow.xaml;ViewModel\Game.xaml;ViewModel\GamePanels\Pixels\EntyView.xaml;ViewModel\GamePanels\VisulElementController.xaml;ViewModel\Ships\ShipView.xaml;
 
 False
 

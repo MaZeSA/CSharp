@@ -11,12 +11,12 @@ namespace Battleship.Commands
 {
     public class TestCommand : ICommand
     {
-        public TestCommand(BaseViewModel viewContext)
+        public TestCommand(VisualElementsModel viewContext)
         {
             ViewContext = viewContext;
         }
 
-        public BaseViewModel ViewContext { get; }
+        public VisualElementsModel ViewContext { get; }
 
         public event EventHandler CanExecuteChanged;
 
@@ -27,7 +27,7 @@ namespace Battleship.Commands
 
         public void Execute(object parameter)
         {
-         //   ViewContext.RemoveShip(null);
+            ViewContext.Commnd();
         }
     }
 }

@@ -22,14 +22,14 @@ namespace Battleship.ViewModel.Ships
     /// Логика взаимодействия для PhipView.xaml
     /// </summary>
     public partial class ShipView : UserControl, INotifyPropertyChanged, IBoody
-    {
-        Ship Ship { set; get; }
+    {       
+        public IVisible ParentObj { get; }
 
         public ShipView(Ship ship)
         {
             InitializeComponent();
             this.DataContext = this;
-            Ship = ship;
+            ParentObj = ship;
         }
 
         int column = 0;
@@ -54,6 +54,7 @@ namespace Battleship.ViewModel.Ships
             get => row;
         }
 
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnNotify([CallerMemberName] string prop = "")
         {
@@ -62,14 +63,11 @@ namespace Battleship.ViewModel.Ships
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Ship.Click(this);
-
-            DataObject data = new DataObject();
-            data.SetData("Object", Ship);
+                       DataObject data = new DataObject();
+            data.SetData("Object", ParentObj);
             data.SetData("sender", this);
 
             DragDrop.DoDragDrop(this, data, DragDropEffects.All);
         }
-
     }
 }

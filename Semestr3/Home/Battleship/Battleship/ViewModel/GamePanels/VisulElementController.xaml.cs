@@ -16,13 +16,28 @@ using System.Windows.Shapes;
 namespace Battleship.ViewModel.GamePanels
 {
     /// <summary>
-    /// Логика взаимодействия для BaseGamePanel.xaml
+    /// Логика взаимодействия для VisulElementController.xaml
     /// </summary>
-    public partial class BaseGamePanel : UserControl
+    public partial class VisulElementController : UserControl
     {
-        public BaseGamePanel()
+        public VisulElementController()
         {
             InitializeComponent();
+        }
+
+        private void ListBox_DragLeave(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void Grid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
