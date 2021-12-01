@@ -1,0 +1,16 @@
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\bin\Debug\AutoRun.exe.config
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\bin\Debug\AutoRun.exe
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\bin\Debug\AutoRun.pdb
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\obj\Debug\AutoRun.csprojAssemblyReference.cache
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\obj\Debug\MainWindow.g.cs
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\obj\Debug\App.g.cs
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\obj\Debug\AutoRun_MarkupCompile.cache
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\obj\Debug\AutoRun_MarkupCompile.lref
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\obj\Debug\MainWindow.baml
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\obj\Debug\AutoRun.g.resources
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\obj\Debug\AutoRun.Properties.Resources.resources
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\obj\Debug\AutoRun.csproj.GenerateResource.cache
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\obj\Debug\AutoRun.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\obj\Debug\AutoRun.exe
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\obj\Debug\AutoRun.pdb
+D:\Git\Semestr3\Clas\AutoRun\AutoRun\obj\Debug\GeneratedInternalTypeHelper.g.cs

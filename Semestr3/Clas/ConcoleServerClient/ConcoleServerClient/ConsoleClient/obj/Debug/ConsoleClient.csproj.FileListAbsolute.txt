@@ -1,0 +1,7 @@
+D:\Git\Semestr3\Clas\ConcoleServerClient\ConcoleServerClient\ConsoleClient\bin\Debug\ConsoleClient.exe.config
+D:\Git\Semestr3\Clas\ConcoleServerClient\ConcoleServerClient\ConsoleClient\bin\Debug\ConsoleClient.exe
+D:\Git\Semestr3\Clas\ConcoleServerClient\ConcoleServerClient\ConsoleClient\bin\Debug\ConsoleClient.pdb
+D:\Git\Semestr3\Clas\ConcoleServerClient\ConcoleServerClient\ConsoleClient\obj\Debug\ConsoleClient.csprojAssemblyReference.cache
+D:\Git\Semestr3\Clas\ConcoleServerClient\ConcoleServerClient\ConsoleClient\obj\Debug\ConsoleClient.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Clas\ConcoleServerClient\ConcoleServerClient\ConsoleClient\obj\Debug\ConsoleClient.exe
+D:\Git\Semestr3\Clas\ConcoleServerClient\ConcoleServerClient\ConsoleClient\obj\Debug\ConsoleClient.pdb
