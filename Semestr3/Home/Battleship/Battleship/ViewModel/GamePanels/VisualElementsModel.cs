@@ -27,20 +27,21 @@ namespace Battleship.ViewModel.GamePanels
             VisibleObjects[0].Rotate();
         }
 
+        
         public VisualElementsModel(GameModel gameModel)
         {
             GameModel = gameModel;
                         
             for (int i = 0; i < CONST_R; i++)
                 for (int t = 0; t < CONST_C; t++)
-                    VisulGridBoodyes.Add(new EntyView(i, t));
+                    VisibleObjects.Add(new EntityPixel(i, t));
 
-            AddVisibleObj(new ShipCruiser());
-            AddVisibleObj(new ShipFrigate(3,3));
+            AddVisibleObj(new ShipCruiser(0,0));
+            AddVisibleObj(new ShipFrigate(3, 3) { RowSpan = 3, ColumnSpan = 1 });
         }
 
-        private List<IVisible> VisibleObjects { set; get; } = new List<IVisible>();
-        public ObservableCollection<IBoody> VisulGridBoodyes { set; get; } = new ObservableCollection<IBoody>();
+        public ObservableCollection<IVisible> VisibleObjects { set; get; } = new ObservableCollection<IVisible>();
+        //public ObservableCollection<IBoody> VisulGridBoodyes { set; get; } = new ObservableCollection<IBoody>();
         public GameModel GameModel { get; }
 
         public void AddVisibleObj(IVisible obj)
@@ -48,40 +49,36 @@ namespace Battleship.ViewModel.GamePanels
             if (VisibleObjects.IndexOf(obj) > -1) return;
 
             VisibleObjects.Add(obj);
-            foreach (var item in obj.VisulBoodies)
-                VisulGridBoodyes.Add(item);
+            //foreach (var item in obj.VisulBoodies)
+            //    VisulGridBoodyes.Add(item);
         }
         public void RemoveVisibleObj(IVisible obj)
         {
             VisibleObjects.Remove(obj);
-            foreach (var item in obj.VisulBoodies)
-                VisulGridBoodyes.Remove(item);
+            //foreach (var item in obj.VisulBoodies)
+            //    VisulGridBoodyes.Remove(item);
         }
-
-        public void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            dynamic t = e.OriginalSource;
-            IBoody rw = t.DataContext;
-            rw.ParentObj.Rotate();
-        }
-
 
         public void UIElement_OnDragEnter(object sender, DragEventArgs e)
         {
-            var moved = (IVisible)e.Data.GetData("Object");
-            var send = (IBoody)e.Data.GetData("sender");
+            //var moved = (IVisible)e.Data.GetData("Object");
+            //if (moved is null) return;
+            //if (VisibleObjects.IndexOf(moved) > -1)
+            //{ return; }
+            //else
+            //{
+            //    dynamic pixel = e.OriginalSource;
+            //    IBoody visible = pixel.DataContext;
 
-            if (moved is null) return;
-            dynamic t = e.OriginalSource;
-            var rw = t.DataContext;
-            var r = rw.Row - send.Row;
-            var c = rw.Column - send.Column;
-            moved.Move(r, c);  
-            
-            AddVisibleObj(moved);   
-            GameModel.GamePreparationModel.DropValidation(moved);
+            //    var r = visible.Row;
+            //    var c = visible.Column;
+            //    moved.Move(r, c);
+            //}
+
+            //VisibleObjects.Add(moved);
+
         }
-
+      
 
     }
 }

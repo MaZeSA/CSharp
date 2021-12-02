@@ -63,16 +63,16 @@
     </ApplicationDefinition>
     <Compile Include="Commands\CommandClick.cs" />
     <Compile Include="Commands\CommandForSelectShip.cs" />
+    <Compile Include="Commands\PreviewDragEnterCommand.cs" />
     <Compile Include="Commands\TestCommand.cs" />
     <Compile Include="Converters\SelectedToVisibility.cs" />
     <Compile Include="GameModel.cs" />
+    <Compile Include="ViewModel\BaseVisualElement.cs" />
     <Compile Include="ViewModel\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\GamePanels\Pixels\EntityPixel.cs" />
     <Compile Include="ViewModel\GamePanels\VisualElementsModel.cs" />
-    <Compile Include="ViewModel\GamePanels\Pixels\EntyView.xaml.cs">
-      <DependentUpon>EntyView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\GamePanels\Pixels\Pixel.cs" />
     <Compile Include="ViewModel\GamePanels\VisulElementController.xaml.cs">
       <DependentUpon>VisulElementController.xaml</DependentUpon>
@@ -100,10 +100,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ViewModel\Game.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ViewModel\GamePanels\Pixels\EntyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -21,7 +21,7 @@ namespace Battleship.ViewModel.Ships
     /// <summary>
     /// Логика взаимодействия для PhipView.xaml
     /// </summary>
-    public partial class ShipView : UserControl, INotifyPropertyChanged, IBoody
+    public partial class ShipView : UserControl, INotifyPropertyChanged/*, IBoody*/
     {       
         public IVisible ParentObj { get; }
 

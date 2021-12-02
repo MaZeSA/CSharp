@@ -39,5 +39,10 @@ namespace Battleship.ViewModel.GamePanels
         {
 
         }
+
+        private void ItemsControl_PreviewDragEnter(object sender, DragEventArgs e)
+        {
+
+        }
     }
 }

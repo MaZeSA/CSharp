@@ -1,4 +1,5 @@
 ﻿using Battleship.ViewModel.GamePanels;
+using Battleship.ViewModel.GamePanels.Pixels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,27 +11,17 @@ namespace Battleship.ViewModel.Ships
 {
     public class ShipFrigate : Ship
     {
-        public ShipFrigate() : base()
+        public ShipFrigate(int r, int c) : base()
         {
             Length = 3;
+            Row = 2;
+            ColumnSpan = Length;
+            BackgroundBrush = Brushes.Blue;
 
             for (int i = 0; i < Length; i++)
             {
-                VisulBoodies.Add(new ShipView(this) { Row = 0, Column = i, Background= Brushes.Brown });
+                VisulBoodies.Add(new Pixel(this) { BackgroundBrush = this.BackgroundBrush});
             }
-
-          //  VisulBoodies[0].Background = Brushes.DeepPink;
         }
-        public ShipFrigate( int Row, int Column) : base()
-        {
-            Length = 3;
-
-            for (int i = 0; i < Length; i++)
-            {
-                VisulBoodies.Add(new ShipView(this) { Row = 0 + Row, Column = i + Column, Background = Brushes.Brown });
-            }
-
-           // VisulBoodies[0].Background = Brushes.DeepPink;
-        }
-    }
+     }
 }

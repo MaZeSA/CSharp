@@ -12,8 +12,8 @@
     <DockPanel DataContext="{StaticResource GM}">
         <DockPanel DataContext="{Binding VisualElementsModel}" Width="400" Height="400">
             <Button Command="{Binding TestCommand}" DockPanel.Dock="Top">test</Button>
-            <Grid>
-                <ItemsControl ItemsSource="{Binding VisulGridBoodyes}">
+            <Grid AllowDrop="True">
+                <ItemsControl ItemsSource="{Binding VisibleObjects}" AllowDrop="True">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <Grid>
@@ -45,48 +45,97 @@
                                     <i:EventTrigger EventName="DragEnter">
                                         <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
                                     </i:EventTrigger>
-                                    <i:EventTrigger EventName="MouseDown">
+                                    <!--<i:EventTrigger EventName="MouseDown">
                                         <ei:CallMethodAction MethodName="Grid_MouseDown" TargetObject="{Binding}" />
-                                    </i:EventTrigger>
+                                    </i:EventTrigger>-->
                                 </i:Interaction.Triggers>
                             </Grid>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{Binding BackgroundBrush}" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}" AllowDrop="True">
+                                <ItemsControl ItemsSource="{Binding VisulBoodies}" AllowDrop="True">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border AllowDrop="True" Background="{Binding BackgroundBrush}" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
+                                                <!--<Label Content=""></Label>
+                                            <Label Content="" DockPanel.Dock="Right"></Label>-->
+                                                <!--<i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="DragEnter">
+                                                        <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>-->
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="{Binding ColumnSpan}" Rows="{Binding RowSpan}" AllowDrop="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <!--<i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="PreviewDragEnter">
+                                            <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>-->
+                                </ItemsControl>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseDown">
+                                        <ei:CallMethodAction MethodName="Grid_MouseDown" TargetObject="{Binding}" />
+                                    </i:EventTrigger>
+                                    <!--<i:EventTrigger EventName="PreviewDragEnter">
+                                        <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
+                                    </i:EventTrigger>-->
+                                    <i:EventTrigger EventName="DragEnter">
+                                       <i:InvokeCommandAction Command="{Binding PreviewDragEnterCommand}" CommandParameter="{Binding}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemContainerStyle>
                         <Style>
                             <Setter Property="Grid.Column" 
                     Value="{Binding Column}" />
                             <Setter Property="Grid.Row" 
                     Value="{Binding Row}" />
+                            <Setter Property="Grid.ColumnSpan" 
+                    Value="{Binding ColumnSpan}" />
+                            <Setter Property="Grid.RowSpan" 
+                    Value="{Binding RowSpan}" />
                         </Style>
                     </ItemsControl.ItemContainerStyle>
                 </ItemsControl>
             </Grid>
         </DockPanel>
         <DockPanel DataContext="{Binding GamePreparationModel}">
-            <ListBox ItemsSource="{Binding Ships}" AllowDrop="True">
-                <i:Interaction.Triggers>
-                    <!--<i:EventTrigger EventName="Drop">
-                        <ei:CallMethodAction MethodName="UIElement_OnDrop" TargetObject="{Binding}" />
-                    </i:EventTrigger>-->
-                    <i:EventTrigger EventName="DragEnter">
-                        <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
+            <ListBox ItemsSource="{Binding Ships}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <ItemsControl ItemsSource="{Binding VisulBoodies}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                            </ItemsControl>
+                            <Border Background="{Binding BackgroundBrush}" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
+                                <ItemsControl ItemsSource="{Binding VisulBoodies}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <DockPanel Background="{Binding SolidColorBrush}" LastChildFill="False">
+                                                <Label Content="{Binding Row}"></Label>
+                                                <Label Content="{Binding Column}" DockPanel.Dock="Right"></Label>
+                                            </DockPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"  AllowDrop="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDown">
+                                            <ei:CallMethodAction MethodName="Grid_MouseDown" TargetObject="{Binding}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ItemsControl>
+                            </Border>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

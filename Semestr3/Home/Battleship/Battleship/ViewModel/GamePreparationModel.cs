@@ -19,9 +19,9 @@ namespace Battleship.ViewModel
         {
             GameModel = gameModel;
 
-            Ships.Add(new ShipCruiser());
-            Ships.Add(new ShipFrigate()); 
-            Ships.Add(new ShipFrigate());
+            Ships.Add(new ShipCruiser(1,1));
+            Ships.Add(new ShipFrigate(2,1)); 
+            Ships.Add(new ShipFrigate(4,4));
         }
 
         public void DropValidation(IVisible visible)

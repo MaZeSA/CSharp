@@ -11,27 +11,18 @@ namespace Battleship.ViewModel.Ships
 {
     public class ShipCruiser : Ship
     {
-        public ShipCruiser() : base()
+        public ShipCruiser(int row, int column) : base()
         {
             Length = 4;
+            Row = row;
+            Column = column;
+            ColumnSpan = Length;
+            BackgroundBrush = Brushes.Coral;
 
             for (int i = 0; i < Length; i++)
             {
-                VisulBoodies.Add(new ShipView(this) { Row = 0, Column = i });
+                VisulBoodies.Add(new Pixel(this) { BackgroundBrush = this.BackgroundBrush});
             }
-
-         //   VisulBoodies[0].Content = Brushes.DeepPink;
-        }
-        public ShipCruiser( int Row, int Column) : base()
-        {
-            Length = 4;
-
-            for (int i = 0; i < Length; i++)
-            {
-                VisulBoodies.Add(new ShipView(this) { Row = 0 + Row, Column = i + Column });
-            }
-
-           // VisulBoodies[0].Background = Brushes.DeepPink;
         }
     }
 }
