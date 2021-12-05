@@ -13,13 +13,13 @@ namespace Battleship.ViewModel
     public abstract class BaseVisualElement : INotifyPropertyChanged
     {
         int column = 0;
-        public int Column
+        public virtual int Column
         {
             get => column;
             set { column = value; OnNotify(); }
         }
         int row = 0;
-        public int Row
+        public virtual int Row
         {
             get => row;
             set { row = value; OnNotify(); }

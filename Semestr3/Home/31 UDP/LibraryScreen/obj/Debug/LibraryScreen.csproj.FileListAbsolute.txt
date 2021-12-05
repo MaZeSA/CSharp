@@ -1,0 +1,6 @@
+D:\Git\Semestr3\Home\UDP\LibraryScreen\bin\Debug\LibraryScreen.dll
+D:\Git\Semestr3\Home\UDP\LibraryScreen\bin\Debug\LibraryScreen.pdb
+D:\Git\Semestr3\Home\UDP\LibraryScreen\obj\Debug\LibraryScreen.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\UDP\LibraryScreen\obj\Debug\LibraryScreen.dll
+D:\Git\Semestr3\Home\UDP\LibraryScreen\obj\Debug\LibraryScreen.pdb
+D:\Git\Semestr3\Home\UDP\LibraryScreen\obj\Debug\LibraryScreen.csprojAssemblyReference.cache

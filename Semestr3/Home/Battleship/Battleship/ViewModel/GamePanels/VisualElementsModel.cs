@@ -61,22 +61,17 @@ namespace Battleship.ViewModel.GamePanels
 
         public void UIElement_OnDragEnter(object sender, DragEventArgs e)
         {
-            //var moved = (IVisible)e.Data.GetData("Object");
-            //if (moved is null) return;
-            //if (VisibleObjects.IndexOf(moved) > -1)
-            //{ return; }
-            //else
-            //{
-            //    dynamic pixel = e.OriginalSource;
-            //    IBoody visible = pixel.DataContext;
+            var moved = (IVisible)e.Data.GetData("Object");
+            if (moved is null) return;
+            if (VisibleObjects.IndexOf(moved) < 0)
+            { VisibleObjects.Add(moved);}
+           
+                dynamic pixel = e.OriginalSource;
+                IBoody visible = pixel.DataContext;
 
-            //    var r = visible.Row;
-            //    var c = visible.Column;
-            //    moved.Move(r, c);
-            //}
-
-            //VisibleObjects.Add(moved);
-
+                var r = visible.Row;
+                var c = visible.Column;
+                moved.Move(r, c);
         }
       
 

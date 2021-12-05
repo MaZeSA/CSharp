@@ -10,12 +10,15 @@ namespace Battleship.ViewModel.GamePanels.Pixels
         public object Content => throw new NotImplementedException();
 
         public IVisible ParentObj {get;}
+        public int Counter { get; set; } = 0;
+        public override int Row { get => ParentObj.RowSpan > 1 ? ParentObj.Row + Counter : ParentObj.Row; }
+        public override int Column { get => ParentObj.ColumnSpan > 1 ? ParentObj.Column + Counter : ParentObj.Column; }
 
-        public Pixel(IVisible obj) 
+        public Pixel(IVisible obj, int count) 
         {
-            //Column = obj.Column;
-            //Row = obj.Row;
-            ParentObj = obj; 
+            Counter = count;
+            ParentObj = obj;
+            BackgroundBrush = ParentObj.BackgroundBrush;
         }
 
         public void UIElement_OnDragEnter(object sender, DragEventArgs e)

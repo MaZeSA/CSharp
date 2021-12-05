@@ -1,0 +1,10 @@
+D:\Git\Semestr3\Home\UDP\UDPServer\bin\Debug\UDPServer.exe.config
+D:\Git\Semestr3\Home\UDP\UDPServer\bin\Debug\UDPServer.exe
+D:\Git\Semestr3\Home\UDP\UDPServer\bin\Debug\UDPServer.pdb
+D:\Git\Semestr3\Home\UDP\UDPServer\obj\Debug\UDPServer.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\UDP\UDPServer\obj\Debug\UDPServer.exe
+D:\Git\Semestr3\Home\UDP\UDPServer\obj\Debug\UDPServer.pdb
+D:\Git\Semestr3\Home\UDP\UDPServer\obj\Debug\UDPServer.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\UDP\UDPServer\bin\Debug\LibraryScreen.dll
+D:\Git\Semestr3\Home\UDP\UDPServer\bin\Debug\LibraryScreen.pdb
+D:\Git\Semestr3\Home\UDP\UDPServer\obj\Debug\UDPServer.csproj.CopyComplete

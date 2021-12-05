@@ -13,6 +13,7 @@ namespace Battleship.ViewModel.Interfaces
     {
         int Column { set; get; }
         int Row { set; get; }
+        int Counter { set; get; }
         object Content {get; }
         IVisible ParentObj { get; }
     }

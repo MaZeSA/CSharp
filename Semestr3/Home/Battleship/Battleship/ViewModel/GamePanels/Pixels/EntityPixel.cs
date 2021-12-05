@@ -25,7 +25,7 @@ namespace Battleship.ViewModel.GamePanels.Pixels
             BorderBrush = Brushes.Black;
             BackgroundBrush = Brushes.Gray;
             BorderThickness = new Thickness(1);
-            VisulBoodies.Add(new Pixel(this) { BackgroundBrush = this.BackgroundBrush }); 
+            VisulBoodies.Add(new Pixel(this, 0)); 
         }
 
         public void Move(int param_r, int param_c)

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Battleship.ViewModel.GamePanels" xmlns:commands="clr-namespace:Battleship.Commands" xmlns:battleship="clr-namespace:Battleship" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:local="clr-namespace:Battleship.ViewModel.GamePanels" 
+             xmlns:commands="clr-namespace:Battleship.Commands" xmlns:battleship="clr-namespace:Battleship" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -42,9 +43,9 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="DragEnter">
+                                    <!--<i:EventTrigger EventName="DragEnter">
                                         <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
-                                    </i:EventTrigger>
+                                    </i:EventTrigger>-->
                                     <!--<i:EventTrigger EventName="MouseDown">
                                         <ei:CallMethodAction MethodName="Grid_MouseDown" TargetObject="{Binding}" />
                                     </i:EventTrigger>-->
@@ -61,11 +62,11 @@
                                             <Border AllowDrop="True" Background="{Binding BackgroundBrush}" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
                                                 <!--<Label Content=""></Label>
                                             <Label Content="" DockPanel.Dock="Right"></Label>-->
-                                                <!--<i:Interaction.Triggers>
+                                                <i:Interaction.Triggers>
                                                     <i:EventTrigger EventName="DragEnter">
                                                         <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
                                                     </i:EventTrigger>
-                                                </i:Interaction.Triggers>-->
+                                                </i:Interaction.Triggers>
                                             </Border>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>

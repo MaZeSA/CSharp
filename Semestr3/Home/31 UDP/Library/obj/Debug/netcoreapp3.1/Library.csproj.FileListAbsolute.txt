@@ -1,0 +1,9 @@
+D:\Git\Semestr3\Home\UDP\Library\bin\Debug\netcoreapp3.1\Library.deps.json
+D:\Git\Semestr3\Home\UDP\Library\bin\Debug\netcoreapp3.1\Library.dll
+D:\Git\Semestr3\Home\UDP\Library\bin\Debug\netcoreapp3.1\Library.pdb
+D:\Git\Semestr3\Home\UDP\Library\obj\Debug\netcoreapp3.1\Library.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\UDP\Library\obj\Debug\netcoreapp3.1\Library.AssemblyInfoInputs.cache
+D:\Git\Semestr3\Home\UDP\Library\obj\Debug\netcoreapp3.1\Library.AssemblyInfo.cs
+D:\Git\Semestr3\Home\UDP\Library\obj\Debug\netcoreapp3.1\Library.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\UDP\Library\obj\Debug\netcoreapp3.1\Library.dll
+D:\Git\Semestr3\Home\UDP\Library\obj\Debug\netcoreapp3.1\Library.pdb
