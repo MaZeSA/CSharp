@@ -63,6 +63,8 @@
     </ApplicationDefinition>
     <Compile Include="Commands\CommandClick.cs" />
     <Compile Include="Commands\CommandForSelectShip.cs" />
+    <Compile Include="Commands\CommandIVisibleRotate.cs" />
+    <Compile Include="Commands\CommandIVisibleRemove.cs" />
     <Compile Include="Commands\PreviewDragEnterCommand.cs" />
     <Compile Include="Commands\TestCommand.cs" />
     <Compile Include="Converters\SelectedToVisibility.cs" />

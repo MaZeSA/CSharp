@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Battleship.Commands;
+using Battleship.ViewModel.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -6,12 +8,24 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Battleship.ViewModel
 {
-    public abstract class BaseVisualElement : INotifyPropertyChanged
+    public abstract class BaseVisualElement : INotifyPropertyChanged, IVisible
     {
+
+        public CommandIVisibleRemove CommandIVisibleRemove{ get; set; }
+        public CommandIVisibleRotate CommandIVisibleRotate { get; set; }
+        public BaseVisualElement()
+        {
+            CommandIVisibleRemove = new CommandIVisibleRemove(this);
+            CommandIVisibleRotate = new CommandIVisibleRotate(this);
+        }
+
+        public List<IBoody> VisulBoodies { set; get; }
+
         int column = 0;
         public virtual int Column
         {
@@ -25,34 +39,41 @@ namespace Battleship.ViewModel
             set { row = value; OnNotify(); }
         }
         int columnSpan = 1;
-        public int ColumnSpan
+        public virtual int ColumnSpan
         {
             get => columnSpan;
             set { columnSpan = value; OnNotify(); }
         }
         int rowSpan = 1;
-        public int RowSpan
+        public virtual int RowSpan
         {
             get => rowSpan;
             set { rowSpan = value; OnNotify(); }
         }
         SolidColorBrush backgroundBrush;
-        public SolidColorBrush BackgroundBrush
+        public virtual SolidColorBrush BackgroundBrush
         {
             get => backgroundBrush;
             set { backgroundBrush = value; OnNotify(); }
         }
         SolidColorBrush borderBrush;
-        public SolidColorBrush BorderBrush
+        public virtual SolidColorBrush BorderBrush
         {
             get => borderBrush;
             set { borderBrush = value; OnNotify(); }
         }
         Thickness borderThickness;
-        public Thickness BorderThickness
+        public virtual Thickness BorderThickness
         {
             get => borderThickness;
             set { borderThickness = value; OnNotify(); }
+        }
+ 
+        Visibility popupIsOpen = Visibility.Collapsed;
+        public Visibility PopupIsOpen 
+        { 
+            get => popupIsOpen;
+            set { popupIsOpen = value; OnNotify(); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -60,5 +81,12 @@ namespace Battleship.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
+
+        public virtual void Move(int param_r, int param_c) { }
+        public virtual void Rotate() { }
+        public virtual void UIElement_OnDragEnter(object sender, DragEventArgs e) { }
+        public virtual void Grid_MouseDown(object sender, MouseButtonEventArgs e) { }
+        public virtual void IVisible_MouseEnter(object sender, MouseEventArgs e) { }
+        public virtual void IVisible_MouseLeave(object sender, MouseEventArgs e) { }
     }
 }

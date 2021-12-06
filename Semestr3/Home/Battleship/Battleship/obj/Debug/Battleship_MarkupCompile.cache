@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\cursak\Battleship\Battleship\obj\Debug\
+C:\Users\MaZeSa\Desktop\Battleship\Battleship\obj\Debug\
 Battleship
 none
 false
 DEBUG;TRACE
-D:\cursak\Battleship\Battleship\App.xaml
+C:\Users\MaZeSa\Desktop\Battleship\Battleship\App.xaml
 41131468250
 
-25-1382554697
-152132313616
+27-633491884
+15-2850744
 MainWindow.xaml;ViewModel\Game.xaml;ViewModel\GamePanels\VisulElementController.xaml;ViewModel\Ships\ShipView.xaml;
 
 False

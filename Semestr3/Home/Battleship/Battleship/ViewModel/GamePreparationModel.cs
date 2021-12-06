@@ -32,7 +32,6 @@ namespace Battleship.ViewModel
         public void UIElement_OnDragEnter(object sender, DragEventArgs e)
         {
             var moved = (IVisible)e.Data.GetData("Object");
-            var send = (IBoody)e.Data.GetData("sender");
           
             if (moved is null) return;
             if (Ships.IndexOf(moved) > -1) return;

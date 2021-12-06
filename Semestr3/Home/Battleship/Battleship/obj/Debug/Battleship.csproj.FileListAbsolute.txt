@@ -74,6 +74,7 @@ D:\diskC\Desktop\Battleship\Battleship\obj\Debug\Battleship.pdb
 D:\cursak\Battleship\Battleship\obj\Debug\Battleship.csproj.AssemblyReference.cache
 D:\cursak\Battleship\Battleship\obj\Debug\MainWindow.g.cs
 D:\cursak\Battleship\Battleship\obj\Debug\ViewModel\Game.g.cs
+D:\cursak\Battleship\Battleship\obj\Debug\ViewModel\GamePanels\Pixels\EntyView.g.cs
 D:\cursak\Battleship\Battleship\obj\Debug\ViewModel\GamePanels\VisulElementController.g.cs
 D:\cursak\Battleship\Battleship\obj\Debug\ViewModel\Ships\ShipView.g.cs
 D:\cursak\Battleship\Battleship\obj\Debug\App.g.cs
@@ -91,6 +92,7 @@ D:\cursak\Battleship\Battleship\bin\Debug\Microsoft.Expression.Interactions.xml
 D:\cursak\Battleship\Battleship\bin\Debug\System.Windows.Interactivity.xml
 D:\cursak\Battleship\Battleship\obj\Debug\MainWindow.baml
 D:\cursak\Battleship\Battleship\obj\Debug\ViewModel\Game.baml
+D:\cursak\Battleship\Battleship\obj\Debug\ViewModel\GamePanels\Pixels\EntyView.baml
 D:\cursak\Battleship\Battleship\obj\Debug\ViewModel\GamePanels\VisulElementController.baml
 D:\cursak\Battleship\Battleship\obj\Debug\ViewModel\Ships\ShipView.baml
 D:\cursak\Battleship\Battleship\obj\Debug\Battleship.g.resources
@@ -124,4 +126,3 @@ C:\Users\MaZeSa\Desktop\Battleship\Battleship\obj\Debug\Battleship.csproj.CoreCo
 C:\Users\MaZeSa\Desktop\Battleship\Battleship\obj\Debug\Battleship.csproj.CopyComplete
 C:\Users\MaZeSa\Desktop\Battleship\Battleship\obj\Debug\Battleship.exe
 C:\Users\MaZeSa\Desktop\Battleship\Battleship\obj\Debug\Battleship.pdb
-C:\Users\MaZeSa\Desktop\Battleship\Battleship\obj\Debug\Battleship.csprojAssemblyReference.cache

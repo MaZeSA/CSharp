@@ -25,22 +25,17 @@ namespace Battleship.ViewModel.GamePanels
             InitializeComponent();
         }
 
-        private void ListBox_DragLeave(object sender, DragEventArgs e)
+        private void Border_MouseLeave(object sender, MouseEventArgs e)
         {
 
         }
 
-        private void Grid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Border_GotFocus(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void ItemsControl_PreviewDragEnter(object sender, DragEventArgs e)
+        private void Border_MouseEnter(object sender, MouseEventArgs e)
         {
 
         }

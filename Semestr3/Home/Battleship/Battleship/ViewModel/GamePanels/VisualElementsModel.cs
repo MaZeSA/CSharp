@@ -36,42 +36,29 @@ namespace Battleship.ViewModel.GamePanels
                 for (int t = 0; t < CONST_C; t++)
                     VisibleObjects.Add(new EntityPixel(i, t));
 
-            AddVisibleObj(new ShipCruiser(0,0));
-            AddVisibleObj(new ShipFrigate(3, 3) { RowSpan = 3, ColumnSpan = 1 });
+            VisibleObjects.Add(new ShipCruiser(2, 2));
         }
 
         public ObservableCollection<IVisible> VisibleObjects { set; get; } = new ObservableCollection<IVisible>();
-        //public ObservableCollection<IBoody> VisulGridBoodyes { set; get; } = new ObservableCollection<IBoody>();
         public GameModel GameModel { get; }
 
         public void AddVisibleObj(IVisible obj)
         {
             if (VisibleObjects.IndexOf(obj) > -1) return;
-
             VisibleObjects.Add(obj);
-            //foreach (var item in obj.VisulBoodies)
-            //    VisulGridBoodyes.Add(item);
         }
         public void RemoveVisibleObj(IVisible obj)
         {
             VisibleObjects.Remove(obj);
-            //foreach (var item in obj.VisulBoodies)
-            //    VisulGridBoodyes.Remove(item);
         }
 
-        public void UIElement_OnDragEnter(object sender, DragEventArgs e)
+        public void UIElement_GridOnDragEnter(object sender, DragEventArgs e)
         {
             var moved = (IVisible)e.Data.GetData("Object");
             if (moved is null) return;
-            if (VisibleObjects.IndexOf(moved) < 0)
-            { VisibleObjects.Add(moved);}
-           
-                dynamic pixel = e.OriginalSource;
-                IBoody visible = pixel.DataContext;
-
-                var r = visible.Row;
-                var c = visible.Column;
-                moved.Move(r, c);
+            if (VisibleObjects.IndexOf(moved) > -1)
+            { return; }
+            VisibleObjects.Add(moved);
         }
       
 

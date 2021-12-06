@@ -13,44 +13,27 @@ using System.Windows.Media;
 
 namespace Battleship.ViewModel.GamePanels.Pixels
 {
-    public class EntityPixel : BaseVisualElement, IVisible
+    public class EntityPixel : BaseVisualElement
     {
-        public List<IBoody> VisulBoodies { set; get; } = new List<IBoody>();
         public PreviewDragEnterCommand PreviewDragEnterCommand { set; get; } = new PreviewDragEnterCommand();
-
+      
         public EntityPixel(int row, int colum) 
         {
+            VisulBoodies = new List<IBoody>();
+
             Row = row;
             Column = colum;
             BorderBrush = Brushes.Black;
             BackgroundBrush = Brushes.Gray;
             BorderThickness = new Thickness(1);
-            VisulBoodies.Add(new Pixel(this, 0)); 
+            VisulBoodies.Add(new Pixel(this, 0) { BackgroundBrush = this.BackgroundBrush }); 
         }
 
-        public void Move(int param_r, int param_c)
-        {
-            
-        }
-
-        public void Rotate()
-        {
-           
-        }
-
-        public void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            //dynamic t = e.OriginalSource;
-            //IBoody rw = t.DataContext;
-            //rw.ParentObj.Rotate();
-        }
-
-        public void UIElement_OnDragEnter(object sender, DragEventArgs e)
+        public override void UIElement_OnDragEnter(object sender, DragEventArgs e)
         {
             var moved = (IVisible)e.Data.GetData("Object");
             if (moved is null) return;
-        
+            moved.Move(Row, Column);
         }
-
     }
 }
