@@ -12,9 +12,9 @@ DEBUG;TRACE
 C:\Users\MaZeSa\Desktop\Battleship\Battleship\App.xaml
 41131468250
 
-28-1475851251
+30-1469724776
 15-2850744
 MainWindow.xaml;ViewModel\Game.xaml;ViewModel\GamePanels\VisulElementController.xaml;ViewModel\Ships\ShipView.xaml;
 
-True
+False
 

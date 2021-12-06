@@ -14,7 +14,7 @@ namespace Battleship.ViewModel.Interfaces
 {
     public interface IVisible
     {
-        CommandIVisibleRemove CommandIVisibleRemove { set; get; }
+        VisualElementsModel VisualElementsModel { get; set; }
         CommandIVisibleRotate CommandIVisibleRotate { get; set; }
 
         List<IBoody> VisulBoodies { get;}
@@ -23,12 +23,16 @@ namespace Battleship.ViewModel.Interfaces
         int Row { get; set; }
         int ColumnSpan { get; set; }
         int RowSpan { get; set; }
+        Visibility WrongBorder { get; set; }
         Visibility PopupIsOpen { get; set; }
         SolidColorBrush BackgroundBrush { set; get; }
         SolidColorBrush BorderBrush { set; get; }
         Thickness BorderThickness { set; get; }
 
+        string TestString { set; get; }
+
         void Move(int param_r, int param_c);
+        bool CheckMove(IVisible obj);
         void Rotate();
 
     }

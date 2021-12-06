@@ -11,16 +11,16 @@ namespace Battleship.ViewModel.Ships
 {
     public class ShipFrigate : Ship
     {
-        public ShipFrigate(int r, int c) : base()
+        public ShipFrigate(VisualElementsModel visualElementsModel, int r, int c) : base(visualElementsModel)
         {
-            Length = 3;
+            Length = 2;
             Row = 2;
             ColumnSpan = Length;
-            BackgroundBrush = Brushes.Blue;
+            BackgroundBrush = Brushes.Brown;
 
             for (int i = 0; i < Length; i++)
             {
-                VisulBoodies.Add(new Pixel(this, i) { BackgroundBrush = this.BackgroundBrush});
+                VisulBoodies.Add(new Pixel(visualElementsModel, this, i) { BackgroundBrush = this.BackgroundBrush});
             }
         }
      }

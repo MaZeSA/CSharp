@@ -20,7 +20,7 @@ namespace Battleship.ViewModel.Ships
         public int Length { set; get; }
         public string Name { set; get; }
 
-        public Ship()
+        public Ship(VisualElementsModel visualElementsModel):base(visualElementsModel)
         {
             VisulBoodies = new List<IBoody>();
         }
@@ -38,95 +38,61 @@ namespace Battleship.ViewModel.Ships
 
         public override void Move(int param_r, int param_c)
         {
-            if (CheckMove(param_r, param_c))
-            {
+            //if (CheckMove(param_r, param_c))
+            //{
                 this.Column = param_c;
                 this.Row = param_r;
-            }
+            VisualElementsModel.CheckMove();
+            //}
         }
-        public bool CheckMove(int param_r, int param_c)
+        public override bool CheckMove(IVisible obj)
         {
-            //int[] rColumn = new int[2]
-            //    {
-            //        VisulBoodies.FirstOrDefault().Column + param_c,
-            //        VisulBoodies.LastOrDefault().Column + param_c
-            //    };
-            //int[] rRow = new int[2]
-            //     {
-            //        VisulBoodies.FirstOrDefault().Row + param_r,
-            //        VisulBoodies.LastOrDefault().Row + param_r,
-            //     };
+            bool brow = false;
 
-            //bool res = true;
+            List<int> rows = new List<int>();
+            // int[] rows = new int[RowSpan + 2];
 
-            //foreach (int t in rColumn)
-            //    if (!(t > -1 && t < VisualElementsModel.CONST_C))
-            //        res = false;
-            //foreach (int t in rRow)
-            //    if (!(t > -1 && t < VisualElementsModel.CONST_R))
-            //        res = false;
+            for (int i = Row - 1; i < Row + RowSpan + 1; i++)
+                rows.Add(i);
 
-            return true;
+            foreach (var r in obj.VisulBoodies)
+            {
+                if (rows.IndexOf(r.Row) > -1)
+                {
+                    brow = true;
+                    break;
+                }
+            }
+
+            if (!brow) return false;
+            
+            brow = false;
+            rows.Clear();
+            for (int i = Column - 1; i < Column + ColumnSpan + 1; i++)
+                rows.Add(i);
+
+            foreach (var r in obj.VisulBoodies)
+            {
+                if (rows.IndexOf(r.Column) > -1)
+                {
+                    brow = true;
+                    break;
+                }
+            }
+
+            return brow;
         }
+
 
         public override void Rotate()
         {
             int temp = 0;
-            temp = Row;
-            Row = Column;
-            Column = temp;
-
             temp = RowSpan;
             RowSpan = ColumnSpan;
             ColumnSpan = temp;
 
-            //if (VisulBoodies.FirstOrDefault().Column == VisulBoodies.LastOrDefault().Column)//vertical
-            //{
-            //    if (VisulBoodies.FirstOrDefault().Column > VisualElementsModel.CONST_C / 2)
-            //    {
-            //        for (int i = 0; i < Length; i++) //left
-            //        {
-            //            VisulBoodies[i].Column = VisulBoodies[i].Column - i;
-            //            VisulBoodies[i].Row = VisulBoodies.FirstOrDefault().Row;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        for (int i = 0; i < Length; i++) //right
-            //        {
-            //            VisulBoodies[i].Column = VisulBoodies[i].Column + i;
-            //            VisulBoodies[i].Row = VisulBoodies.FirstOrDefault().Row;
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    if (VisulBoodies.FirstOrDefault().Row > VisualElementsModel.CONST_R / 2) //up
-            //    {
-            //        for (int i = 0; i < Length; i++)
-            //        {
-            //            VisulBoodies[i].Row = VisulBoodies[i].Row - i;
-            //            VisulBoodies[i].Column = VisulBoodies.FirstOrDefault().Column;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        for (int i = 0; i < Length; i++)
-            //        {
-            //            VisulBoodies[i].Row = VisulBoodies[i].Row + i;
-            //            VisulBoodies[i].Column = VisulBoodies.FirstOrDefault().Column;
-            //        }
-            //    }
-            //}
+            VisualElementsModel.CheckMove();
         }
-
-        public override void UIElement_OnDragEnter(object sender, DragEventArgs e)
-        {
-            var moved = (IVisible)e.Data.GetData("Object");
-            if (moved is null) return;
-            moved.Move(Row, Column);
-        }
-       
         public override void IVisible_MouseEnter(object sender, MouseEventArgs e) 
         {
             PopupIsOpen = Visibility.Visible;

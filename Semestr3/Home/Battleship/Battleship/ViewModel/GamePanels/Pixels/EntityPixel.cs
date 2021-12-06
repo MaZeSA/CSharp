@@ -15,9 +15,7 @@ namespace Battleship.ViewModel.GamePanels.Pixels
 {
     public class EntityPixel : BaseVisualElement
     {
-        public PreviewDragEnterCommand PreviewDragEnterCommand { set; get; } = new PreviewDragEnterCommand();
-      
-        public EntityPixel(int row, int colum) 
+        public EntityPixel(VisualElementsModel visualElementsModel , int row, int colum) : base(visualElementsModel)
         {
             VisulBoodies = new List<IBoody>();
 
@@ -26,14 +24,14 @@ namespace Battleship.ViewModel.GamePanels.Pixels
             BorderBrush = Brushes.Black;
             BackgroundBrush = Brushes.Gray;
             BorderThickness = new Thickness(1);
-            VisulBoodies.Add(new Pixel(this, 0) { BackgroundBrush = this.BackgroundBrush }); 
+            VisulBoodies.Add(new Pixel(visualElementsModel, this, 0) { BackgroundBrush = this.BackgroundBrush }); 
         }
 
-        public override void UIElement_OnDragEnter(object sender, DragEventArgs e)
-        {
-            var moved = (IVisible)e.Data.GetData("Object");
-            if (moved is null) return;
-            moved.Move(Row, Column);
-        }
+        //public override void UIElement_OnDragEnter(object sender, DragEventArgs e)
+        //{
+        //    var moved = (IVisible)e.Data.GetData("Object");
+        //    if (moved is null) return;
+        //    moved.Move(Row, Column);
+        //}
     }
 }

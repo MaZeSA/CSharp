@@ -22,12 +22,18 @@ namespace Battleship.ViewModel.GamePanels.Pixels
             get => ParentObj.ColumnSpan > 1 ? ParentObj.Column + NumPixel : ParentObj.Column;
         }
 
-        public Pixel(IVisible obj, int num) 
+        public Pixel(VisualElementsModel visualElementsModel, IVisible obj, int num):base(visualElementsModel) 
         {
             NumPixel = num;
             ParentObj = obj; 
         }
 
-    
+        public override void UIElement_OnDragEnter(object sender, DragEventArgs e)
+        {
+            var moved = (IVisible)e.Data.GetData("Object");
+            if (moved is null) return;
+            moved.Move(Row, Column);
+        }
+
     }
 }

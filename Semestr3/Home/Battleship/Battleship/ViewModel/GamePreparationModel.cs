@@ -19,9 +19,16 @@ namespace Battleship.ViewModel
         {
             GameModel = gameModel;
 
-            Ships.Add(new ShipCruiser(1,1));
-            Ships.Add(new ShipFrigate(2,1)); 
-            Ships.Add(new ShipFrigate(4,4));
+            Ships.Add(new ShipCruiser(GameModel.VisualElementsModel, 1, 1));
+            Ships.Add(new ShipDestroyer(GameModel.VisualElementsModel, 2, 1));
+            Ships.Add(new ShipDestroyer(GameModel.VisualElementsModel, 2, 1));
+            Ships.Add(new ShipFrigate(GameModel.VisualElementsModel, 2, 1)); 
+            Ships.Add(new ShipFrigate(GameModel.VisualElementsModel, 2, 1));
+            Ships.Add(new ShipFrigate(GameModel.VisualElementsModel, 2, 1));
+            Ships.Add(new ShipCorvette(GameModel.VisualElementsModel, 1, 1));
+            Ships.Add(new ShipCorvette(GameModel.VisualElementsModel, 2, 1)); 
+            Ships.Add(new ShipCorvette(GameModel.VisualElementsModel, 1, 1));
+            Ships.Add(new ShipCorvette(GameModel.VisualElementsModel, 2, 1));             //Ships.Add(new ShipFrigate(4,4));
         }
 
         public void DropValidation(IVisible visible)
@@ -29,6 +36,7 @@ namespace Battleship.ViewModel
             Ships.Remove(visible);
         }
 
+      
         public void UIElement_OnDragEnter(object sender, DragEventArgs e)
         {
             var moved = (IVisible)e.Data.GetData("Object");

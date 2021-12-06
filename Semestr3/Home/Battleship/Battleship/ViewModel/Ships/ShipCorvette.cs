@@ -9,19 +9,19 @@ using System.Windows.Media;
 
 namespace Battleship.ViewModel.Ships
 {
-    public class ShipCruiser : Ship
+    public class ShipCorvette: Ship
     {
-        public ShipCruiser(VisualElementsModel visualElementsModel, int row, int column) : base(visualElementsModel)
+        public ShipCorvette(VisualElementsModel visualElementsModel, int row, int column) : base(visualElementsModel)
         {
-            Length = 4;
+            Length = 1;
             Row = row;
             Column = column;
             ColumnSpan = Length;
-            BackgroundBrush = Brushes.Coral;
+            BackgroundBrush = Brushes.CadetBlue;
 
             for (int i = 0; i < Length; i++)
             {
-                VisulBoodies.Add(new Pixel(visualElementsModel,this, i) { BackgroundBrush = this.BackgroundBrush});
+                VisulBoodies.Add(new Pixel(visualElementsModel, this, i) { BackgroundBrush = this.BackgroundBrush });
             }
         }
     }

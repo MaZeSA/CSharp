@@ -83,6 +83,8 @@
     <Compile Include="ViewModel\GameView.cs" />
     <Compile Include="ViewModel\Interfaces\IBoody.cs" />
     <Compile Include="ViewModel\Interfaces\IVisible.cs" />
+    <Compile Include="ViewModel\Ships\ShipCorvette.cs" />
+    <Compile Include="ViewModel\Ships\ShipDdestroyer.cs" />
     <Compile Include="ViewModel\Ships\ShipFrigate.cs" />
     <Compile Include="ViewModel\Ships\ShipView.xaml.cs">
       <DependentUpon>ShipView.xaml</DependentUpon>

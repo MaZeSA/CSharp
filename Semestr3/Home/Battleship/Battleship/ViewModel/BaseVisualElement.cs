@@ -1,4 +1,5 @@
 ﻿using Battleship.Commands;
+using Battleship.ViewModel.GamePanels;
 using Battleship.ViewModel.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,12 @@ namespace Battleship.ViewModel
     public abstract class BaseVisualElement : INotifyPropertyChanged, IVisible
     {
 
-        public CommandIVisibleRemove CommandIVisibleRemove{ get; set; }
+        public VisualElementsModel VisualElementsModel { get; set; }
         public CommandIVisibleRotate CommandIVisibleRotate { get; set; }
-        public BaseVisualElement()
+        public BaseVisualElement(VisualElementsModel visualElementsModel)
         {
-            CommandIVisibleRemove = new CommandIVisibleRemove(this);
-            CommandIVisibleRotate = new CommandIVisibleRotate(this);
+            VisualElementsModel = visualElementsModel;
+               CommandIVisibleRotate = new CommandIVisibleRotate(this);
         }
 
         public List<IBoody> VisulBoodies { set; get; }
@@ -68,12 +69,26 @@ namespace Battleship.ViewModel
             get => borderThickness;
             set { borderThickness = value; OnNotify(); }
         }
- 
+
         Visibility popupIsOpen = Visibility.Collapsed;
-        public Visibility PopupIsOpen 
-        { 
+        public Visibility PopupIsOpen
+        {
             get => popupIsOpen;
             set { popupIsOpen = value; OnNotify(); }
+        }
+      
+        Visibility wrongBorder = Visibility.Collapsed;
+        public Visibility WrongBorder
+        {
+            get => wrongBorder;
+            set { wrongBorder = value; OnNotify(); }
+        }
+
+        string testString;
+        public string TestString 
+        {
+            get => testString;
+            set { testString = value; OnNotify(); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -88,5 +103,7 @@ namespace Battleship.ViewModel
         public virtual void Grid_MouseDown(object sender, MouseButtonEventArgs e) { }
         public virtual void IVisible_MouseEnter(object sender, MouseEventArgs e) { }
         public virtual void IVisible_MouseLeave(object sender, MouseEventArgs e) { }
+
+        public virtual bool CheckMove(IVisible obj){ return true; }
     }
 }
