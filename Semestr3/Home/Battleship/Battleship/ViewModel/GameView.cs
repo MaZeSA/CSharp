@@ -1,14 +1,8 @@
-﻿using Battleship.Commands;
-using Battleship.ViewModel.GamePanels;
+﻿using Battleship.ViewModel.GamePanels;
 using Battleship.ViewModel.Ships;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Battleship.ViewModel
 {
@@ -37,6 +31,6 @@ namespace Battleship.ViewModel
             //ActionViewModel.Ships.Add(new ShipCruiser(ActionViewModel, 1, 0) { Name = "Cruiser2" });
             //ActionViewModel.Ships.Add(new ShipFrigate(ActionViewModel, 3, 0) { Name = "Frigate" });
         }
-
+         
     }
 }

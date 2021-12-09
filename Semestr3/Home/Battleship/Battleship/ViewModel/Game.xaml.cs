@@ -27,7 +27,6 @@ namespace Battleship.ViewModel
 
         private void Button_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Battleship.ViewModel.Interfaces
 {
@@ -28,7 +29,7 @@ namespace Battleship.ViewModel.Interfaces
         SolidColorBrush BackgroundBrush { set; get; }
         SolidColorBrush BorderBrush { set; get; }
         Thickness BorderThickness { set; get; }
-
+        BitmapImage ImageSource { set; get; }
         string TestString { set; get; }
 
         void Move(int param_r, int param_c);

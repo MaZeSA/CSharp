@@ -57,12 +57,13 @@
                         <DataTemplate>
                             <Border Background="{Binding BackgroundBrush}" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
                                 <Grid>
-                                    <Border Visibility="{Binding WrongBorder}" BorderBrush="#CC551919" BorderThickness="2" Margin="-5" Background="#7FFF0000"></Border>
+                                    <Image Source="{Binding ImageSource}"></Image>
+                                    <Border Visibility="{Binding WrongBorder}" BorderBrush="#CCFF0000" BorderThickness="0" Margin="0" Background="#7FFF7171"></Border>
                                     <ItemsControl ItemsSource="{Binding VisulBoodies}" AllowDrop="True">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
                                                 <Grid>
-                                                    <Border Background="{Binding BackgroundBrush}" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
+                                                    <Border Background="#02FFFFFF" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
                                                         <i:Interaction.Triggers>
                                                             <i:EventTrigger EventName="DragEnter">
                                                                 <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
@@ -77,13 +78,14 @@
                                                 <UniformGrid Columns="{Binding ColumnSpan}" Rows="{Binding RowSpan}"/>
                                             </ItemsPanelTemplate>
                                         </ItemsControl.ItemsPanel>
-                                        <i:Interaction.Triggers>
+                                        <!--<i:Interaction.Triggers>
                                             <i:EventTrigger EventName="PreviewDragEnter">
                                                 <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
                                             </i:EventTrigger>
-                                        </i:Interaction.Triggers>
+                                        </i:Interaction.Triggers>-->
                                     </ItemsControl>
-                                    <Label Content="{Binding TestString}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                                    
+                                    <!--<Label Content="{Binding TestString}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>-->
 
                                     <Border Visibility="{Binding PopupIsOpen}" Background="#FFBFD110" Height="20">
                                         <StackPanel Orientation="Horizontal">
@@ -101,6 +103,9 @@
                                         </i:EventTrigger>
                                         <i:EventTrigger EventName="MouseDown">
                                             <ei:CallMethodAction MethodName="Grid_MouseDown" TargetObject="{Binding}" />
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="PreviewDragEnter">
+                                            <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </Grid>
@@ -127,27 +132,15 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <Border Background="{Binding BackgroundBrush}" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
-                                <ItemsControl ItemsSource="{Binding VisulBoodies}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <DockPanel Background="{Binding BorderBrush}" LastChildFill="False">
-                                                <Label Content="{Binding Row}"></Label>
-                                                <Label Content="{Binding Column}" DockPanel.Dock="Right"></Label>
-                                            </DockPanel>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel Orientation="Horizontal"  AllowDrop="True"/>
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
+                            <Border Width="200" Height="20" Background="{Binding BackgroundBrush}" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
+                                <Grid>
+                                    <Image Source="{Binding ImageSource}"></Image>
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="MouseDown">
                                             <ei:CallMethodAction MethodName="Grid_MouseDown" TargetObject="{Binding}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                </ItemsControl>
+                                </Grid>
                             </Border>
                         </StackPanel>
                     </DataTemplate>

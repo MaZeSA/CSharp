@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Battleship.ViewModel.Ships
 {
@@ -84,6 +85,7 @@ namespace Battleship.ViewModel.Ships
         }
 
 
+        bool rotate = false;
         public override void Rotate()
         {
             int temp = 0;
@@ -91,6 +93,20 @@ namespace Battleship.ViewModel.Ships
             RowSpan = ColumnSpan;
             ColumnSpan = temp;
 
+            if (rotate)
+            {
+                ImageSource = new BitmapImage(BitmapUri);
+            }
+            else
+            {
+                BitmapImage bi = new BitmapImage();
+                bi.BeginInit();
+                bi.UriSource = BitmapUri;
+                bi.Rotation = Rotation.Rotate90;
+                bi.EndInit();
+                ImageSource = bi;
+            }
+            rotate = !rotate;
             VisualElementsModel.CheckMove();
         }
         public override void IVisible_MouseEnter(object sender, MouseEventArgs e) 

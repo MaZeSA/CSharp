@@ -22,7 +22,7 @@ namespace Battleship.ViewModel.GamePanels.Pixels
             Row = row;
             Column = colum;
             BorderBrush = Brushes.Black;
-            BackgroundBrush = Brushes.Gray;
+            BackgroundBrush = Brushes.PowderBlue;
             BorderThickness = new Thickness(1);
             VisulBoodies.Add(new Pixel(visualElementsModel, this, 0) { BackgroundBrush = this.BackgroundBrush }); 
         }

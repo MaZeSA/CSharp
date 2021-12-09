@@ -11,18 +11,18 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Battleship.ViewModel
 {
     public abstract class BaseVisualElement : INotifyPropertyChanged, IVisible
     {
-
         public VisualElementsModel VisualElementsModel { get; set; }
         public CommandIVisibleRotate CommandIVisibleRotate { get; set; }
         public BaseVisualElement(VisualElementsModel visualElementsModel)
         {
             VisualElementsModel = visualElementsModel;
-               CommandIVisibleRotate = new CommandIVisibleRotate(this);
+            CommandIVisibleRotate = new CommandIVisibleRotate(this);
         }
 
         public List<IBoody> VisulBoodies { set; get; }
@@ -89,6 +89,15 @@ namespace Battleship.ViewModel
         {
             get => testString;
             set { testString = value; OnNotify(); }
+        }
+
+        public Uri BitmapUri { get; set; }
+
+        BitmapImage imageSource;
+        public BitmapImage ImageSource 
+        { 
+            get => imageSource;
+            set { imageSource = value; OnNotify(); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -37,7 +37,7 @@
                 <ItemsControl ItemsSource="{Binding Pixels}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid Width="300" Height="300" Background="#A3008100"/>
+                            <UniformGrid Width="300" Height="300" Background="#33B0E0E6"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
@@ -57,6 +57,19 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </Grid>
+            <Border Width="100">
+                <Image  RenderTransformOrigin="0.5,0.5" Source="/Battleship;component/Resources/Cruiser.png">
+                    <Image.LayoutTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.LayoutTransform>
+                </Image>
+            </Border>
+
         </Grid>
         <DockPanel VerticalAlignment="Center" DataContext="{Binding ActionViewModel}" >
             <DockPanel>

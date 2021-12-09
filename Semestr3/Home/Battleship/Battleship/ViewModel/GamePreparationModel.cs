@@ -35,8 +35,7 @@ namespace Battleship.ViewModel
         {
             Ships.Remove(visible);
         }
-
-      
+              
         public void UIElement_OnDragEnter(object sender, DragEventArgs e)
         {
             var moved = (IVisible)e.Data.GetData("Object");

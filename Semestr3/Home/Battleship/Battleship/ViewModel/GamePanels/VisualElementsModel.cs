@@ -20,9 +20,11 @@ namespace Battleship.ViewModel.GamePanels
     {
         public const int CONST_C = 10;
         public const int CONST_R = 10;
-             
+        public ObservableCollection<IVisible> VisibleObjects { set; get; } = new ObservableCollection<IVisible>();
+        public GameModel GameModel { get; }
         public CommandClick CommandClick { set; get; }
         public CommandIVisibleRemove CommandIVisibleRemove { set; get; }
+
         public void Commnd()
         {
             VisibleObjects[0].Rotate();
@@ -36,12 +38,7 @@ namespace Battleship.ViewModel.GamePanels
             for (int i = 0; i < CONST_R; i++)
                 for (int t = 0; t < CONST_C; t++)
                     VisibleObjects.Add(new EntityPixel(this, i, t));
-
-            //VisibleObjects.Add(new ShipCruiser(2, 2));
         }
-
-        public ObservableCollection<IVisible> VisibleObjects { set; get; } = new ObservableCollection<IVisible>();
-        public GameModel GameModel { get; }
 
         public void AddVisibleObj(IVisible obj)
         {
@@ -63,7 +60,6 @@ namespace Battleship.ViewModel.GamePanels
                     if (obj.WrongBorder == Visibility.Visible)
                         break;
                 }
-
         }
 
         public void UIElement_GridOnDragEnter(object sender, DragEventArgs e)
@@ -76,7 +72,5 @@ namespace Battleship.ViewModel.GamePanels
             }
             VisibleObjects.Add(moved);
         }
-      
-
     }
 }
