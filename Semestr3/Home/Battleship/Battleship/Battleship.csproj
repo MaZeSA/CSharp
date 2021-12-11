@@ -68,6 +68,7 @@
     <Compile Include="Commands\CommandIVisibleRemove.cs" />
     <Compile Include="Commands\PreviewDragEnterCommand.cs" />
     <Compile Include="Commands\TestCommand.cs" />
+    <Compile Include="Converters\ConverterBoolToVisibylity.cs" />
     <Compile Include="Converters\SelectedToVisibility.cs" />
     <Compile Include="GameModel.cs" />
     <Compile Include="ViewModel\BaseVisualElement.cs" />
@@ -84,8 +85,9 @@
     <Compile Include="ViewModel\GameView.cs" />
     <Compile Include="ViewModel\Interfaces\IBoody.cs" />
     <Compile Include="ViewModel\Interfaces\IVisible.cs" />
+    <Compile Include="ViewModel\ShipController.cs" />
     <Compile Include="ViewModel\Ships\ShipCorvette.cs" />
-    <Compile Include="ViewModel\Ships\ShipDdestroyer.cs" />
+    <Compile Include="ViewModel\Ships\ShipDestroyer.cs" />
     <Compile Include="ViewModel\Ships\ShipFrigate.cs" />
     <Compile Include="ViewModel\Ships\Ship.cs" />
     <Compile Include="ViewModel\Ships\ShipCruiser.cs" />
@@ -138,12 +140,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Corvette.png" />
+    <Resource Include="Resources\Frigate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\unnamed.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\Cruiser.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Corvette.png" />
-    <Resource Include="Resources\Ddestroyer.png" />
-    <Resource Include="Resources\Frigate.png" />
+    <Resource Include="Resources\sea.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Destroyer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\rotate.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

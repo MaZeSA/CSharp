@@ -12,19 +12,20 @@ namespace Battleship.ViewModel.Ships
 {
     public class ShipFrigate : Ship
     {
-        public ShipFrigate(VisualElementsModel visualElementsModel, int r, int c) : base(visualElementsModel)
+        public ShipFrigate(GameModel gameModel, int r, int c) : base(gameModel)
         {
             Length = 2;
             Row = 2;
             ColumnSpan = Length;
-            BitmapUri = new Uri("pack://application:,,,/Resources/Frigate.png");
+            //BitmapUri = new Uri("pack://application:,,,/Resources/Frigate.png");
+            BitmapUri = new Uri("/Battleship;component/Resources/Frigate.png", UriKind.RelativeOrAbsolute);
             ImageSource = new BitmapImage(BitmapUri);
             BorderThickness = new System.Windows.Thickness(1);
-            BackgroundBrush = new SolidColorBrush(Color.FromArgb(190, 176, 224, 230));
+            BackgroundBrush = new SolidColorBrush(Color.FromArgb(100, 176, 224, 230));
 
             for (int i = 0; i < Length; i++)
             {
-                VisulBoodies.Add(new Pixel(visualElementsModel, this, i) { BackgroundBrush = this.BackgroundBrush});
+                VisulBoodies.Add(new Pixel(gameModel, this, i) { BackgroundBrush = this.BackgroundBrush});
             }
         }
      }

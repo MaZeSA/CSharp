@@ -25,11 +25,6 @@ namespace Battleship.ViewModel.GamePanels
         public CommandClick CommandClick { set; get; }
         public CommandIVisibleRemove CommandIVisibleRemove { set; get; }
 
-        public void Commnd()
-        {
-            VisibleObjects[0].Rotate();
-        }
-                
         public VisualElementsModel(GameModel gameModel)
         {
             GameModel = gameModel;
@@ -37,7 +32,10 @@ namespace Battleship.ViewModel.GamePanels
 
             for (int i = 0; i < CONST_R; i++)
                 for (int t = 0; t < CONST_C; t++)
-                    VisibleObjects.Add(new EntityPixel(this, i, t));
+                    VisibleObjects.Add(new EntityPixel(GameModel, i, t));
+
+            VisibleObjects.Add(new ShipCruiser(gameModel, 1, 1)); 
+            VisibleObjects.Add(new ShipCorvette(gameModel, 2, 1));
         }
 
         public void AddVisibleObj(IVisible obj)
@@ -48,29 +46,20 @@ namespace Battleship.ViewModel.GamePanels
         public void RemoveVisibleObj(IVisible obj)
         {
             VisibleObjects.Remove(obj);
-        }
-
-        public void CheckMove()
-        {
-            foreach (IVisible obj in GameModel.GamePreparationModel.Ships)
-                foreach (var ship in GameModel.GamePreparationModel.Ships)
-                {
-                    if (ship == obj) continue;
-                    obj.WrongBorder= ship.CheckMove(obj) == true? Visibility.Visible: Visibility.Collapsed;
-                    if (obj.WrongBorder == Visibility.Visible)
-                        break;
-                }
+            obj.SetVisual(false);
         }
 
         public void UIElement_GridOnDragEnter(object sender, DragEventArgs e)
         {
             var moved = (IVisible)e.Data.GetData("Object");
             if (moved is null) return;
-            if (VisibleObjects.IndexOf(moved) > -1)
-            {
-                VisibleObjects.Remove(moved);
-            }
+
+            moved.SetVisual(true);
+
+            VisibleObjects.Remove(moved);
             VisibleObjects.Add(moved);
+
+            GameModel.ShipController.CheckCorectPlace();
         }
     }
 }

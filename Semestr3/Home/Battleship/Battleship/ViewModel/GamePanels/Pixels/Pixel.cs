@@ -22,7 +22,7 @@ namespace Battleship.ViewModel.GamePanels.Pixels
             get => ParentObj.ColumnSpan > 1 ? ParentObj.Column + NumPixel : ParentObj.Column;
         }
 
-        public Pixel(VisualElementsModel visualElementsModel, IVisible obj, int num):base(visualElementsModel) 
+        public Pixel(GameModel gameModel, IVisible obj, int num):base(gameModel) 
         {
             NumPixel = num;
             ParentObj = obj; 

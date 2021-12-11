@@ -18,10 +18,11 @@ namespace Battleship.ViewModel.Ships
 {
     public abstract class Ship : BaseVisualElement
     {
+
         public int Length { set; get; }
         public string Name { set; get; }
 
-        public Ship(VisualElementsModel visualElementsModel):base(visualElementsModel)
+        public Ship(GameModel gameModel) : base(gameModel)
         {
             VisulBoodies = new List<IBoody>();
         }
@@ -39,49 +40,68 @@ namespace Battleship.ViewModel.Ships
 
         public override void Move(int param_r, int param_c)
         {
-            //if (CheckMove(param_r, param_c))
-            //{
-                this.Column = param_c;
-                this.Row = param_r;
-            VisualElementsModel.CheckMove();
-            //}
+            this.Column = param_c;
+            this.Row = param_r;
         }
-        public override bool CheckMove(IVisible obj)
+
+        public void CheckMove(IEnumerable<Ship> listObj)
         {
-            bool brow = false;
+            WrongBorder = Visibility.Collapsed;
 
-            List<int> rows = new List<int>();
-            // int[] rows = new int[RowSpan + 2];
-
-            for (int i = Row - 1; i < Row + RowSpan + 1; i++)
-                rows.Add(i);
-
-            foreach (var r in obj.VisulBoodies)
+            foreach (IVisible obj in listObj)
             {
-                if (rows.IndexOf(r.Row) > -1)
+                if (this == obj) continue;
+
+                bool brow = false;
+
+                List<int> rows = new List<int>();
+
+                for (int i = Row - 1; i < Row + RowSpan + 1; i++)
+                    rows.Add(i);
+
+                foreach (var r in obj.VisulBoodies)
                 {
-                    brow = true;
-                    break;
+                    if (rows.IndexOf(r.Row) > -1)
+                    {
+                        brow = true;
+                        break;
+                    }
+                }
+
+                if (brow == true)
+                {
+                    brow = false;
+                    rows.Clear();
+                    for (int i = Column - 1; i < Column + ColumnSpan + 1; i++)
+                        rows.Add(i);
+
+                    foreach (var r in obj.VisulBoodies)
+                    {
+                        if (rows.IndexOf(r.Column) > -1)
+                        {
+                            brow = true;
+                            break;
+                        }
+                    }
+
+                    if (brow == true)
+                    {
+                        WrongBorder = Visibility.Visible;
+                        break;
+                    }
                 }
             }
 
-            if (!brow) return false;
-            
-            brow = false;
-            rows.Clear();
-            for (int i = Column - 1; i < Column + ColumnSpan + 1; i++)
-                rows.Add(i);
-
-            foreach (var r in obj.VisulBoodies)
+            if (this.ColumnSpan > 1)
             {
-                if (rows.IndexOf(r.Column) > -1)
-                {
-                    brow = true;
-                    break;
-                }
+                if (VisualElementsModel.CONST_C - this.Column < this.Length)
+                    WrongBorder = Visibility.Visible;
             }
-
-            return brow;
+            else
+            {
+                if (VisualElementsModel.CONST_R - this.Row < Length)
+                    WrongBorder = Visibility.Visible; ;
+            }
         }
 
 
@@ -107,7 +127,8 @@ namespace Battleship.ViewModel.Ships
                 ImageSource = bi;
             }
             rotate = !rotate;
-            VisualElementsModel.CheckMove();
+
+            GameModel.ShipController.CheckCorectPlace();
         }
         public override void IVisible_MouseEnter(object sender, MouseEventArgs e) 
         {
@@ -125,6 +146,11 @@ namespace Battleship.ViewModel.Ships
 
             DragDrop.DoDragDrop(sender as DependencyObject, data, DragDropEffects.All);
         }
-
+        public override void SetVisual(bool state)
+        {
+            Visual = state;
+            if (!state && rotate)
+                Rotate();
+        }
     }
 }

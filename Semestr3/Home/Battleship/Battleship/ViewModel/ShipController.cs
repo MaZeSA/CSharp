@@ -6,21 +6,20 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace Battleship.ViewModel
 {
-    public class GamePreparationModel
+    public class ShipController
     {
         public GameModel GameModel { get; }
-        public ObservableCollection<IVisible> Ships { set; get; } = new ObservableCollection<IVisible>();
-        public List<IVisible> ShipsInGame { set; get; } = new List<IVisible>();
+        public ObservableCollection<Ship> Ships { set; get; } = new ObservableCollection<Ship>();
 
-        public GamePreparationModel(GameModel gameModel)
+        public ShipController(GameModel gameModel) 
         {
             GameModel = gameModel;
-            //try
-            //{
+
+            try
+            {
                 Ships.Add(new ShipCruiser(GameModel, 1, 1));
                 Ships.Add(new ShipDestroyer(GameModel, 2, 1));
                 Ships.Add(new ShipDestroyer(GameModel, 2, 1));
@@ -31,24 +30,20 @@ namespace Battleship.ViewModel
                 Ships.Add(new ShipCorvette(GameModel, 2, 1));
                 Ships.Add(new ShipCorvette(GameModel, 1, 1));
                 Ships.Add(new ShipCorvette(GameModel, 2, 1));
-            //}
-            //catch { }//Ships.Add(new ShipFrigate(4,4));
+            }
+            catch { }
         }
 
-        public void DropValidation(IVisible visible)
+        public void CheckCorectPlace()
         {
-            Ships.Remove(visible);
+            foreach (var obj in Ships)
+            {
+                if (obj.Visual)
+                {
+                    obj.CheckMove(Ships.Where(x=> x.Visual));
+                }
+            }
         }
-              
-        public void UIElement_OnDragEnter(object sender, DragEventArgs e)
-        {
-            var moved = (IVisible)e.Data.GetData("Object");
-          
-            if (moved is null) return;
-            if (Ships.IndexOf(moved) > -1) return;
 
-            GameModel.VisualElementsModel.RemoveVisibleObj(moved);
-            Ships.Add(moved);
-        }
     }
 }

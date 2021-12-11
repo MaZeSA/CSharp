@@ -15,16 +15,16 @@ namespace Battleship.ViewModel.GamePanels.Pixels
 {
     public class EntityPixel : BaseVisualElement
     {
-        public EntityPixel(VisualElementsModel visualElementsModel , int row, int colum) : base(visualElementsModel)
+        public EntityPixel(GameModel GameModel, int row, int colum) : base(GameModel)
         {
             VisulBoodies = new List<IBoody>();
 
             Row = row;
             Column = colum;
             BorderBrush = Brushes.Black;
-            BackgroundBrush = Brushes.PowderBlue;
-            BorderThickness = new Thickness(1);
-            VisulBoodies.Add(new Pixel(visualElementsModel, this, 0) { BackgroundBrush = this.BackgroundBrush }); 
+            BackgroundBrush = new SolidColorBrush(Color.FromArgb(150, 127, 224, 230));
+            BorderThickness = new Thickness(1, 1, 0, 0);
+            VisulBoodies.Add(new Pixel(GameModel, this, 0) { BackgroundBrush = this.BackgroundBrush }); 
         }
 
         //public override void UIElement_OnDragEnter(object sender, DragEventArgs e)

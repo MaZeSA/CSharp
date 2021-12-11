@@ -13,14 +13,16 @@ namespace Battleship
     {
         public VisualElementsModel VisualElementsModel { set; get; }
         public GamePreparationModel GamePreparationModel { set; get; }
-       
-        CommandClick CommandClick { set; get; }
+        public ShipController ShipController { set; get; }
+
+    CommandClick CommandClick { set; get; }
 
         public GameModel()
         {
             VisualElementsModel = new VisualElementsModel(this);
-            GamePreparationModel = new GamePreparationModel(this);  
-            
+            GamePreparationModel = new GamePreparationModel(this);
+            ShipController = new ShipController(this);
+
             CommandClick = new CommandClick(this);
         }
 

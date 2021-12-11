@@ -17,11 +17,11 @@ namespace Battleship.ViewModel
 {
     public abstract class BaseVisualElement : INotifyPropertyChanged, IVisible
     {
-        public VisualElementsModel VisualElementsModel { get; set; }
+        public GameModel GameModel { get; set; }
         public CommandIVisibleRotate CommandIVisibleRotate { get; set; }
-        public BaseVisualElement(VisualElementsModel visualElementsModel)
+        public BaseVisualElement(GameModel gameModel)
         {
-            VisualElementsModel = visualElementsModel;
+            GameModel = gameModel;
             CommandIVisibleRotate = new CommandIVisibleRotate(this);
         }
 
@@ -94,10 +94,17 @@ namespace Battleship.ViewModel
         public Uri BitmapUri { get; set; }
 
         BitmapImage imageSource;
-        public BitmapImage ImageSource 
-        { 
+        public BitmapImage ImageSource
+        {
             get => imageSource;
             set { imageSource = value; OnNotify(); }
+        }
+       
+        bool visual;
+        public bool Visual
+        {
+            get => visual;
+            set { visual = value; OnNotify(); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -112,7 +119,11 @@ namespace Battleship.ViewModel
         public virtual void Grid_MouseDown(object sender, MouseButtonEventArgs e) { }
         public virtual void IVisible_MouseEnter(object sender, MouseEventArgs e) { }
         public virtual void IVisible_MouseLeave(object sender, MouseEventArgs e) { }
+        public virtual void SetVisual(bool state)
+        {
+            Visual = state;
+        }
 
-        public virtual bool CheckMove(IVisible obj){ return true; }
+        //public virtual void CheckMove(List<IVisible> obj){}
     }
 }

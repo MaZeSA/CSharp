@@ -15,7 +15,7 @@ namespace Battleship.ViewModel.Interfaces
 {
     public interface IVisible
     {
-        VisualElementsModel VisualElementsModel { get; set; }
+        GameModel GameModel { get; set; }
         CommandIVisibleRotate CommandIVisibleRotate { get; set; }
 
         List<IBoody> VisulBoodies { get;}
@@ -33,8 +33,9 @@ namespace Battleship.ViewModel.Interfaces
         string TestString { set; get; }
 
         void Move(int param_r, int param_c);
-        bool CheckMove(IVisible obj);
+        //void CheckMove(List<IVisible> obj);
         void Rotate();
+        void SetVisual(bool state);
 
     }
 }
