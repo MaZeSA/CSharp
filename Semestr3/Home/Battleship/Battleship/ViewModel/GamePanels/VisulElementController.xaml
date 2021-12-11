@@ -86,7 +86,7 @@
                                     
                                     <!--<Label Content="{Binding TestString}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>-->
                                     <!--Visibility="{Binding PopupIsOpen}"-->
-                                    <Border Visibility="Visible" Margin="-10, -15,-10,1" Background="#7F3B5393" HorizontalAlignment="Center" VerticalAlignment="Top" >
+                                    <Border Visibility="{Binding PopupIsOpen}" Margin="-10, -15,-10,1" Background="#7F3B5393" HorizontalAlignment="Center" VerticalAlignment="Top" >
                                         <StackPanel Orientation="Horizontal">
                                             <Button Width="17" Height="17" Margin="4" Command="{Binding Source={StaticResource GM}, Path=VisualElementsModel.CommandIVisibleRemove}" CommandParameter="{Binding}" Background="{x:Null}" BorderBrush="{x:Null}">
                                                 <Path Stretch="UniformToFill" Data="{StaticResource closeStyle0}" Fill="Red" Stroke="#FF124D68"></Path>
@@ -94,8 +94,6 @@
                                             <Button Width="17" Height="17" Margin="4" Command="{Binding CommandIVisibleRotate}" Background="{x:Null}" BorderBrush="{x:Null}">
                                                 <Path Stretch="UniformToFill" Data="{StaticResource repeatStyle0}" Fill="#FF8EFF9D" Stroke="#FF093203">  </Path>
                                             </Button> 
-                                           
-                                           
                                         </StackPanel>
                                     </Border>
 

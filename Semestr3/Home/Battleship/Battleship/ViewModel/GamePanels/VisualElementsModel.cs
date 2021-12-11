@@ -34,6 +34,10 @@ namespace Battleship.ViewModel.GamePanels
                 for (int t = 0; t < CONST_C; t++)
                     VisibleObjects.Add(new EntityPixel(GameModel, i, t));
 
+            var BitmapUri = new Uri("/Battleship;component/Resources/vzriv.png", UriKind.RelativeOrAbsolute);
+
+            VisibleObjects[33].ImageSource =  new System.Windows.Media.Imaging.BitmapImage(BitmapUri);
+
             VisibleObjects.Add(new ShipCruiser(gameModel, 1, 1)); 
             VisibleObjects.Add(new ShipCorvette(gameModel, 2, 1));
         }

@@ -81,7 +81,6 @@
     <Compile Include="ViewModel\GamePanels\VisulElementController.xaml.cs">
       <DependentUpon>VisulElementController.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\GamePreparationModel.cs" />
     <Compile Include="ViewModel\GameView.cs" />
     <Compile Include="ViewModel\Interfaces\IBoody.cs" />
     <Compile Include="ViewModel\Interfaces\IVisible.cs" />
@@ -157,6 +156,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\rotate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\vzriv.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

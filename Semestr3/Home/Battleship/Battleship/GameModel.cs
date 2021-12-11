@@ -12,7 +12,6 @@ namespace Battleship
     public class GameModel
     {
         public VisualElementsModel VisualElementsModel { set; get; }
-        public GamePreparationModel GamePreparationModel { set; get; }
         public ShipController ShipController { set; get; }
 
     CommandClick CommandClick { set; get; }
@@ -20,7 +19,6 @@ namespace Battleship
         public GameModel()
         {
             VisualElementsModel = new VisualElementsModel(this);
-            GamePreparationModel = new GamePreparationModel(this);
             ShipController = new ShipController(this);
 
             CommandClick = new CommandClick(this);
