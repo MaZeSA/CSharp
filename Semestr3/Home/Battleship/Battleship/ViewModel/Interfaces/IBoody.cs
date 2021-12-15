@@ -18,6 +18,7 @@ namespace Battleship.ViewModel.Interfaces
         SolidColorBrush BackgroundBrush { set; get; }
         SolidColorBrush BorderBrush { set; get; }
         Thickness BorderThickness { set; get; }
+        bool ShotShow { set; get; }
 
         void UIElement_OnDragEnter(object sender, DragEventArgs e);
     }

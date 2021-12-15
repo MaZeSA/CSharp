@@ -152,5 +152,17 @@ namespace Battleship.ViewModel.Ships
             if (!state && rotate)
                 Rotate();
         }
+        public override bool Shot(int row, int column)
+        {
+            foreach (var bood in VisulBoodies)
+            {
+                if (bood.Column == column && bood.Row == row)
+                {
+                    bood.ShotShow = !bood.ShotShow;
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

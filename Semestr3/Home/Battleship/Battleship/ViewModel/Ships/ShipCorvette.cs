@@ -26,7 +26,7 @@ namespace Battleship.ViewModel.Ships
 
             for (int i = 0; i < Length; i++)
             {
-                VisulBoodies.Add(new Pixel(gameModel, this, i) { BackgroundBrush = this.BackgroundBrush });
+                VisulBoodies.Add(new Pixel(gameModel, this, i) { BackgroundBrush = this.BackgroundBrush});
             }
         }
     }

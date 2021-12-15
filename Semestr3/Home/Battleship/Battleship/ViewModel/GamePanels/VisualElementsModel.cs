@@ -25,8 +25,37 @@ namespace Battleship.ViewModel.GamePanels
         public CommandClick CommandClick { set; get; }
         public CommandIVisibleRemove CommandIVisibleRemove { set; get; }
 
+        int x;
+        public int S_X
+        {
+            set { x = value; }
+            get => x;
+        }
+        int y;
+        public int S_Y
+        {
+            set { y = value; }
+            get => y;
+        }
+
+        public void Shot()
+        {
+            foreach(var r in GameModel.ShipController.Ships)
+            {
+               var t = r.Shot(S_Y, S_X);
+                if (t) return;
+            }
+
+            foreach (var r in VisibleObjects)
+            {
+                r.Shot(S_Y, S_X);
+            }
+        }
+
         public VisualElementsModel(GameModel gameModel)
         {
+            CommandClick = new CommandClick(gameModel);
+
             GameModel = gameModel;
             CommandIVisibleRemove = new CommandIVisibleRemove(this);
 
@@ -65,5 +94,7 @@ namespace Battleship.ViewModel.GamePanels
 
             GameModel.ShipController.CheckCorectPlace();
         }
+
+      
     }
 }

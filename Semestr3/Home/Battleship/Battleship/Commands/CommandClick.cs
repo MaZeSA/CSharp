@@ -27,7 +27,7 @@ namespace Battleship.Commands
 
         public void Execute(object parameter)
         {
-           // GameModel.VisualElementsModel.Click();
+            GameModel.VisualElementsModel.Shot();
         }
     }
 }

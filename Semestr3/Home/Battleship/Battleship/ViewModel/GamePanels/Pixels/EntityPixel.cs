@@ -26,13 +26,14 @@ namespace Battleship.ViewModel.GamePanels.Pixels
             BorderThickness = new Thickness(1, 1, 0, 0);
             VisulBoodies.Add(new Pixel(GameModel, this, 0) { BackgroundBrush = this.BackgroundBrush }); 
         }
-   
-        public override void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var BitmapUri = new Uri("/Battleship;component/Resources/vzriv.png", UriKind.RelativeOrAbsolute);
-            ImageSource = new System.Windows.Media.Imaging.BitmapImage(BitmapUri);
 
+        public override bool Shot(int row, int column)
+        {
+            if (row != Row || column != Column) return false;
+            ImageSource = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Battleship;component/Resources/vzriv.png", UriKind.RelativeOrAbsolute));
+            return true;
         }
+
         //public override void UIElement_OnDragEnter(object sender, DragEventArgs e)
         //{
         //    var moved = (IVisible)e.Data.GetData("Object");

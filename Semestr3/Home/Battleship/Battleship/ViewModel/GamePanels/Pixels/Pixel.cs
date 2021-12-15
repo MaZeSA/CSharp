@@ -21,7 +21,12 @@ namespace Battleship.ViewModel.GamePanels.Pixels
         {
             get => ParentObj.ColumnSpan > 1 ? ParentObj.Column + NumPixel : ParentObj.Column;
         }
-
+        bool shot = false;
+        public bool ShotShow
+        {
+            get => shot;
+            set { shot = value; OnNotify(); }
+        }
         public Pixel(GameModel gameModel, IVisible obj, int num):base(gameModel) 
         {
             NumPixel = num;
@@ -34,6 +39,5 @@ namespace Battleship.ViewModel.GamePanels.Pixels
             if (moved is null) return;
             moved.Move(Row, Column);
         }
-
     }
 }

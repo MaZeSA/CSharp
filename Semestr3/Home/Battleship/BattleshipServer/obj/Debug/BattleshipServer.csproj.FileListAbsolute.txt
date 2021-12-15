@@ -1,0 +1,13 @@
+C:\Users\marchenko\Desktop\Battleship\BattleshipServer\bin\Debug\BattleshipServer.exe.config
+C:\Users\marchenko\Desktop\Battleship\BattleshipServer\bin\Debug\BattleshipServer.exe
+C:\Users\marchenko\Desktop\Battleship\BattleshipServer\bin\Debug\BattleshipServer.pdb
+C:\Users\marchenko\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csproj.AssemblyReference.cache
+C:\Users\marchenko\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csproj.CoreCompileInputs.cache
+C:\Users\marchenko\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.exe
+C:\Users\marchenko\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.pdb
+C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\bin\Debug\BattleshipServer.exe.config
+C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\bin\Debug\BattleshipServer.exe
+C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\bin\Debug\BattleshipServer.pdb
+C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csproj.CoreCompileInputs.cache
+C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.exe
+C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.pdb

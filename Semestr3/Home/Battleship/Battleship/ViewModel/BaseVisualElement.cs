@@ -99,13 +99,14 @@ namespace Battleship.ViewModel
             get => imageSource;
             set { imageSource = value; OnNotify(); }
         }
-       
+
         bool visual;
         public bool Visual
         {
             get => visual;
             set { visual = value; OnNotify(); }
         }
+     
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnNotify([CallerMemberName] string prop = "")
@@ -122,6 +123,10 @@ namespace Battleship.ViewModel
         public virtual void SetVisual(bool state)
         {
             Visual = state;
+        }
+        public virtual bool Shot(int row, int column)
+        {
+            throw new NotImplementedException();
         }
 
         //public virtual void CheckMove(List<IVisible> obj){}

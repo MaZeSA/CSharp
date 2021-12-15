@@ -31,11 +31,11 @@ namespace Battleship.ViewModel.Interfaces
         Thickness BorderThickness { set; get; }
         BitmapImage ImageSource { set; get; }
         string TestString { set; get; }
-
+        
         void Move(int param_r, int param_c);
         //void CheckMove(List<IVisible> obj);
         void Rotate();
         void SetVisual(bool state);
-
+        bool Shot(int row, int column);
     }
 }

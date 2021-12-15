@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\MaZeSa\Desktop\Battleship\Battleship\App.xaml
-3-901056134
+4784227204
 
-29542281528
+361963184074
 16-1609218370
-MainWindow.xaml;ViewModel\Game.xaml;ViewModel\GamePanels\VisulElementController.xaml;
+MainWindow.xaml;Pages\CreateNewGame.xaml;ViewModel\Game.xaml;ViewModel\GamePanels\VisulElementController.xaml;
 
 False
 

@@ -11,17 +11,18 @@ namespace Battleship
 {
     public class GameModel
     {
+        public MenuControl MenuControl { set; get; }
+
         public VisualElementsModel VisualElementsModel { set; get; }
         public ShipController ShipController { set; get; }
-
-    CommandClick CommandClick { set; get; }
+       
 
         public GameModel()
         {
+            MenuControl = new MenuControl(this);
             VisualElementsModel = new VisualElementsModel(this);
             ShipController = new ShipController(this);
 
-            CommandClick = new CommandClick(this);
         }
 
 

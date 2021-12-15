@@ -12,13 +12,24 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <battleship:GameModel x:Key="GM"/>
+        <converters:ConverterBoolToVisibility x:Key="ConverterBoolToVisibility"/>
+        <converters:ConverterStringToInt x:Key="ConverterStringToInt"/>
         <Geometry x:Key="repeatStyle0">F1 M 10.0001,27L 10,16L 29.25,16L 25,12L 31.5,12L 38,18L 31.5,24L 25,24L 29.25,20L 14,20L 14,23.5L 10.0001,27 Z M 38,21L 38,32L 18.75,32L 23,36L 16.5,36L 10,30L 16.5,24L 23,24L 18.75,28L 34,28L 34,24.5L 38,21 Z</Geometry>
         <Geometry x:Key="closeStyle0">F1 M 17,14L 24,21L 30.9999,14.0001L 33.9999,17.0001L 27,24L 33.9999,31L 31,34L 24,27L 17,34L 14,31L 21,24L 14,17L 17,14 Z</Geometry>
-
     </UserControl.Resources>
     <DockPanel DataContext="{StaticResource GM}">
         <DockPanel DataContext="{Binding VisualElementsModel}" Width="400" Height="400">
-            <Button  DockPanel.Dock="Top">test</Button>
+            <DockPanel DockPanel.Dock="Top">
+                <StackPanel Orientation="Horizontal" Background="#FFDDDDDD">
+                    <Label>X:</Label>
+                    <TextBox Width="40" Text="{Binding S_X, Converter={StaticResource ConverterStringToInt}}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Background="#FFDDDDDD">
+                    <Label>Y:</Label>
+                    <TextBox Width="40" Text="{Binding S_Y, Converter={StaticResource ConverterStringToInt}}"/>
+                </StackPanel>
+                <Button Command="{Binding CommandClick}">Shot</Button>
+            </DockPanel>
             <Grid>
                 <Image Source="/Battleship;component/Resources/unnamed.jpg" Stretch="UniformToFill"></Image>
                 <ItemsControl ItemsSource="{Binding VisibleObjects}">
@@ -73,6 +84,9 @@
                                                                 <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
                                                             </i:EventTrigger>
                                                         </i:Interaction.Triggers>
+                                                    </Border>
+                                                    <Border Padding="2" Visibility="{Binding ShotShow, Converter={StaticResource ConverterBoolToVisibility}}">
+                                                        <Path Stretch="Uniform" Data="{StaticResource closeStyle0}" Fill="#99F50C0C" Stroke="#E5511414"/>
                                                     </Border>
                                                 </Grid>
                                             </DataTemplate>
