@@ -45,10 +45,15 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SerializerDeserializerExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryBattleship\LibraryBattleship.csproj">
+      <Project>{AC071C6A-FF23-4BA1-8D84-A132605FBD46}</Project>
+      <Name>LibraryBattleship</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

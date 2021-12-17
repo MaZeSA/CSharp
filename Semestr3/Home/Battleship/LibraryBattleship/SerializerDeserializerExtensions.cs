@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Battleship.Class
+namespace LibraryBattleship
 {
     public static class SerializerDeserializerExtensions
     {

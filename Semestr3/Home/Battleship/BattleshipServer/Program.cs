@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryBattleship;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -27,26 +28,13 @@ namespace BattleshipServer
                 {
                     Console.WriteLine("Ожидание подключений... ");
 
-                    // получаем входящее подключение
-                    TcpClient client = server.AcceptTcpClient();
-                    Console.WriteLine("Подключен клиент. Выполнение запроса...");
+                    WorkClient(new TCPClient(server.AcceptTcpClient()));
 
-                    // получаем сетевой поток для чтения и записи
-                    NetworkStream stream = client.GetStream();
-
-                    // сообщение для отправки клиенту
-                    string response = "Привет мир";
-                    // преобразуем сообщение в массив байтов
-                    byte[] data = Encoding.UTF8.GetBytes(response);
-
-                    Thread.Sleep(3000);
-                    // отправка сообщения
-                    stream.Write(data, 0, data.Length);
-                    Console.WriteLine("Отправлено сообщение: {0}", response);
+                  //  Console.WriteLine("Отправлено сообщение: {0}", Client.Client.Client.RemoteEndPoint.ToString());
                     // закрываем поток
-                    stream.Close();
-                    // закрываем подключение
-                    client.Close();
+                    //stream.Close();
+                    //// закрываем подключение
+                    //client.Close();
                 }
             }
             catch (Exception e)
@@ -58,6 +46,37 @@ namespace BattleshipServer
                 if (server != null)
                     server.Stop();
             }
+        }
+
+        static async void WorkClient(TCPClient Client)
+        { 
+            Console.WriteLine("Подключен клиент. Выполнение запроса...");
+
+
+            while (true)
+            {
+               Packet packet = await ReadData(Client);
+
+                if (packet is null) { }
+                else
+                {
+                    if (packet.Type == Packet.TypePacket.NewGame)
+                    {
+                        Console.WriteLine("Запрос на створення гри...");
+                        (packet.Data as NewGame).StatusGame = NewGame.Status.Find;
+                        SendData(Client, packet);
+                    }
+                }
+            }
+        }
+
+        static async void SendData(TCPClient client, Packet packet)
+        {
+            await client.WriteStramAsync(packet);
+        }
+        static async Task<Packet> ReadData(TCPClient client)
+        {
+          return await client.ReadStreamAsync();
         }
     }
 }

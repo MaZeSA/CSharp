@@ -1,5 +1,4 @@
-﻿using Battleship.Pages.StartPage;
-using Battleship.ViewModel;
+﻿using Battleship.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +21,7 @@ namespace Battleship.Commands
 
         public bool CanExecute(object parameter)
         {
-            return true;  //return !string.IsNullOrWhiteSpace(CreateGameModel.GameName);
+            return true;
         }
 
         public void Execute(object parameter)

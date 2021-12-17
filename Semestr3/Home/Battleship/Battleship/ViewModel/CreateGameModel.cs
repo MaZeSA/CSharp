@@ -1,5 +1,7 @@
-﻿using Battleship.Class;
+﻿
 using Battleship.Commands;
+using Battleship.ViewModel.Interfaces;
+using LibraryBattleship;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,11 +13,12 @@ using System.Windows;
 
 namespace Battleship.ViewModel
 {
-    public class CreateGameModel : INotifyPropertyChanged
+    public class CreateGameModel : IMenu
     {
-        public CommandCreateGame CommandCreateGame { set; get; }
         private TCPClient TCPClient { set; get; }
-
+        public MenuControl MenuControl { get; } 
+        public CommandCreateGame CommandCreateGame { set; get; }
+        public NewGame NewGame { set; get; }
 
         Visibility createGameVisibility = Visibility.Collapsed;
         public Visibility CreateGameVisibility
@@ -30,8 +33,33 @@ namespace Battleship.ViewModel
             set { visibilityWait = value; OnNotify(); }
             get => visibilityWait;
         }
+      
+        public CreateGameModel(MenuControl menuControl)
+        {
+            TCPClient = new TCPClient();
+            MenuControl = menuControl;
+            CommandCreateGame = new CommandCreateGame(this);
+            NewGame = new NewGame() { StatusGame = NewGame.Status.New };
+        }
 
-        public GameModel GameModel { get; }
+        public async void CreateGame()
+        {
+            await TCPClient.ConnectAsync();
+            VisibilityWait = Visibility.Visible;
+            var t = await TCPClient.CreateGameAsync(NewGame);
+            VisibilityWait = Visibility.Collapsed;
+            (new CommandOpenMenu()).Execute(MenuControl.VisualElementsModel);
+        }
+
+        public void Show()
+        {
+            CreateGameVisibility = Visibility.Visible;
+        }
+
+        public void Back()
+        {
+            CreateGameVisibility = Visibility.Collapsed;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnNotify([CallerMemberName] string prop = "")
@@ -39,19 +67,6 @@ namespace Battleship.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
 
-        public CreateGameModel(GameModel gameModel)
-        {
-            CommandCreateGame = new CommandCreateGame(this);
-            TCPClient = new TCPClient(); 
-            GameModel = gameModel;
-        }
-
-        public void CreateGame()
-        {
-            VisibilityWait = Visibility.Visible;
-            TCPClient.CreateGame(this);
-            MessageBox.Show("llll");
-
-        }
+       
     }
 }

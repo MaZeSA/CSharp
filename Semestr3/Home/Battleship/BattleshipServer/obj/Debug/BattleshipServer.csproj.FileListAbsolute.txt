@@ -8,6 +8,10 @@ C:\Users\marchenko\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServe
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\bin\Debug\BattleshipServer.exe.config
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\bin\Debug\BattleshipServer.exe
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\bin\Debug\BattleshipServer.pdb
+C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csprojAssemblyReference.cache
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csproj.CoreCompileInputs.cache
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.exe
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.pdb
+C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\bin\Debug\LibraryBattleship.dll
+C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\bin\Debug\LibraryBattleship.pdb
+C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csproj.CopyComplete

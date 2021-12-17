@@ -16,7 +16,7 @@ using System.Windows.Media;
 
 namespace Battleship.ViewModel.GamePanels
 {
-    public class VisualElementsModel
+    public class VisualElementsModel : IMenu
     {
         public const int CONST_C = 10;
         public const int CONST_R = 10;
@@ -32,6 +32,9 @@ namespace Battleship.ViewModel.GamePanels
             get => x;
         }
         int y;
+
+     
+
         public int S_Y
         {
             set { y = value; }
@@ -95,6 +98,26 @@ namespace Battleship.ViewModel.GamePanels
             GameModel.ShipController.CheckCorectPlace();
         }
 
-      
+
+        Visibility visualElementVisibility = Visibility.Collapsed;
+        public Visibility VisualElementVisibility
+        {
+            set { visualElementVisibility = value; OnNotify(); }
+            get => visualElementVisibility;
+        }
+        public void Show()
+        {
+            VisualElementVisibility = Visibility.Visible;
+        }
+
+        public void Back()
+        {
+            VisualElementVisibility = Visibility.Collapsed;
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnNotify([CallerMemberName] string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
     }
 }
