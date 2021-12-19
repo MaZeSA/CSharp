@@ -1,6 +1,7 @@
 ﻿using LibraryBattleship;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -12,9 +13,14 @@ namespace BattleshipServer
 {
     class Program
     {
+        static Dictionary<string, ActualGames> DictionaryActualGames = new Dictionary<string, ActualGames>();
+
         const int port = 8888; // порт для прослушивания подключений
         static void Main(string[] args)
         {
+
+           var proc= Process.Start(@"C:\Users\MaZeSa\Desktop\Battleship\Battleship\bin\Debug\Battleship.exe");
+
             TcpListener server = null;
             try
             {
@@ -30,11 +36,6 @@ namespace BattleshipServer
 
                     WorkClient(new TCPClient(server.AcceptTcpClient()));
 
-                  //  Console.WriteLine("Отправлено сообщение: {0}", Client.Client.Client.RemoteEndPoint.ToString());
-                    // закрываем поток
-                    //stream.Close();
-                    //// закрываем подключение
-                    //client.Close();
                 }
             }
             catch (Exception e)
@@ -45,32 +46,60 @@ namespace BattleshipServer
             {
                 if (server != null)
                     server.Stop();
+                proc.Kill();
             }
         }
 
+
         static async void WorkClient(TCPClient Client)
-        { 
-            Console.WriteLine("Подключен клиент. Выполнение запроса...");
+        {
+            string cldata = Client.Client.Client.RemoteEndPoint.ToString();
+            Console.WriteLine("Подключен клиент. Выполнение запроса... " + cldata);
 
+            bool run = true;
 
-            while (true)
+            while (run)
             {
-               Packet packet = await ReadData(Client);
+                Packet packet = await ReadData(Client);
 
                 if (packet is null) { }
                 else
                 {
-                    if (packet.Type == Packet.TypePacket.NewGame)
+                    switch(packet.Type)
                     {
-                        Console.WriteLine("Запрос на створення гри...");
-                        (packet.Data as NewGame).StatusGame = NewGame.Status.Find;
-                        SendData(Client, packet);
+                        case Packet.TypePacket.CreateNewGame:
+                            {
+                                Console.WriteLine("Запрос на створення гри... " + cldata);
+
+                                packet = AddNewGame(packet, Client);
+                                run = false;
+                                break;
+                            };
+                        case Packet.TypePacket.GetListGame:
+                            {
+                                Console.WriteLine("Запрос списку сворених ігор... " + cldata);
+
+                                packet = GetGames(packet);
+                                break;
+                            }
+                        case Packet.TypePacket.ConectedTo:
+                            {
+                                Console.WriteLine("Клієнт підключений " + cldata);
+                                packet = ConectedToGames(packet, Client);
+                                run = false;
+                                break;
+                            }
                     }
                 }
+
+                await SendData(Client, packet);
+
+               // Client.Close();
+               // return;
             }
         }
 
-        static async void SendData(TCPClient client, Packet packet)
+        static async Task SendData(TCPClient client, Packet packet)
         {
             await client.WriteStramAsync(packet);
         }
@@ -78,5 +107,72 @@ namespace BattleshipServer
         {
           return await client.ReadStreamAsync();
         }
+
+        static Packet GetGames(Packet packet)
+        {
+            List<LiteGame> newGames = new List<LiteGame>();
+            foreach (var item in DictionaryActualGames.Values)
+            {
+                if (item.Game.StatusGame == NewGame.Status.Created)
+                    newGames.Add(
+                        new LiteGame { GameName = item.Game.GameName, SuperWeapon = item.Game.SuperWeapon }
+                        );
+            }
+
+            packet.Data = newGames;
+            return packet;
+        }
+        static Packet AddNewGame(Packet packet, TCPClient client)
+        {
+            var game = packet.Data as NewGame;
+
+            if (DictionaryActualGames.ContainsKey(game.GameName))
+            {
+                packet.ErrorMessage = "Name Game is already!";
+                packet.Type = Packet.TypePacket.Error;
+            }
+            else
+            {
+                DictionaryActualGames.Add(game.GameName, new ActualGames { Server = client, Game = game });
+                game.StatusGame = NewGame.Status.Created;
+            }
+            
+            Console.WriteLine( client.Client.Client.RemoteEndPoint.ToString());
+           // packet.Type = Packet.TypePacket.CreateNewGame;
+            return packet ;
+        }
+
+        static void RemoveGame(string name)
+        {
+            DictionaryActualGames.Remove(name);
+        }
+
+        static Packet ConectedToGames(Packet packet, TCPClient client)
+        {
+            var game = packet.Data as LiteGame;
+            ActualGames actual = null;
+
+            if (DictionaryActualGames.TryGetValue(game.GameName, out actual))
+            {
+                if (game.Password == actual.Game.Password)
+                {
+                    actual.Client = client;
+                    packet.Type = Packet.TypePacket.Connected;
+                    actual.Game.StatusGame = NewGame.Status.Play;
+                 
+                    actual.GetMessegeConnectToSetver();
+                    
+                    actual.Lissen(client);
+                    actual.Lissen(actual.Server);
+
+                    return packet;
+                }
+                else
+                    packet.ErrorMessage = "Bet password!";
+            }
+            packet.Type = Packet.TypePacket.Error;
+            return packet;
+        }
+
     }
 }

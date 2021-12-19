@@ -3,6 +3,7 @@ using Battleship.ViewModel;
 using Battleship.ViewModel.GamePanels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,18 +14,13 @@ namespace Battleship
     {
         public MenuControl MenuControl { set; get; }
 
-        public VisualElementsModel VisualElementsModel { set; get; }
-        public ShipController ShipController { set; get; }
-       
+        public GPanelView GPanelView { set; get; }
 
         public GameModel()
         {
             MenuControl = new MenuControl(this);
-            VisualElementsModel = new VisualElementsModel(this);
-            ShipController = new ShipController(this);
-
+            GPanelView = new GPanelView(this);
         }
-
 
     }
 }

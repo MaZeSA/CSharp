@@ -12,7 +12,7 @@ namespace Battleship.ViewModel.Ships
 {
     public class ShipFrigate : Ship
     {
-        public ShipFrigate(GameModel gameModel, int r, int c) : base(gameModel)
+        public ShipFrigate(GPanelView gameModel, int r, int c) : base(gameModel)
         {
             Length = 2;
             Row = 2;

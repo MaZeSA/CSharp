@@ -16,64 +16,39 @@ using System.Windows.Media;
 
 namespace Battleship.ViewModel.GamePanels
 {
-    public class VisualElementsModel : IMenu
+    public class VisualElementsModel : INotifyPropertyChanged
     {
         public const int CONST_C = 10;
         public const int CONST_R = 10;
         public ObservableCollection<IVisible> VisibleObjects { set; get; } = new ObservableCollection<IVisible>();
-        public GameModel GameModel { get; }
-        public CommandClick CommandClick { set; get; }
-        public CommandIVisibleRemove CommandIVisibleRemove { set; get; }
-
-        int x;
-        public int S_X
+        public GPanelView GPanelView { get; }
+          
+        public void Shot(int row, int column)
         {
-            set { x = value; }
-            get => x;
-        }
-        int y;
-
-     
-
-        public int S_Y
-        {
-            set { y = value; }
-            get => y;
-        }
-
-        public void Shot()
-        {
-            foreach(var r in GameModel.ShipController.Ships)
-            {
-               var t = r.Shot(S_Y, S_X);
-                if (t) return;
-            }
+            //foreach (var r in GPanelView.ShipController.Ships)
+            //{
+            //    var t = r.Shot(row, column);
+            //    if (t) return;
+            //}
 
             foreach (var r in VisibleObjects)
             {
-                r.Shot(S_Y, S_X);
+                r.Shot(row, column);
             }
         }
 
-        public VisualElementsModel(GameModel gameModel)
+        public VisualElementsModel(GPanelView gPanelView)
         {
-            CommandClick = new CommandClick(gameModel);
-
-            GameModel = gameModel;
-            CommandIVisibleRemove = new CommandIVisibleRemove(this);
+            GPanelView = gPanelView;
 
             for (int i = 0; i < CONST_R; i++)
                 for (int t = 0; t < CONST_C; t++)
-                    VisibleObjects.Add(new EntityPixel(GameModel, i, t));
+                    VisibleObjects.Add(new EntityPixel(gPanelView, i, t));
 
             var BitmapUri = new Uri("/Battleship;component/Resources/vzriv.png", UriKind.RelativeOrAbsolute);
 
-            VisibleObjects[33].ImageSource =  new System.Windows.Media.Imaging.BitmapImage(BitmapUri);
-
-            VisibleObjects.Add(new ShipCruiser(gameModel, 1, 1)); 
-            VisibleObjects.Add(new ShipCorvette(gameModel, 2, 1));
+            VisibleObjects[33].ImageSource = new System.Windows.Media.Imaging.BitmapImage(BitmapUri);
         }
-
         public void AddVisibleObj(IVisible obj)
         {
             if (VisibleObjects.IndexOf(obj) > -1) return;
@@ -95,25 +70,51 @@ namespace Battleship.ViewModel.GamePanels
             VisibleObjects.Remove(moved);
             VisibleObjects.Add(moved);
 
-            GameModel.ShipController.CheckCorectPlace();
+            GPanelView.ShipController.CheckCorectPlace();
         }
 
 
-        Visibility visualElementVisibility = Visibility.Collapsed;
-        public Visibility VisualElementVisibility
+        Visibility blackEnemyPanelVisibility = Visibility.Collapsed;
+        public Visibility BlackEnemyPanelVisibility
         {
-            set { visualElementVisibility = value; OnNotify(); }
-            get => visualElementVisibility;
-        }
-        public void Show()
-        {
-            VisualElementVisibility = Visibility.Visible;
+            set { blackEnemyPanelVisibility = value; OnNotify(); }
+            get => blackEnemyPanelVisibility;
         }
 
-        public void Back()
+        string blackPanelEnemyText = "Waiting Enemy...";
+        public string BlackPanelEnemyText
         {
-            VisualElementVisibility = Visibility.Collapsed;
+            set
+            {
+                blackPanelEnemyText = value; OnNotify();
+            }
+            get => blackPanelEnemyText;
         }
+        SolidColorBrush backgroundBrush = Brushes.Gray;
+        public virtual SolidColorBrush BackgroundBrush
+        {
+            get => backgroundBrush;
+            set { backgroundBrush = value; OnNotify(); }
+        }
+
+        public void ClientConnect()
+        {
+            BlackPanelEnemyText = "Fleet training...";
+            BackgroundBrush = Brushes.LightSeaGreen;
+        }
+        public void WaitingClientConnect()
+        {
+            BlackEnemyPanelVisibility = Visibility.Visible;
+            BlackPanelEnemyText = "Waiting Enemy...";
+            BackgroundBrush = Brushes.Gray;
+        }
+        public void ClientReady()
+        {
+            BlackEnemyPanelVisibility = Visibility.Visible;
+            BlackPanelEnemyText = "Ready!";
+            BackgroundBrush = Brushes.LightGreen;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnNotify([CallerMemberName] string prop = "")
         {

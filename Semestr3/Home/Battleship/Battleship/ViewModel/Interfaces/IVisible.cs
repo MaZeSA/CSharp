@@ -15,7 +15,7 @@ namespace Battleship.ViewModel.Interfaces
 {
     public interface IVisible
     {
-        GameModel GameModel { get; set; }
+        GPanelView GPanelView { get; set; }
         CommandIVisibleRotate CommandIVisibleRotate { get; set; }
 
         List<IBoody> VisulBoodies { get;}

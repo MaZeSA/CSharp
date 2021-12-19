@@ -18,13 +18,11 @@ namespace Battleship.ViewModel
             GameModel = gameModel;
             CreateGameModel = new CreateGameModel(this);
             FindGameModel = new FindGameModel(this);
-            VisualElementsModel = new VisualElementsModel(gameModel);
         }
 
         public GameModel GameModel { get; }
         public CreateGameModel CreateGameModel { set; get; }
         public FindGameModel FindGameModel { set; get; }
-        public VisualElementsModel VisualElementsModel { set; get; }
 
         public void ShowCteateGameMenu()
         {

@@ -17,12 +17,14 @@ namespace Battleship.ViewModel
 {
     public abstract class BaseVisualElement : INotifyPropertyChanged, IVisible
     {
-        public GameModel GameModel { get; set; }
+        public GPanelView GPanelView { get; set; }
         public CommandIVisibleRotate CommandIVisibleRotate { get; set; }
-        public BaseVisualElement(GameModel gameModel)
+        public CommandIVisibleRemove CommandIVisibleRemove { get; set; }
+        public BaseVisualElement(GPanelView gPanelView)
         {
-            GameModel = gameModel;
+            GPanelView = gPanelView;
             CommandIVisibleRotate = new CommandIVisibleRotate(this);
+            CommandIVisibleRemove = new CommandIVisibleRemove(this);
         }
 
         public List<IBoody> VisulBoodies { set; get; }
@@ -117,7 +119,10 @@ namespace Battleship.ViewModel
         public virtual void Move(int param_r, int param_c) { }
         public virtual void Rotate() { }
         public virtual void UIElement_OnDragEnter(object sender, DragEventArgs e) { }
-        public virtual void Grid_MouseDown(object sender, MouseButtonEventArgs e) { }
+        public virtual void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            GPanelView.Shot(new List<int[]> { new int[2] { this.Row, this.Column } });
+        }
         public virtual void IVisible_MouseEnter(object sender, MouseEventArgs e) { }
         public virtual void IVisible_MouseLeave(object sender, MouseEventArgs e) { }
         public virtual void SetVisual(bool state)

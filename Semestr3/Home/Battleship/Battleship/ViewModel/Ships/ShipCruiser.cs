@@ -12,7 +12,7 @@ namespace Battleship.ViewModel.Ships
 {
     public class ShipCruiser : Ship
     {
-        public ShipCruiser(GameModel gameModel, int row, int column) : base(gameModel)
+        public ShipCruiser(GPanelView gPanelView, int row, int column) : base(gPanelView)
         {
             Length = 4;
             Row = row;
@@ -26,7 +26,7 @@ namespace Battleship.ViewModel.Ships
 
             for (int i = 0; i < Length; i++)
             {
-                VisulBoodies.Add(new Pixel(gameModel, this, i) { BackgroundBrush = this.BackgroundBrush});
+                VisulBoodies.Add(new Pixel(gPanelView, this, i) { BackgroundBrush = this.BackgroundBrush});
             }
         }
     }

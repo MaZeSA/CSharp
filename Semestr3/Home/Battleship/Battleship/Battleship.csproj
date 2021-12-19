@@ -62,11 +62,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\ChatMessage.cs" />
     <Compile Include="Commands\CommandClick.cs" />
     <Compile Include="Commands\CommandCreateGame.cs" />
+    <Compile Include="Commands\CommandConnecToGames.cs" />
     <Compile Include="Commands\CommandIVisibleRotate.cs" />
     <Compile Include="Commands\CommandIVisibleRemove.cs" />
     <Compile Include="Commands\CommandOpenMenu.cs" />
+    <Compile Include="Commands\CommandReady.cs" />
+    <Compile Include="Commands\CommandSendChatMessage.cs" />
     <Compile Include="Commands\TestCommand.cs" />
     <Compile Include="Converters\ConverterBoolToVisibylity.cs" />
     <Compile Include="Converters\ConverterStringToInt.cs" />
@@ -75,16 +79,16 @@
     <Compile Include="ViewModel\BaseVisualElement.cs" />
     <Compile Include="ViewModel\CreateGameModel.cs" />
     <Compile Include="ViewModel\FindGameModel.cs" />
-    <Compile Include="ViewModel\Game.xaml.cs">
-      <DependentUpon>Game.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\GamePanels\Pixels\EntityPixel.cs" />
     <Compile Include="ViewModel\GamePanels\VisualElementsModel.cs" />
     <Compile Include="ViewModel\GamePanels\Pixels\Pixel.cs" />
     <Compile Include="ViewModel\GamePanels\VisulElementController.xaml.cs">
       <DependentUpon>VisulElementController.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\GameView.cs" />
+    <Compile Include="ViewModel\GPanel.xaml.cs">
+      <DependentUpon>GPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\GPanelView.cs" />
     <Compile Include="ViewModel\Interfaces\IBoody.cs" />
     <Compile Include="ViewModel\Interfaces\IMenu.cs" />
     <Compile Include="ViewModel\Interfaces\IVisible.cs" />
@@ -107,11 +111,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ViewModel\Game.xaml">
+    <Page Include="ViewModel\GamePanels\VisulElementController.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewModel\GamePanels\VisulElementController.xaml">
+    <Page Include="ViewModel\GPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,8 +175,6 @@
       <Name>LibraryBattleship</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Class\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -15,7 +15,7 @@ namespace Battleship.ViewModel.GamePanels.Pixels
 {
     public class EntityPixel : BaseVisualElement
     {
-        public EntityPixel(GameModel GameModel, int row, int colum) : base(GameModel)
+        public EntityPixel(GPanelView gPanelView, int row, int colum) : base(gPanelView)
         {
             VisulBoodies = new List<IBoody>();
 
@@ -24,7 +24,7 @@ namespace Battleship.ViewModel.GamePanels.Pixels
             BorderBrush = Brushes.Black;
             BackgroundBrush = new SolidColorBrush(Color.FromArgb(150, 127, 224, 230));
             BorderThickness = new Thickness(1, 1, 0, 0);
-            VisulBoodies.Add(new Pixel(GameModel, this, 0) { BackgroundBrush = this.BackgroundBrush }); 
+            VisulBoodies.Add(new Pixel(gPanelView, this, 0) { BackgroundBrush = this.BackgroundBrush }); 
         }
 
         public override bool Shot(int row, int column)

@@ -17,13 +17,7 @@ namespace Battleship.Commands
             IVisible = baseVisualElement;
         }
 
-        public CommandIVisibleRemove(VisualElementsModel visualElementsModel)
-        {
-            VisualElementsModel = visualElementsModel;
-        }
-
         public IVisible IVisible { get; }
-        public VisualElementsModel VisualElementsModel { get; }
 
         public event EventHandler CanExecuteChanged;
 
@@ -34,7 +28,7 @@ namespace Battleship.Commands
 
         public void Execute(object parameter)
         {
-            VisualElementsModel.RemoveVisibleObj(parameter as IVisible);
+            IVisible.GPanelView.VisualElementsModel.RemoveVisibleObj(parameter as IVisible);
         }
     }
 }

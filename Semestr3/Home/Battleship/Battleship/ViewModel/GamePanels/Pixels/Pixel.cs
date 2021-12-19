@@ -27,7 +27,7 @@ namespace Battleship.ViewModel.GamePanels.Pixels
             get => shot;
             set { shot = value; OnNotify(); }
         }
-        public Pixel(GameModel gameModel, IVisible obj, int num):base(gameModel) 
+        public Pixel(GPanelView gPanelView, IVisible obj, int num):base(gPanelView) 
         {
             NumPixel = num;
             ParentObj = obj; 

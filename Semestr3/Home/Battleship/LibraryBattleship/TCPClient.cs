@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace LibraryBattleship
         }
         public TCPClient() { }
 
+
         public async Task ConnectAsync()
         {
             Close();
@@ -30,13 +32,6 @@ namespace LibraryBattleship
             Client = new TcpClient();
             await Client.ConnectAsync(server, port);
             Stream = Client.GetStream();
-        }
-
-        public async Task<bool> CreateGameAsync(NewGame newGame)
-        {
-            var re = await Task.Run(() => WriteStramAsync(new Packet { Type = Packet.TypePacket.NewGame, Data = newGame }));
-            Packet p = await ReadStreamAsync();
-            return true;
         }
 
         public async Task<bool> WriteStramAsync(Packet packet)

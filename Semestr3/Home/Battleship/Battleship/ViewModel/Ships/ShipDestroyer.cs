@@ -12,7 +12,7 @@ namespace Battleship.ViewModel.Ships
 {
     public class ShipDestroyer : Ship
     {
-        public ShipDestroyer(GameModel gameModel, int r, int c) : base(gameModel)
+        public ShipDestroyer(GPanelView gameModel, int r, int c) : base(gameModel)
         {
             Length = 3;
             Row = 2;

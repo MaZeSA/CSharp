@@ -6,43 +6,53 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Battleship.ViewModel
 {
     public class ShipController
     {
-        public GameModel GameModel { get; }
+        public GPanelView GPanelView { get; }
         public ObservableCollection<Ship> Ships { set; get; } = new ObservableCollection<Ship>();
 
-        public ShipController(GameModel gameModel) 
+
+        public ShipController(GPanelView gPanelView) 
         {
-            GameModel = gameModel;
+            GPanelView = gPanelView;
 
             try
             {
-                Ships.Add(new ShipCruiser(GameModel, 1, 1));
-                Ships.Add(new ShipDestroyer(GameModel, 2, 1));
-                Ships.Add(new ShipDestroyer(GameModel, 2, 1));
-                Ships.Add(new ShipFrigate(GameModel, 2, 1));
-                Ships.Add(new ShipFrigate(GameModel, 2, 1));
-                Ships.Add(new ShipFrigate(GameModel, 2, 1));
-                Ships.Add(new ShipCorvette(GameModel, 1, 1));
-                Ships.Add(new ShipCorvette(GameModel, 2, 1));
-                Ships.Add(new ShipCorvette(GameModel, 1, 1));
-                Ships.Add(new ShipCorvette(GameModel, 2, 1));
+                Ships.Add(new ShipCruiser(GPanelView, 1, 1));
+                //Ships.Add(new ShipDestroyer(GPanelView, 2, 1));
+                //Ships.Add(new ShipDestroyer(GPanelView, 2, 1));
+                //Ships.Add(new ShipFrigate(GPanelView, 2, 1));
+                //Ships.Add(new ShipFrigate(GPanelView, 2, 1));
+                //Ships.Add(new ShipFrigate(GPanelView, 2, 1));
+                //Ships.Add(new ShipCorvette(GPanelView, 1, 1));
+                //Ships.Add(new ShipCorvette(GPanelView, 2, 1));
+                //Ships.Add(new ShipCorvette(GPanelView, 1, 1));
+                //Ships.Add(new ShipCorvette(GPanelView, 2, 1));
             }
             catch { }
         }
 
-        public void CheckCorectPlace()
+        public bool CheckCorectPlace()
         {
+            bool Ready = true;
             foreach (var obj in Ships)
             {
                 if (obj.Visual)
                 {
-                    obj.CheckMove(Ships.Where(x=> x.Visual));
+                    var status = obj.CheckMove(Ships.Where(x => x.Visual));
+
+                    Ready = Ready != false && status;
                 }
+                else
+                    Ready = false;
             }
+
+            CommandManager.InvalidateRequerySuggested();
+            return Ready;
         }
 
     }

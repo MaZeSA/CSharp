@@ -12,7 +12,7 @@ namespace Battleship.ViewModel.Ships
 {
     public class ShipCorvette: Ship
     {
-        public ShipCorvette(GameModel gameModel, int row, int column) : base(gameModel)
+        public ShipCorvette(GPanelView gameModel, int row, int column) : base(gameModel)
         {
             Length = 1;
             Row = row;

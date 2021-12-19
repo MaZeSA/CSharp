@@ -1,5 +1,4 @@
 ﻿using Battleship.ViewModel;
-using Battleship.ViewModel.GamePanels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,26 +8,28 @@ using System.Windows.Input;
 
 namespace Battleship.Commands
 {
-    public class CommandClick : ICommand
-    { 
-        public CommandClick(GPanelView gPanelView)
+    public class CommandReady : ICommand
+    {
+        public CommandReady(GPanelView gPanelView)
         {
             GPanelView = gPanelView;
         }
 
-        public VisualElementsModel VisualElementsModel { get; }
         public GPanelView GPanelView { get; }
 
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return GPanelView.ShipController.CheckCorectPlace();
         }
-
         public void Execute(object parameter)
         {
-            //GPanelView.VisualElementsModel.Shot();
+            GPanelView.Ready();
         }
     }
 }

@@ -9,27 +9,17 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
              xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" xmlns:converters="clr-namespace:Battleship.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" DataContext="{DynamicResource dataContext}">
     <UserControl.Resources>
-        <battleship:GameModel x:Key="GM"/>
         <converters:ConverterBoolToVisibility x:Key="ConverterBoolToVisibility"/>
         <converters:ConverterStringToInt x:Key="ConverterStringToInt"/>
         <Geometry x:Key="repeatStyle0">F1 M 10.0001,27L 10,16L 29.25,16L 25,12L 31.5,12L 38,18L 31.5,24L 25,24L 29.25,20L 14,20L 14,23.5L 10.0001,27 Z M 38,21L 38,32L 18.75,32L 23,36L 16.5,36L 10,30L 16.5,24L 23,24L 18.75,28L 34,28L 34,24.5L 38,21 Z</Geometry>
         <Geometry x:Key="closeStyle0">F1 M 17,14L 24,21L 30.9999,14.0001L 33.9999,17.0001L 27,24L 33.9999,31L 31,34L 24,27L 17,34L 14,31L 21,24L 14,17L 17,14 Z</Geometry>
     </UserControl.Resources>
-    <DockPanel DataContext="{StaticResource GM}">
-        <DockPanel DataContext="{Binding VisualElementsModel}" Width="400" Height="400">
-            <DockPanel DockPanel.Dock="Top">
-                <StackPanel Orientation="Horizontal" Background="#FFDDDDDD">
-                    <Label>X:</Label>
-                    <TextBox Width="40" Text="{Binding S_X, Converter={StaticResource ConverterStringToInt}}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Background="#FFDDDDDD">
-                    <Label>Y:</Label>
-                    <TextBox Width="40" Text="{Binding S_Y, Converter={StaticResource ConverterStringToInt}}"/>
-                </StackPanel>
-                <Button Command="{Binding CommandClick}">Shot</Button>
-            </DockPanel>
+    <DockPanel>
+        <!--DataContext="{Binding GPanelView.EnemyVisualElementsModel}">-->
+        <DockPanel Width="360" Height="360">
+        
             <Grid>
                 <Image Source="/Battleship;component/Resources/unnamed.jpg" Stretch="UniformToFill"></Image>
                 <ItemsControl ItemsSource="{Binding VisibleObjects}">
@@ -102,7 +92,7 @@
                                     <!--Visibility="{Binding PopupIsOpen}"-->
                                     <Border Visibility="{Binding PopupIsOpen}" Margin="-10, -15,-10,1" Background="#7F3B5393" HorizontalAlignment="Center" VerticalAlignment="Top" >
                                         <StackPanel Orientation="Horizontal">
-                                            <Button Width="17" Height="17" Margin="4" Command="{Binding Source={StaticResource GM}, Path=VisualElementsModel.CommandIVisibleRemove}" CommandParameter="{Binding}" Background="{x:Null}" BorderBrush="{x:Null}">
+                                            <Button Width="17" Height="17" Margin="4" Command="{Binding CommandIVisibleRemove}" CommandParameter="{Binding}" Background="{x:Null}" BorderBrush="{x:Null}">
                                                 <Path Stretch="UniformToFill" Data="{StaticResource closeStyle0}" Fill="Red" Stroke="#FF124D68"></Path>
                                             </Button>
                                             <Button Width="17" Height="17" Margin="4" Command="{Binding CommandIVisibleRotate}" Background="{x:Null}" BorderBrush="{x:Null}">
@@ -142,36 +132,13 @@
                         </Style>
                     </ItemsControl.ItemContainerStyle>
                 </ItemsControl>
+                <Border Background="{Binding BackgroundBrush}" Visibility="{Binding BlackEnemyPanelVisibility}">
+                    <DockPanel>
+                        <TextBlock Text="{Binding BlackPanelEnemyText}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="38" FontWeight="Bold" Foreground="#FF9E9E9E"/>
+                    </DockPanel>
+                </Border>
             </Grid>
         </DockPanel>
-        <DockPanel DataContext="{Binding ShipController}">
-            <ListBox ItemsSource="{Binding Ships}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <Border Width="100" Height="20" Background="{Binding BackgroundBrush}" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
-                                <Grid>
-                                    <Image Source="{Binding ImageSource}"></Image>
-                                </Grid>
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseDown">
-                                        <ei:CallMethodAction MethodName="Grid_MouseDown" TargetObject="{Binding}" />
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </Border>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Style.Triggers >
-                            <DataTrigger Binding="{Binding Visual }" Value="true">
-                                <Setter Property="Visibility" Value="Collapsed"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListBox.ItemContainerStyle>
-            </ListBox>
-        </DockPanel>
+  
     </DockPanel>
 </UserControl>

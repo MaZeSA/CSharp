@@ -16,22 +16,20 @@ using System.Windows.Shapes;
 namespace Battleship.ViewModel
 {
     /// <summary>
-    /// Логика взаимодействия для Game.xaml
+    /// Логика взаимодействия для GPanel.xaml
     /// </summary>
-    public partial class Game : UserControl
+    public partial class GPanel : UserControl
     {
-        public Game()
+        private GameModel gameModel;
+
+        public GPanel()
         {
             InitializeComponent();
         }
 
-        private void Button_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        public GPanel(GameModel gameModel)
         {
-        }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            this.gameModel = gameModel;
         }
     }
 }

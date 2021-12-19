@@ -22,7 +22,7 @@ namespace Battleship.ViewModel.Ships
         public int Length { set; get; }
         public string Name { set; get; }
 
-        public Ship(GameModel gameModel) : base(gameModel)
+        public Ship(GPanelView gPanelView) : base(gPanelView)
         {
             VisulBoodies = new List<IBoody>();
         }
@@ -44,7 +44,7 @@ namespace Battleship.ViewModel.Ships
             this.Row = param_r;
         }
 
-        public void CheckMove(IEnumerable<Ship> listObj)
+        public bool CheckMove(IEnumerable<Ship> listObj)
         {
             WrongBorder = Visibility.Collapsed;
 
@@ -102,6 +102,8 @@ namespace Battleship.ViewModel.Ships
                 if (VisualElementsModel.CONST_R - this.Row < Length)
                     WrongBorder = Visibility.Visible; ;
             }
+
+            return WrongBorder == Visibility.Collapsed;
         }
 
 
@@ -128,7 +130,7 @@ namespace Battleship.ViewModel.Ships
             }
             rotate = !rotate;
 
-            GameModel.ShipController.CheckCorectPlace();
+            GPanelView.ShipController.CheckCorectPlace();
         }
         public override void IVisible_MouseEnter(object sender, MouseEventArgs e) 
         {

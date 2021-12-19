@@ -11,12 +11,19 @@ namespace LibraryBattleship
     {
         public enum TypePacket
         {
-            NewGame,
-            FindGame,
-            Data
+            CreateNewGame,
+            GetListGame,
+            ConectedTo,
+            Connected,
+            Data,
+            Error,
+            Message,
+            Ready,
+            Fire
         } 
         public TypePacket Type { set; get; }
         public object Data { set; get; }
-       
-    }
+        public string ErrorMessage{ set; get; }
+
+}
 }

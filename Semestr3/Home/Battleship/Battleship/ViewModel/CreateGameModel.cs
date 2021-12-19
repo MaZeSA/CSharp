@@ -46,9 +46,31 @@ namespace Battleship.ViewModel
         {
             await TCPClient.ConnectAsync();
             VisibilityWait = Visibility.Visible;
-            var t = await TCPClient.CreateGameAsync(NewGame);
-            VisibilityWait = Visibility.Collapsed;
-            (new CommandOpenMenu()).Execute(MenuControl.VisualElementsModel);
+            var t = await CreateGameAsync(NewGame);
+            if (t)
+            {
+                VisibilityWait = Visibility.Collapsed;
+                MenuControl.GameModel.GPanelView.GameStarted(TCPClient);
+            }
+            else
+            {
+                MessageBox.Show("Error Game Create");
+            }
+        }
+
+
+        public async Task<bool> CreateGameAsync(NewGame newGame)
+        {
+            var re = await Task.Run(() => TCPClient.WriteStramAsync(new Packet { Type = Packet.TypePacket.CreateNewGame, Data = newGame }));
+            Packet p = await TCPClient.ReadStreamAsync();
+
+            if (p.Type == Packet.TypePacket.CreateNewGame)
+            {
+                var nG = p.Data as NewGame;
+                if(nG.StatusGame == NewGame.Status.Created)
+                    return true;
+            }
+            return false;
         }
 
         public void Show()
