@@ -22,6 +22,28 @@ namespace Battleship.ViewModel.Ships
         public int Length { set; get; }
         public string Name { set; get; }
 
+        public bool Life
+        {
+            get 
+            {
+                bool dead = true;
+                foreach (var b in VisulBoodies)
+                {
+                    if (dead) dead = b.ShotShow;
+                }
+
+                return !dead;
+            }
+            set
+            {
+                if(!value)
+                    foreach (var b in VisulBoodies)
+                    {
+                        b.ShotShow = true;
+                    }
+            }
+        }
+
         public Ship(GPanelView gPanelView) : base(gPanelView)
         {
             VisulBoodies = new List<IBoody>();
@@ -154,17 +176,23 @@ namespace Battleship.ViewModel.Ships
             if (!state && rotate)
                 Rotate();
         }
-        public override bool Shot(int row, int column)
+
+       
+
+        public override bool? Shot(int row, int column, bool mis)
         {
+            bool? result = null;
+          
             foreach (var bood in VisulBoodies)
             {
                 if (bood.Column == column && bood.Row == row)
                 {
-                    bood.ShotShow = !bood.ShotShow;
-                    return true;
+                    result = bood.ShotShow = true;
+                    break;
                 }
             }
-            return false;
+
+            return result;
         }
     }
 }

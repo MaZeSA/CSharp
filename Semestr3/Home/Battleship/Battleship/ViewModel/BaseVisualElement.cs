@@ -129,7 +129,7 @@ namespace Battleship.ViewModel
         {
             Visual = state;
         }
-        public virtual bool Shot(int row, int column)
+        public virtual bool? Shot(int row, int column, bool mis)
         {
             throw new NotImplementedException();
         }

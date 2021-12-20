@@ -36,6 +36,6 @@ namespace Battleship.ViewModel.Interfaces
         //void CheckMove(List<IVisible> obj);
         void Rotate();
         void SetVisual(bool state);
-        bool Shot(int row, int column);
+        bool? Shot(int row, int column, bool mis);
     }
 }

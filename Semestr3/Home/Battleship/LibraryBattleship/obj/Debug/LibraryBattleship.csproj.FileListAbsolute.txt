@@ -4,3 +4,9 @@ C:\Users\MaZeSa\Desktop\Battleship\LibraryBattleship\obj\Debug\LibraryBattleship
 C:\Users\MaZeSa\Desktop\Battleship\LibraryBattleship\obj\Debug\LibraryBattleship.dll
 C:\Users\MaZeSa\Desktop\Battleship\LibraryBattleship\obj\Debug\LibraryBattleship.pdb
 C:\Users\MaZeSa\Desktop\Battleship\LibraryBattleship\obj\Debug\LibraryBattleship.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\Battleship\LibraryBattleship\bin\Debug\LibraryBattleship.dll
+D:\Git\Semestr3\Home\Battleship\LibraryBattleship\bin\Debug\LibraryBattleship.pdb
+D:\Git\Semestr3\Home\Battleship\LibraryBattleship\obj\Debug\LibraryBattleship.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\Battleship\LibraryBattleship\obj\Debug\LibraryBattleship.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\Battleship\LibraryBattleship\obj\Debug\LibraryBattleship.dll
+D:\Git\Semestr3\Home\Battleship\LibraryBattleship\obj\Debug\LibraryBattleship.pdb

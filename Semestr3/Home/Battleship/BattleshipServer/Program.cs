@@ -19,7 +19,7 @@ namespace BattleshipServer
         static void Main(string[] args)
         {
 
-           var proc= Process.Start(@"C:\Users\MaZeSa\Desktop\Battleship\Battleship\bin\Debug\Battleship.exe");
+           var proc= Process.Start(@"D:\Git\Semestr3\Home\Battleship\Battleship\bin\Debug\Battleship.exe");
 
             TcpListener server = null;
             try

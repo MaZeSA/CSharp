@@ -27,11 +27,19 @@ namespace Battleship.ViewModel.GamePanels.Pixels
             VisulBoodies.Add(new Pixel(gPanelView, this, 0) { BackgroundBrush = this.BackgroundBrush }); 
         }
 
-        public override bool Shot(int row, int column)
+        public override bool? Shot(int row, int column, bool mis)
         {
-            if (row != Row || column != Column) return false;
-            ImageSource = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Battleship;component/Resources/vzriv.png", UriKind.RelativeOrAbsolute));
-            return true;
+            if (row != Row || column != Column) return null;
+            if (mis)
+            {
+                VisulBoodies[0].ShotShow = true;
+            }
+            else
+            {
+                ImageSource = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Battleship;component/Resources/vzriv.png", UriKind.RelativeOrAbsolute));
+            }
+          
+            return false;
         }
 
         //public override void UIElement_OnDragEnter(object sender, DragEventArgs e)

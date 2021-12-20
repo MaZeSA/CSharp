@@ -22,18 +22,35 @@ namespace Battleship.ViewModel.GamePanels
         public const int CONST_R = 10;
         public ObservableCollection<IVisible> VisibleObjects { set; get; } = new ObservableCollection<IVisible>();
         public GPanelView GPanelView { get; }
-          
-        public void Shot(int row, int column)
+
+        public bool Shot(int row, int column, bool mis)
         {
-            //foreach (var r in GPanelView.ShipController.Ships)
-            //{
-            //    var t = r.Shot(row, column);
-            //    if (t) return;
-            //}
+            bool? result = null;
+            foreach (var r in GPanelView.ShipController.Ships)
+            {
+                result = r.Shot(row, column, mis);
+                if (result != null)
+                {
+                    return result.Value;
+                }
+            }
 
             foreach (var r in VisibleObjects)
             {
-                r.Shot(row, column);
+                result = r.Shot(row, column, mis);
+                if (result != null)
+                {
+                    return result.Value;
+                }
+            }
+            return false;
+        }
+
+        public void Marker(int row, int column, bool mis)
+        {
+            foreach (var r in VisibleObjects)
+            {
+                r.Shot(row, column, mis);
             }
         }
 

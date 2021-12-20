@@ -28,6 +28,8 @@ namespace Battleship.ViewModel
         public CommandSendChatMessage CommandSendChatMessage { set; get; }
         public CommandReady CommandReady { set; get; }
 
+        public List<Ship> DeadShips { set; get; } = new List<Ship>();
+
         bool meReady = false;
         bool enemyReady = false;
 
@@ -46,6 +48,79 @@ namespace Battleship.ViewModel
             //ChatMessages.Add(new ChatMessage { Message = "Big test mesage", Who = HorizontalAlignment.Right, BackgroundBrush = Brushes.LightGreen });
         }
 
+        private void AddEnemyDeadShip(List<DeadShip> deadShips)
+        {
+            foreach(var s in deadShips )
+            {
+                Ship ship = null;
+                switch(s.Type)
+                {
+                    case ShipType.Corvette:
+                        {
+                            ship = new ShipCorvette(this);
+                            break;
+                        }
+                    case ShipType.Cruiser:
+                        {
+                            ship = new ShipCruiser(this);
+                            break;
+                        }
+                    case ShipType.Destroyer:
+                        {
+                            ship = new ShipDestroyer(this);
+                            break;
+                        }
+                    case ShipType.Frigate:
+                        {
+                            ship = new ShipFrigate(this);
+                            break;
+                        }
+
+                }
+                ship.Column = s.Column;
+                ship.Row = s.Row;
+                ship.RowSpan = s.RowSpan;
+                ship.ColumnSpan = s.ColumnSpan;
+              
+                ship.Life = false;
+
+                EnemyVisualElementsModel.AddVisibleObj(ship);
+            }
+        }
+
+        public List<DeadShip> GetNewDeadShip()
+        {
+            var res = new List<DeadShip>();
+          
+            foreach(var ship in ShipController.Ships)
+            {
+                if(ship.Life== false)
+                {
+                    if(DeadShips.IndexOf(ship) <0)
+                    {
+                        DeadShips.Add(ship);
+
+                        DeadShip deadShip = new DeadShip
+                        {
+                            Column = ship.Column,
+                            Row = ship.Row,
+                            ColumnSpan = ship.ColumnSpan,
+                            RowSpan = ship.RowSpan,
+                            Type = (ShipType)ship.Length
+                        };
+
+                        res.Add(deadShip);
+                    }
+                }
+            }
+            return res;
+        }
+
+        public async void ReturnShot(Dictionary<int[], bool> keys)
+        {
+            await TCPClient.WriteStramAsync(new Packet { Type = Packet.TypePacket.Fire, Data = new Fire { FireType = Fire.Type.Answer, Pointers = keys, DeadShips = GetNewDeadShip() } });
+        }
+
         public async void Shot(List<int[]> points)
         { 
             Dictionary<int[], bool> keys = new Dictionary<int[], bool>();
@@ -53,7 +128,7 @@ namespace Battleship.ViewModel
             {
                 keys.Add(p, false);
 
-                EnemyVisualElementsModel.Shot(p[0], p[1]);
+                //EnemyVisualElementsModel.Shot(p[0], p[1]);
             }
 
             await TCPClient.WriteStramAsync(new Packet { Type = Packet.TypePacket.Fire, Data = new Fire { FireType = Fire.Type.Fire, Pointers = keys } }) ;
@@ -102,21 +177,39 @@ namespace Battleship.ViewModel
                     case Packet.TypePacket.Ready:
                         {
                             EnemyVisualElementsModel.ClientReady();
-                           
+
                             enemyReady = true;
                             if (meReady && enemyReady) AllReady();
-                          
+
                             break;
                         }
                     case Packet.TypePacket.Fire:
                         {
-                            foreach (var t in (packet.Data as Fire).Pointers.Keys)
+                            var fire = packet.Data as Fire;
+
+                            if (fire.FireType == Fire.Type.Fire)
                             {
-                                VisualElementsModel.Shot(t[0], t[1]);
+                                Dictionary<int[], bool> keys = new Dictionary<int[], bool>();
+                                foreach (var t in fire.Pointers.Keys)
+                                {
+                                    bool result = VisualElementsModel.Shot(t[0], t[1], false);
+                                    keys.Add(new int[2] { t[0], t[1] }, result);
+                                }
+                                ReturnShot(keys);
+                            }
+                            else
+                            {
+                                foreach (var t in fire.Pointers)
+                                {
+                                    EnemyVisualElementsModel.Marker(t.Key[0], t.Key[1], t.Value);
+                                }
+                                if(fire.DeadShips.Count >0)
+                                {
+                                    AddEnemyDeadShip(fire.DeadShips);
+                                }
                             }
                             break;
                         }
-
                 }
             }
         }

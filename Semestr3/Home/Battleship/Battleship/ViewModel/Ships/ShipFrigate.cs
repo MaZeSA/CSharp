@@ -12,10 +12,10 @@ namespace Battleship.ViewModel.Ships
 {
     public class ShipFrigate : Ship
     {
-        public ShipFrigate(GPanelView gameModel, int r, int c) : base(gameModel)
+        public ShipFrigate(GPanelView gameModel/*, int r, int c*/) : base(gameModel)
         {
             Length = 2;
-            Row = 2;
+            Row = 1;
             ColumnSpan = Length;
             //BitmapUri = new Uri("pack://application:,,,/Resources/Frigate.png");
             BitmapUri = new Uri("/Battleship;component/Resources/Frigate.png", UriKind.RelativeOrAbsolute);

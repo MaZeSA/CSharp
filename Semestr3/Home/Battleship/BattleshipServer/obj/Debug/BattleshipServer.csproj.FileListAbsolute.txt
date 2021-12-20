@@ -15,3 +15,13 @@ C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.c
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csproj.CopyComplete
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.exe
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.pdb
+D:\Git\Semestr3\Home\Battleship\BattleshipServer\bin\Debug\BattleshipServer.exe.config
+D:\Git\Semestr3\Home\Battleship\BattleshipServer\bin\Debug\BattleshipServer.exe
+D:\Git\Semestr3\Home\Battleship\BattleshipServer\bin\Debug\BattleshipServer.pdb
+D:\Git\Semestr3\Home\Battleship\BattleshipServer\bin\Debug\LibraryBattleship.dll
+D:\Git\Semestr3\Home\Battleship\BattleshipServer\bin\Debug\LibraryBattleship.pdb
+D:\Git\Semestr3\Home\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csprojAssemblyReference.cache
+D:\Git\Semestr3\Home\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csproj.CopyComplete
+D:\Git\Semestr3\Home\Battleship\BattleshipServer\obj\Debug\BattleshipServer.exe
+D:\Git\Semestr3\Home\Battleship\BattleshipServer\obj\Debug\BattleshipServer.pdb

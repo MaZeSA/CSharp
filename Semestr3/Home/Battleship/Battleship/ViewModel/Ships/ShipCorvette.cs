@@ -12,11 +12,11 @@ namespace Battleship.ViewModel.Ships
 {
     public class ShipCorvette: Ship
     {
-        public ShipCorvette(GPanelView gameModel, int row, int column) : base(gameModel)
+        public ShipCorvette(GPanelView gameModel) : base(gameModel)
         {
             Length = 1;
-            Row = row;
-            Column = column;
+            Row = 1;
+            Column = 1;
             ColumnSpan = Length;
             //BitmapUri = new Uri("pack://application:,,,/Resources/Corvette.png");
             BitmapUri = new Uri("/Battleship;component/Resources/Corvette.png", UriKind.RelativeOrAbsolute);

@@ -1,5 +1,4 @@
 D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\MainWindow.g.cs
-D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\ViewModel\Ships\PhipView.g.cs
 D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\App.g.cs
 D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\Battleship_MarkupCompile.cache
@@ -8,7 +7,6 @@ D:\Git\Semestr3\Home\Battleship\Battleship\bin\Debug\Battleship.exe.config
 D:\Git\Semestr3\Home\Battleship\Battleship\bin\Debug\Battleship.exe
 D:\Git\Semestr3\Home\Battleship\Battleship\bin\Debug\Battleship.pdb
 D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\MainWindow.baml
-D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\ViewModel\Ships\PhipView.baml
 D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\Battleship.g.resources
 D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\Battleship.Properties.Resources.resources
 D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\Battleship.csproj.GenerateResource.cache
@@ -159,3 +157,15 @@ C:\Users\MaZeSa\Desktop\Battleship\Battleship\obj\Debug\Battleship.csproj.CopyCo
 C:\Users\MaZeSa\Desktop\Battleship\Battleship\obj\Debug\Battleship.exe
 C:\Users\MaZeSa\Desktop\Battleship\Battleship\obj\Debug\Battleship.pdb
 C:\Users\MaZeSa\Desktop\Battleship\Battleship\obj\Debug\App.baml
+D:\Git\Semestr3\Home\Battleship\Battleship\bin\Debug\LibraryBattleship.dll
+D:\Git\Semestr3\Home\Battleship\Battleship\bin\Debug\Microsoft.Expression.Interactions.dll
+D:\Git\Semestr3\Home\Battleship\Battleship\bin\Debug\System.Windows.Interactivity.dll
+D:\Git\Semestr3\Home\Battleship\Battleship\bin\Debug\LibraryBattleship.pdb
+D:\Git\Semestr3\Home\Battleship\Battleship\bin\Debug\Microsoft.Expression.Interactions.xml
+D:\Git\Semestr3\Home\Battleship\Battleship\bin\Debug\System.Windows.Interactivity.xml
+D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\ViewModel\GamePanels\VisulElementController.g.cs
+D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\ViewModel\GPanel.g.cs
+D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\App.baml
+D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\ViewModel\GamePanels\VisulElementController.baml
+D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\ViewModel\GPanel.baml
+D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\Battleship.csproj.CopyComplete

@@ -12,11 +12,11 @@ namespace Battleship.ViewModel.Ships
 {
     public class ShipCruiser : Ship
     {
-        public ShipCruiser(GPanelView gPanelView, int row, int column) : base(gPanelView)
+        public ShipCruiser(GPanelView gPanelView/*, int row, int column*/) : base(gPanelView)
         {
             Length = 4;
-            Row = row;
-            Column = column;
+            Row = 1;
+            Column = 1;
             ColumnSpan = Length;
             //BitmapUri = new Uri("pack://application:,,,/Resources/Cruiser.png");;component
             BitmapUri = new Uri("/Battleship;component/Resources/Cruiser.png", UriKind.RelativeOrAbsolute);
