@@ -62,9 +62,9 @@ namespace Battleship.ViewModel.GamePanels
                 for (int t = 0; t < CONST_C; t++)
                     VisibleObjects.Add(new EntityPixel(gPanelView, i, t));
 
-            var BitmapUri = new Uri("/Battleship;component/Resources/vzriv.png", UriKind.RelativeOrAbsolute);
+            //var BitmapUri = new Uri("/Battleship;component/Resources/vzriv.png", UriKind.RelativeOrAbsolute);
 
-            VisibleObjects[33].ImageSource = new System.Windows.Media.Imaging.BitmapImage(BitmapUri);
+            //VisibleObjects[33].ImageSource = new System.Windows.Media.Imaging.BitmapImage(BitmapUri);
         }
         public void AddVisibleObj(IVisible obj)
         {

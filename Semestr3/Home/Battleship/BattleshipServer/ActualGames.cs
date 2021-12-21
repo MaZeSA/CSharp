@@ -16,6 +16,8 @@ namespace BattleshipServer
 
         public NewGame Game { set; get; }
 
+        TCPClient firstStep { set; get; }
+
         public async void Lissen(TCPClient client)
         {
             TCPClient frend = client == Server ? Client : Server;
@@ -28,7 +30,7 @@ namespace BattleshipServer
                 while (true)
                 {
                     Packet packet = await ReadData(client);
-
+                 
                     switch (packet?.Type)
                     {
                         case Packet.TypePacket.Message:
@@ -41,13 +43,32 @@ namespace BattleshipServer
                             {
                                 Console.WriteLine("Гравець готовий... " + ip);
                                 await SendData(frend, packet);
+
+                                if (firstStep is null) firstStep = client;
+                                else
+                                {
+                                    packet.Type = Packet.TypePacket.Fire;
+                                    packet.Data = new Fire { FireType = Fire.Type.Answer, StepPermission = true };
+                                    await SendData(firstStep, packet);
+                                }
                                 break;
                             }
                         case Packet.TypePacket.Fire:
-                            {
-                                if ((packet.Data as Fire).FireType == Fire.Type.Answer)
+                            {   
+                                var fire = (packet.Data as Fire);
+                                
+                                if (fire.FireType == Fire.Type.Answer)
                                 {
                                     Console.WriteLine("Гравець повернув пезультат пострілу для" + ip);
+                                    fire.StepPermission = false;
+                                    foreach (var r in fire.Pointers.Values)
+                                    {
+                                        if (r)
+                                        {
+                                            fire.StepPermission = true;
+                                            break;
+                                        }
+                                    }
                                 }
                                 else
                                 {

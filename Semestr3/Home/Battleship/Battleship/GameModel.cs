@@ -15,12 +15,20 @@ namespace Battleship
         public MenuControl MenuControl { set; get; }
 
         public GPanelView GPanelView { set; get; }
+        public CommandEndGame CommandEndGame { set; get; }
 
         public GameModel()
         {
             MenuControl = new MenuControl(this);
             GPanelView = new GPanelView(this);
+            CommandEndGame = new CommandEndGame(this);
         }
 
+        public void Restart()
+        {
+            MenuControl = new MenuControl(this);
+            GPanelView = new GPanelView(this);
+            (new CommandOpenMenu()).Execute(MenuControl);
+        }
     }
 }

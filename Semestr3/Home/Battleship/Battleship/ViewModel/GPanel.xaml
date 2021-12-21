@@ -10,75 +10,87 @@
              xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" xmlns:converters="clr-namespace:Battleship.Converters" xmlns:viewmodel="clr-namespace:Battleship.ViewModel"
              mc:Ignorable="d" 
             DataContext="{DynamicResource dataContext}" Padding="4">
-
-    <DockPanel DataContext="{Binding GPanelView}">
-        <Border Visibility="Visible">
-            <DockPanel>
-                <Border DockPanel.Dock="Top" Background="#FF009FDA">
-                    <Grid>
-                        <DockPanel>
-                            <Button Command="{Binding CommandReady}" Margin="3" Padding="5" Content="Ready"/>
-                            <TextBlock Text="Preparing for game.." Padding="10" FontSize="14" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
-                        </DockPanel>
-                    </Grid>
-                </Border>
-                <DockPanel DockPanel.Dock="Bottom">
-                    <DockPanel DockPanel.Dock="Bottom">
-                        <Button Content="Send" Command="{Binding CommandSendChatMessage}" CommandParameter="{Binding ElementName=textMessag, Path=Text}" Padding="3" HorizontalAlignment="Center" DockPanel.Dock="Right"/>
-                        <TextBox x:Name="textMessag" Height="25" TextWrapping="Wrap" MaxLines="10" Background="#FFB7CEFF" HorizontalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto"/>
-                    </DockPanel>
-                    <ItemsControl ItemsSource="{Binding ChatMessages}" Background="#FFC8EDFF" Height="50">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border Background="{Binding BackgroundBrush}" HorizontalAlignment="{Binding Who}" Padding="4" CornerRadius="5" Margin="7,1">
-                                    <TextBlock Margin="3" Text="{Binding Message}" FontSize="10"/>
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-                </DockPanel>
-                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-                    <local:VisulElementController DataContext="{Binding VisualElementsModel}"/>
-                    <DockPanel DataContext="{Binding ShipController}">
+    <Grid DataContext="{Binding GPanelView}">
+        <DockPanel>
+            <Border Visibility="Visible">
+                <DockPanel>
+                    <Border DockPanel.Dock="Top" Background="#FF009FDA">
                         <Grid>
-                            <Border Width="50" Background="#FF383838"></Border>
-                            <ListBox ItemsSource="{Binding Ships}">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel>
-                                            <Border Width="100" Height="20" Background="{Binding BackgroundBrush}" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
-                                                <Grid>
-                                                    <Image Source="{Binding ImageSource}"></Image>
-                                                </Grid>
-                                                <i:Interaction.Triggers>
-                                                    <i:EventTrigger EventName="MouseDown">
-                                                        <ei:CallMethodAction MethodName="Grid_MouseDown" TargetObject="{Binding}" />
-                                                    </i:EventTrigger>
-                                                </i:Interaction.Triggers>
-                                            </Border>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                                <ListBox.ItemContainerStyle>
-                                    <Style TargetType="ListBoxItem">
-                                        <Style.Triggers >
-                                            <DataTrigger Binding="{Binding Visual }" Value="true">
-                                                <Setter Property="Visibility" Value="Collapsed"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </ListBox.ItemContainerStyle>
-                            </ListBox>
+                            <DockPanel>
+                                <Button Command="{Binding CommandReady}" Margin="3" Padding="5" Content="Ready"/>
+                                <TextBlock Text="Preparing for game.." Padding="10" FontSize="14" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel Visibility="{Binding StepPanelVisibility}" Background="{Binding BackgroundBrush}">
+                                <TextBlock Text="{Binding StepString}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+                            </DockPanel>
                         </Grid>
+                    </Border>
+                    <DockPanel DockPanel.Dock="Bottom">
+                        <DockPanel DockPanel.Dock="Bottom">
+                            <Button Content="Send" Command="{Binding CommandSendChatMessage}" CommandParameter="{Binding ElementName=textMessag, Path=Text}" Padding="3" HorizontalAlignment="Center" DockPanel.Dock="Right"/>
+                            <TextBox x:Name="textMessag" Height="25" TextWrapping="Wrap" MaxLines="10" Background="#FFB7CEFF" HorizontalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto"/>
+                        </DockPanel>
+                        <ItemsControl ItemsSource="{Binding ChatMessages}" Background="#FFC8EDFF" Height="50">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="{Binding BackgroundBrush}" HorizontalAlignment="{Binding Who}" Padding="4" CornerRadius="5" Margin="7,1">
+                                        <TextBlock Margin="3" Text="{Binding Message}" FontSize="10"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
                     </DockPanel>
-                    <local:VisulElementController DataContext="{Binding EnemyVisualElementsModel}"/>
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                        <local:VisulElementController DataContext="{Binding VisualElementsModel}"/>
+                        <DockPanel DataContext="{Binding ShipController}">
+                            <Grid>
+                                <Border Width="50" Background="#FF383838"></Border>
+                                <ListBox ItemsSource="{Binding Ships}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <Border Width="100" Height="20" Background="{Binding BackgroundBrush}" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
+                                                    <Grid>
+                                                        <Image Source="{Binding ImageSource}"></Image>
+                                                    </Grid>
+                                                    <i:Interaction.Triggers>
+                                                        <i:EventTrigger EventName="MouseDown">
+                                                            <ei:CallMethodAction MethodName="Grid_MouseDown" TargetObject="{Binding}" />
+                                                        </i:EventTrigger>
+                                                    </i:Interaction.Triggers>
+                                                </Border>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Style.Triggers >
+                                                <DataTrigger Binding="{Binding Visual }" Value="true">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                </ListBox>
+                            </Grid>
+                        </DockPanel>
+                        <local:VisulElementController DataContext="{Binding EnemyVisualElementsModel}"/>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+        </DockPanel>
+        <Grid Background="#71000000" Visibility="{Binding EndGameElementVisibility}">
+            <Border Background="{Binding EndGameBackgroundBrush}" DockPanel.Dock="Top" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock Padding="30" Text="{Binding EndGameString}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48"/>
+                    <Button Content="OK" Command="{Binding GameModel.CommandEndGame}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Width="100" Background="#FFA0D4FF" Margin="5"/>
                 </StackPanel>
-            </DockPanel>
-        </Border>
-    </DockPanel>
+            </Border>
+        </Grid>
+    </Grid>
 </UserControl>

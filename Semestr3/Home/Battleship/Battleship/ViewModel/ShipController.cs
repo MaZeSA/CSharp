@@ -31,7 +31,7 @@ namespace Battleship.ViewModel
                 //Ships.Add(new ShipCorvette(GPanelView, 1, 1));
                 //Ships.Add(new ShipCorvette(GPanelView, 2, 1));
                 //Ships.Add(new ShipCorvette(GPanelView, 1, 1));
-                Ships.Add(new ShipCorvette(GPanelView));
+                //Ships.Add(new ShipCorvette(GPanelView));
             }
             catch { }
         }

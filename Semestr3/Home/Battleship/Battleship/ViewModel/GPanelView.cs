@@ -48,6 +48,20 @@ namespace Battleship.ViewModel
             //ChatMessages.Add(new ChatMessage { Message = "Big test mesage", Who = HorizontalAlignment.Right, BackgroundBrush = Brushes.LightGreen });
         }
 
+        private void Win()
+        {
+            EndGameBackgroundBrush = new SolidColorBrush(Color.FromArgb(150, 7, 112, 49));
+            EndGameString = "You Win!!";
+            EndGameElementVisibility = Visibility.Visible;
+        }
+        private void Lost()
+        {
+            EndGameBackgroundBrush = new SolidColorBrush(Color.FromArgb(150, 255, 0, 0));
+            EndGameString = "You lost!!";
+            EndGameElementVisibility = Visibility.Visible;
+        }
+
+        int countEnemyDeadShip = 0;
         private void AddEnemyDeadShip(List<DeadShip> deadShips)
         {
             foreach(var s in deadShips )
@@ -85,6 +99,9 @@ namespace Battleship.ViewModel
                 ship.Life = false;
 
                 EnemyVisualElementsModel.AddVisibleObj(ship);
+                countEnemyDeadShip++;
+
+                if (countEnemyDeadShip == ShipController.Ships.Count) Win();
             }
         }
 
@@ -110,6 +127,7 @@ namespace Battleship.ViewModel
                         };
 
                         res.Add(deadShip);
+                        if (DeadShips.Count == ShipController.Ships.Count) Lost();
                     }
                 }
             }
@@ -122,21 +140,23 @@ namespace Battleship.ViewModel
         }
 
         public async void Shot(List<int[]> points)
-        { 
+        {
+            if (!StepPermission) return;
+            StepPermission = false;
+
             Dictionary<int[], bool> keys = new Dictionary<int[], bool>();
             foreach (int[] p in points)
             {
                 keys.Add(p, false);
-
-                //EnemyVisualElementsModel.Shot(p[0], p[1]);
             }
-
+            
             await TCPClient.WriteStramAsync(new Packet { Type = Packet.TypePacket.Fire, Data = new Fire { FireType = Fire.Type.Fire, Pointers = keys } }) ;
         }
 
         public void AllReady()
         {
             EnemyVisualElementsModel.BlackEnemyPanelVisibility = Visibility.Collapsed;
+            StepPanelVisibility = Visibility.Visible;
         }
 
         public async void Ready()
@@ -189,15 +209,21 @@ namespace Battleship.ViewModel
 
                             if (fire.FireType == Fire.Type.Fire)
                             {
+                                bool stepP = true;
+
                                 Dictionary<int[], bool> keys = new Dictionary<int[], bool>();
                                 foreach (var t in fire.Pointers.Keys)
                                 {
                                     bool result = VisualElementsModel.Shot(t[0], t[1], false);
                                     keys.Add(new int[2] { t[0], t[1] }, result);
+
+                                    if (result) stepP = false;
                                 }
+
                                 ReturnShot(keys);
+                                StepPermission = stepP;
                             }
-                            else
+                            else if (fire.FireType == Fire.Type.Answer)
                             {
                                 foreach (var t in fire.Pointers)
                                 {
@@ -207,6 +233,8 @@ namespace Battleship.ViewModel
                                 {
                                     AddEnemyDeadShip(fire.DeadShips);
                                 }
+
+                                StepPermission = fire.StepPermission;
                             }
                             break;
                         }
@@ -220,11 +248,77 @@ namespace Battleship.ViewModel
             await TCPClient.WriteStramAsync(new Packet { Data = message, Type = Packet.TypePacket.Message });
         }
 
+        bool stepPermission = false;
+        public bool StepPermission
+        {
+            set
+            {
+                if (value)
+                {
+                    StepString = "You Step";
+                    BackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 69, 232, 91));
+                }
+                else
+                {
+                    StepString = "Enemy Step";
+                    BackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 0, 117, 143));
+                }
+                stepPermission = value;
+            }
+            get => stepPermission;
+        }
+        string stepString = "Enemy Step";
+        public string StepString
+        {
+            set
+            {
+                stepString = value; OnNotify();
+
+            }
+            get => stepString;
+        }
+       
+        SolidColorBrush endGameBackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 0, 117, 143));
+        public virtual SolidColorBrush EndGameBackgroundBrush
+        {
+            get => endGameBackgroundBrush;
+            set { endGameBackgroundBrush = value; OnNotify(); }
+        }
+        Visibility endGameElementVisibility = Visibility.Collapsed;
+        public Visibility EndGameElementVisibility
+        {
+            set { endGameElementVisibility = value; OnNotify(); }
+            get => endGameElementVisibility;
+        }
+        string endGameString = "You win!!";
+        public string EndGameString
+        {
+            set
+            {
+                endGameString = value; OnNotify();
+
+            }
+            get => endGameString;
+        }
+
+        SolidColorBrush backgroundBrush = new SolidColorBrush(Color.FromArgb(255, 0, 117, 143));
+        public virtual SolidColorBrush BackgroundBrush
+        {
+            get => backgroundBrush;
+            set { backgroundBrush = value; OnNotify(); }
+        }
         Visibility visualElementVisibility = Visibility.Collapsed;
         public Visibility VisualElementVisibility
         {
             set { visualElementVisibility = value; OnNotify(); }
             get => visualElementVisibility;
+        }
+
+        Visibility stepPanelVisibility = Visibility.Collapsed;
+        public Visibility StepPanelVisibility
+        {
+            set { stepPanelVisibility = value; OnNotify(); }
+            get => stepPanelVisibility;
         }
 
         public void Show()

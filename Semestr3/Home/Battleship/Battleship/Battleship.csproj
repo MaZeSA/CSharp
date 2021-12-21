@@ -66,6 +66,7 @@
     <Compile Include="Commands\CommandClick.cs" />
     <Compile Include="Commands\CommandCreateGame.cs" />
     <Compile Include="Commands\CommandConnecToGames.cs" />
+    <Compile Include="Commands\CommandEndGame.cs" />
     <Compile Include="Commands\CommandIVisibleRotate.cs" />
     <Compile Include="Commands\CommandIVisibleRemove.cs" />
     <Compile Include="Commands\CommandOpenMenu.cs" />

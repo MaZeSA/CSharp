@@ -37,6 +37,7 @@ namespace LibraryBattleship
         public Dictionary<int[], bool> Pointers { set; get; } = new Dictionary<int[], bool>();
 
         public List<DeadShip> DeadShips { set; get; } = new List<DeadShip>();
-       
+
+        public bool StepPermission { set; get; } = false;
     }
 }
