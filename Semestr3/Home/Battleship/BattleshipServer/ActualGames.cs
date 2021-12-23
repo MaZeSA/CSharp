@@ -27,10 +27,12 @@ namespace BattleshipServer
             Console.WriteLine("Клієнт почав слухати сервер... " + ip);
             try
             {
-                while (true)
+                bool run = true;
+
+                while (run)
                 {
                     Packet packet = await ReadData(client);
-                 
+
                     switch (packet?.Type)
                     {
                         case Packet.TypePacket.Message:
@@ -54,9 +56,9 @@ namespace BattleshipServer
                                 break;
                             }
                         case Packet.TypePacket.Fire:
-                            {   
+                            {
                                 var fire = (packet.Data as Fire);
-                                
+
                                 if (fire.FireType == Fire.Type.Answer)
                                 {
                                     Console.WriteLine("Гравець повернув пезультат пострілу для" + ip);
@@ -77,8 +79,18 @@ namespace BattleshipServer
                                 await SendData(frend, packet);
                                 break;
                             }
+                        case Packet.TypePacket.Stop:
+                            {
+                                run = false;
+                                continue;
+                            }
                     }
 
+                    if (!Client.Client.Connected)
+                    {
+                        Console.WriteLine("Клієнт відключився " + ip);
+                        break;
+                    }
                 }
             }
             catch (Exception ex)
@@ -88,6 +100,18 @@ namespace BattleshipServer
             finally
             {
                 Client.Close();
+
+                try
+                {
+                    if (!frend.Client.Connected)
+                    {
+                        Console.WriteLine("Клієнт відключився, передача напарнику " + ip);
+                        await SendData(frend, new Packet { Type = Packet.TypePacket.Stop });
+                    }
+                }
+                catch (Exception ex)
+                { Console.WriteLine(ex.Message); }
+
                 Server.Close();
             }
         }

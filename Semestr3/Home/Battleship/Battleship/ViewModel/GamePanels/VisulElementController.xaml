@@ -18,123 +18,150 @@
     </UserControl.Resources>
     <DockPanel>
         <!--DataContext="{Binding GPanelView.EnemyVisualElementsModel}">-->
-        <DockPanel Width="360" Height="360">
+        <DockPanel >
         
-            <Grid>
-                <Image Source="/Battleship;component/Resources/unnamed.jpg" Stretch="UniformToFill"></Image>
-                <ItemsControl ItemsSource="{Binding VisibleObjects}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="DragEnter">
-                                        <ei:CallMethodAction MethodName="UIElement_GridOnDragEnter" TargetObject="{Binding}" />
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </Grid>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border Background="{Binding BackgroundBrush}" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image Source="/Battleship;component/Resources/unnamed.jpg" Stretch="UniformToFill" Visibility="Collapsed" ></Image>
+                <DockPanel>
+                    <UniformGrid Width="360"  Columns="10" Height="20" DockPanel.Dock="Top" HorizontalAlignment="Left" Background="#CC7F7F7F">
+                        <TextBlock Text="A" Name="text1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="B" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}"  HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="C" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}"  HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="D" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}"  HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="E" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}"  HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="F" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}"  HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="G" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}"  HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="H" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}"  HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="I" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}"  HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="J" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}"  HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                    </UniformGrid>
+                    <UniformGrid Rows="10" DockPanel.Dock="Right" Width="20" Background="#CC7F7F7F">
+                        <TextBlock Text="A" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}" HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="B" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}" HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="C" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}" HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="D" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}"  HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="E" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}" HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="F" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}" HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="G" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}" HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="H" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}" HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="I" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}" HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                        <TextBlock Text="J" VerticalAlignment="{Binding ElementName=text1, Path=VerticalAlignment}"  HorizontalAlignment="{Binding ElementName=text1, Path=HorizontalAlignment}" Foreground="{Binding ElementName=text1, Path=Foreground}" FontSize="{Binding ElementName=text1, Path=FontSize}"/>
+                    </UniformGrid>
+                    <ItemsControl Width="360" Height="360" ItemsSource="{Binding VisibleObjects}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
                                 <Grid>
-                                    <Image Source="{Binding ImageSource}"></Image>
-                                    <Border Visibility="{Binding WrongBorder}" BorderBrush="#CCFF0000" BorderThickness="0" Margin="0" Background="#7FFF7171"></Border>
-                                    <ItemsControl ItemsSource="{Binding VisulBoodies}" AllowDrop="True">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <Grid>
-                                                    <Border Background="#02FFFFFF" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
-                                                        <i:Interaction.Triggers>
-                                                            <i:EventTrigger EventName="DragEnter">
-                                                                <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
-                                                            </i:EventTrigger>
-                                                        </i:Interaction.Triggers>
-                                                    </Border>
-                                                    <Border Padding="2" Visibility="{Binding ShotShow, Converter={StaticResource ConverterBoolToVisibility}}">
-                                                        <Path Stretch="Uniform" Data="{StaticResource closeStyle0}" Fill="#99F50C0C" Stroke="#E5511414"/>
-                                                    </Border>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <UniformGrid Columns="{Binding ColumnSpan}" Rows="{Binding RowSpan}"/>
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                    </ItemsControl>
-                                    
-                                    <!--<Label Content="{Binding TestString}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>-->
-                                    <!--Visibility="{Binding PopupIsOpen}"-->
-                                    <Border Visibility="{Binding PopupIsOpen}" Margin="-10, -15,-10,1" Background="#7F3B5393" HorizontalAlignment="Center" VerticalAlignment="Top" >
-                                        <StackPanel Orientation="Horizontal">
-                                            <Button Width="17" Height="17" Margin="4" Command="{Binding CommandIVisibleRemove}" CommandParameter="{Binding}" Background="{x:Null}" BorderBrush="{x:Null}">
-                                                <Path Stretch="UniformToFill" Data="{StaticResource closeStyle0}" Fill="Red" Stroke="#FF124D68"></Path>
-                                            </Button>
-                                            <Button Width="17" Height="17" Margin="4" Command="{Binding CommandIVisibleRotate}" Background="{x:Null}" BorderBrush="{x:Null}">
-                                                <Path Stretch="UniformToFill" Data="{StaticResource repeatStyle0}" Fill="#FF8EFF9D" Stroke="#FF093203">  </Path>
-                                            </Button> 
-                                        </StackPanel>
-                                    </Border>
-
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
                                     <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="MouseEnter">
-                                            <ei:CallMethodAction MethodName="IVisible_MouseEnter" TargetObject="{Binding}" />
-                                        </i:EventTrigger>
-                                        <i:EventTrigger EventName="MouseLeave">
-                                            <ei:CallMethodAction MethodName="IVisible_MouseLeave" TargetObject="{Binding}" />
-                                        </i:EventTrigger>
-                                        <i:EventTrigger EventName="MouseDown">
-                                            <ei:CallMethodAction MethodName="Grid_MouseDown" TargetObject="{Binding}" />
-                                        </i:EventTrigger>
-                                        <i:EventTrigger EventName="PreviewDragEnter">
-                                            <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
+                                        <i:EventTrigger EventName="DragEnter">
+                                            <ei:CallMethodAction MethodName="UIElement_GridOnDragEnter" TargetObject="{Binding}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemContainerStyle>
-                        <Style>
-                            <Setter Property="Grid.Column" 
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{Binding BackgroundBrush}" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
+                                    <Grid>
+                                        <Image Source="{Binding ImageSource}"></Image>
+                                        <Border Visibility="{Binding WrongBorder}" BorderBrush="#CCFF0000" BorderThickness="0" Margin="0" Background="#7FFF7171"></Border>
+                                        <ItemsControl ItemsSource="{Binding VisulBoodies}" AllowDrop="True">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Border Background="#02FFFFFF" BorderBrush="{Binding BorderBrush}" BorderThickness="{Binding BorderThickness}">
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="DragEnter">
+                                                                    <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </Border>
+                                                        <Border Padding="2" Visibility="{Binding ShotShow, Converter={StaticResource ConverterBoolToVisibility}}">
+                                                            <Path Stretch="Uniform" Data="{StaticResource closeStyle0}" Fill="#99F50C0C" Stroke="#E5511414"/>
+                                                        </Border>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <UniformGrid Columns="{Binding ColumnSpan}" Rows="{Binding RowSpan}"/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                        </ItemsControl>
+
+                                        <!--<Label Content="{Binding TestString}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>-->
+                                        <!--Visibility="{Binding PopupIsOpen}"-->
+                                        <Border Visibility="{Binding PopupIsOpen}" Margin="-10, -15,-10,1" Background="#7F3B5393" HorizontalAlignment="Center" VerticalAlignment="Top" >
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Width="17" Height="17" Margin="4" Command="{Binding CommandIVisibleRemove}" CommandParameter="{Binding}" Background="{x:Null}" BorderBrush="{x:Null}">
+                                                    <Path Stretch="UniformToFill" Data="{StaticResource closeStyle0}" Fill="Red" Stroke="#FF124D68"></Path>
+                                                </Button>
+                                                <Button Width="17" Height="17" Margin="4" Command="{Binding CommandIVisibleRotate}" Background="{x:Null}" BorderBrush="{x:Null}">
+                                                    <Path Stretch="UniformToFill" Data="{StaticResource repeatStyle0}" Fill="#FF8EFF9D" Stroke="#FF093203"></Path>
+                                                </Button>
+                                            </StackPanel>
+                                        </Border>
+
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="MouseEnter">
+                                                <ei:CallMethodAction MethodName="IVisible_MouseEnter" TargetObject="{Binding}" />
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="MouseLeave">
+                                                <ei:CallMethodAction MethodName="IVisible_MouseLeave" TargetObject="{Binding}" />
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="MouseDown">
+                                                <ei:CallMethodAction MethodName="Grid_MouseDown" TargetObject="{Binding}" />
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="PreviewDragEnter">
+                                                <ei:CallMethodAction MethodName="UIElement_OnDragEnter" TargetObject="{Binding}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style>
+                                <Setter Property="Grid.Column" 
                     Value="{Binding Column}" />
-                            <Setter Property="Grid.Row" 
+                                <Setter Property="Grid.Row" 
                     Value="{Binding Row}" />
-                            <Setter Property="Grid.ColumnSpan" 
+                                <Setter Property="Grid.ColumnSpan" 
                     Value="{Binding ColumnSpan}" />
-                            <Setter Property="Grid.RowSpan" 
+                                <Setter Property="Grid.RowSpan" 
                     Value="{Binding RowSpan}" />
-                        </Style>
-                    </ItemsControl.ItemContainerStyle>
-                </ItemsControl>
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                    </ItemsControl>
+
+                </DockPanel>
                 <Border Background="{Binding BackgroundBrush}" Visibility="{Binding BlackEnemyPanelVisibility}">
                     <DockPanel>
-                        <TextBlock Text="{Binding BlackPanelEnemyText}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="38" FontWeight="Bold" Foreground="#FF9E9E9E"/>
+                        <TextBlock Text="{Binding BlackPanelEnemyText}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="38" FontWeight="Bold" Foreground="White"/>
                     </DockPanel>
                 </Border>
             </Grid>

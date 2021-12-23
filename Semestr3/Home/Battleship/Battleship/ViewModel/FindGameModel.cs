@@ -13,12 +13,13 @@ using System.Windows;
 
 namespace Battleship.ViewModel
 {
-    public class FindGameModel : IMenu
+    public class FindGameModel : IMenu, INotifyPropertyChanged
     {
         private TCPClient TCPClient { set; get; }
         public MenuControl MenuControl { get; }
         public ObservableCollection<LiteGame> NewGames { set; get; } = new ObservableCollection<LiteGame>();
         public Commands.CommandConnecToGames CommandConnecToGames { set; get; } 
+     
         Visibility findGameVisibility = Visibility.Collapsed;
         public Visibility FindGameVisibility
         {

@@ -43,31 +43,19 @@ namespace LibraryBattleship
 
         public async Task<Packet> ReadStreamAsync()
         {
-            try
-            {
-                byte[] data = new byte[Client.ReceiveBufferSize];
-                int bytes = await Stream.ReadAsync(data, 0, data.Length);
-                Packet result = null;
+            byte[] data = new byte[Client.ReceiveBufferSize];
+            int bytes = await Stream.ReadAsync(data, 0, data.Length);
+            Packet result = null;
 
-                using (Stream streamread = new MemoryStream(data))
-                {
-                    byte[] t = new byte[bytes];
-                    streamread.Read(t, 0, bytes);
-
-                    result = t.Deserializer<Packet>();
-                }
-
-                return result;
-            }
-            catch (SocketException e)
+            using (Stream streamread = new MemoryStream(data))
             {
-                Console.WriteLine("SocketException: {0}", e);
+                byte[] t = new byte[bytes];
+                streamread.Read(t, 0, bytes);
+
+                result = t.Deserializer<Packet>();
             }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception: {0}", e.Message);
-            }
-            return null;
+
+            return result;
         }
 
         public void Close()

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Battleship.ViewModel.Interfaces
 {
-    public interface IMenu: INotifyPropertyChanged
+    public interface IMenu
     {
         void Show();
         void Back();

@@ -62,6 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\AbstractVisualStyleClass.cs" />
     <Compile Include="Class\ChatMessage.cs" />
     <Compile Include="Commands\CommandClick.cs" />
     <Compile Include="Commands\CommandCreateGame.cs" />
@@ -176,6 +177,10 @@
       <Name>LibraryBattleship</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\look.com.ua-126246.jpg" />
+    <Resource Include="Resources\photo_2021-12-22_21-30-15.jpg" />
+    <Resource Include="Resources\world-of-warships-wargaming-5505.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

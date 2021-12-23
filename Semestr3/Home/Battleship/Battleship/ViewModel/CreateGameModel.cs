@@ -1,4 +1,5 @@
 ﻿
+using Battleship.Class;
 using Battleship.Commands;
 using Battleship.ViewModel.Interfaces;
 using LibraryBattleship;
@@ -20,20 +21,9 @@ namespace Battleship.ViewModel
         public CommandCreateGame CommandCreateGame { set; get; }
         public NewGame NewGame { set; get; }
 
-        Visibility createGameVisibility = Visibility.Collapsed;
-        public Visibility CreateGameVisibility
-        {
-            set { createGameVisibility = value; OnNotify(); }
-            get => createGameVisibility;
-        }
-
-        Visibility visibilityWait = Visibility.Collapsed; 
-        public Visibility VisibilityWait
-        {
-            set { visibilityWait = value; OnNotify(); }
-            get => visibilityWait;
-        }
-      
+        public AbstractVisualStyleClass CreateGamaStyle { set; get; } = new AbstractVisualStyleClass();
+        public AbstractVisualStyleClass CreateGameWaitStyle { set; get; } = new AbstractVisualStyleClass();
+              
         public CreateGameModel(MenuControl menuControl)
         {
             TCPClient = new TCPClient();
@@ -45,11 +35,11 @@ namespace Battleship.ViewModel
         public async void CreateGame()
         {
             await TCPClient.ConnectAsync();
-            VisibilityWait = Visibility.Visible;
+            CreateGameWaitStyle.AbstractlementVisibility = Visibility.Visible;
             var t = await CreateGameAsync(NewGame);
             if (t)
             {
-                VisibilityWait = Visibility.Collapsed;
+                CreateGameWaitStyle.AbstractlementVisibility = Visibility.Collapsed;
                 MenuControl.GameModel.GPanelView.GameStarted(TCPClient);
             }
             else
@@ -75,20 +65,12 @@ namespace Battleship.ViewModel
 
         public void Show()
         {
-            CreateGameVisibility = Visibility.Visible;
+           CreateGamaStyle.AbstractlementVisibility  = Visibility.Visible;
         }
 
         public void Back()
         {
-            CreateGameVisibility = Visibility.Collapsed;
+            CreateGamaStyle.AbstractlementVisibility = Visibility.Collapsed;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnNotify([CallerMemberName] string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
-
-       
     }
 }

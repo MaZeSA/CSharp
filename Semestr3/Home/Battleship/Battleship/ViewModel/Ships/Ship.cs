@@ -154,8 +154,9 @@ namespace Battleship.ViewModel.Ships
 
             GPanelView.ShipController.CheckCorectPlace();
         }
-        public override void IVisible_MouseEnter(object sender, MouseEventArgs e) 
+        public override void IVisible_MouseEnter(object sender, MouseEventArgs e)
         {
+            if (GPanelView.IsReady) return;
             PopupIsOpen = Visibility.Visible;
         }
         public override void IVisible_MouseLeave(object sender, MouseEventArgs e) 
@@ -165,6 +166,8 @@ namespace Battleship.ViewModel.Ships
 
         public override void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (GPanelView.IsReady) return;
+
             DataObject data = new DataObject();
             data.SetData("Object", this);
 
@@ -176,8 +179,7 @@ namespace Battleship.ViewModel.Ships
             if (!state && rotate)
                 Rotate();
         }
-
-       
+           
 
         public override bool? Shot(int row, int column, bool mis)
         {

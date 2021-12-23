@@ -107,7 +107,7 @@ namespace Battleship.ViewModel.GamePanels
             }
             get => blackPanelEnemyText;
         }
-        SolidColorBrush backgroundBrush = Brushes.Gray;
+        SolidColorBrush backgroundBrush = new SolidColorBrush(Color.FromArgb(150, 122, 122, 122));
         public virtual SolidColorBrush BackgroundBrush
         {
             get => backgroundBrush;
@@ -123,13 +123,13 @@ namespace Battleship.ViewModel.GamePanels
         {
             BlackEnemyPanelVisibility = Visibility.Visible;
             BlackPanelEnemyText = "Waiting Enemy...";
-            BackgroundBrush = Brushes.Gray;
+            BackgroundBrush = new SolidColorBrush(Color.FromArgb(150, 122, 122, 122));
         }
         public void ClientReady()
         {
             BlackEnemyPanelVisibility = Visibility.Visible;
             BlackPanelEnemyText = "Ready!";
-            BackgroundBrush = Brushes.LightGreen;
+            BackgroundBrush = new SolidColorBrush(Color.FromArgb(150, 41, 240, 35));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

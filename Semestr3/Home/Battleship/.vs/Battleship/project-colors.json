@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "ac59d438-f796-4203-8366-2492a7b67bcb": {
+      "ProjectGuid": "ac59d438-f796-4203-8366-2492a7b67bcb",
+      "DisplayName": "Battleship",
+      "ColorIndex": 0
+    },
+    "a879a456-d959-4a07-a012-e737fe4b96f6": {
+      "ProjectGuid": "a879a456-d959-4a07-a012-e737fe4b96f6",
+      "DisplayName": "BattleshipServer",
+      "ColorIndex": 1
+    },
+    "ac071c6a-ff23-4ba1-8d84-a132605fbd46": {
+      "ProjectGuid": "ac071c6a-ff23-4ba1-8d84-a132605fbd46",
+      "DisplayName": "LibraryBattleship",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

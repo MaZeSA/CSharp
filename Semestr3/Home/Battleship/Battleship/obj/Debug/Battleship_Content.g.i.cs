@@ -8,8 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/corvette.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/ddestroyer.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/frigate.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/look.com.ua-126246.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/photo_2021-12-22_21-30-15.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/world-of-warships-wargaming-5505.jpg")]
 
 

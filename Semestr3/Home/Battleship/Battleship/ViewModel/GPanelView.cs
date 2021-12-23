@@ -28,9 +28,13 @@ namespace Battleship.ViewModel
         public CommandSendChatMessage CommandSendChatMessage { set; get; }
         public CommandReady CommandReady { set; get; }
 
+        public AbstractVisualStyleClass EndGameStyle { set; get; } = new AbstractVisualStyleClass();
+        public AbstractVisualStyleClass StepPanelStyle { set; get; } = new AbstractVisualStyleClass ();
+        public AbstractVisualStyleClass GPanelStyle { set; get; } = new AbstractVisualStyleClass ();
+
         public List<Ship> DeadShips { set; get; } = new List<Ship>();
 
-        bool meReady = false;
+        public bool IsReady { set; get; } = false;
         bool enemyReady = false;
 
         public GPanelView(GameModel gameModel)
@@ -41,24 +45,33 @@ namespace Battleship.ViewModel
             ShipController = new ShipController(this);
             CommandSendChatMessage = new CommandSendChatMessage(this);
             CommandReady = new CommandReady(this);
+ 
+            StepPermission = false;
+            IsReady = false;
 
             EnemyVisualElementsModel.WaitingClientConnect();
-
             //ChatMessages.Add(new ChatMessage { Message = "test mesage", Who = HorizontalAlignment.Left, BackgroundBrush = Brushes.LightSeaGreen }); 
             //ChatMessages.Add(new ChatMessage { Message = "Big test mesage", Who = HorizontalAlignment.Right, BackgroundBrush = Brushes.LightGreen });
         }
 
+        private void EndGame()
+        {
+            EndGameStyle.AbstractBackgroundBrush = new SolidColorBrush(Color.FromArgb(200, 72, 170, 230));
+            EndGameStyle.AbstractString = "Opponent left the game";
+            EndGameStyle.AbstractlementVisibility = Visibility.Visible;
+        }
+
         private void Win()
         {
-            EndGameBackgroundBrush = new SolidColorBrush(Color.FromArgb(150, 7, 112, 49));
-            EndGameString = "You Win!!";
-            EndGameElementVisibility = Visibility.Visible;
+           EndGameStyle.AbstractBackgroundBrush = new SolidColorBrush(Color.FromArgb(200, 7, 112, 49));
+           EndGameStyle.AbstractString  = "You Win!!";
+           EndGameStyle.AbstractlementVisibility = Visibility.Visible;
         }
         private void Lost()
         {
-            EndGameBackgroundBrush = new SolidColorBrush(Color.FromArgb(150, 255, 0, 0));
-            EndGameString = "You lost!!";
-            EndGameElementVisibility = Visibility.Visible;
+            EndGameStyle.AbstractBackgroundBrush = new SolidColorBrush(Color.FromArgb(200, 255, 0, 0));
+            EndGameStyle.AbstractString = "You lost!!";
+            EndGameStyle.AbstractlementVisibility = Visibility.Visible;
         }
 
         int countEnemyDeadShip = 0;
@@ -156,15 +169,15 @@ namespace Battleship.ViewModel
         public void AllReady()
         {
             EnemyVisualElementsModel.BlackEnemyPanelVisibility = Visibility.Collapsed;
-            StepPanelVisibility = Visibility.Visible;
+            StepPanelStyle.AbstractlementVisibility = Visibility.Visible;
         }
 
         public async void Ready()
         {
             await TCPClient.WriteStramAsync(new Packet { Type = Packet.TypePacket.Ready });
            
-            meReady = true;
-            if (meReady && enemyReady) AllReady();
+            IsReady = true;
+            if (IsReady && enemyReady) AllReady();
         }
      
         public void GameStarted(TCPClient client)
@@ -175,70 +188,93 @@ namespace Battleship.ViewModel
             WaitStart();
         }
 
-
         private async void WaitStart()
-        {
-            while (true)
+        {  
+            try
             {
-                Packet packet = await TCPClient.ReadStreamAsync();
+                bool run = true;
 
-                switch (packet.Type)
+                while (run)
                 {
-                    case Packet.TypePacket.Connected:
-                        {
-                            EnemyVisualElementsModel.ClientConnect();
-                            break;
-                        }
-                    case Packet.TypePacket.Message:
-                        {
-                            ChatMessages.Insert(0, new ChatMessage { Message = packet.Data.ToString(), Who = HorizontalAlignment.Right, BackgroundBrush = Brushes.LightGreen });
-                            break;
-                        }
-                    case Packet.TypePacket.Ready:
-                        {
-                            EnemyVisualElementsModel.ClientReady();
+                    Packet packet = await TCPClient.ReadStreamAsync();
 
-                            enemyReady = true;
-                            if (meReady && enemyReady) AllReady();
-
-                            break;
-                        }
-                    case Packet.TypePacket.Fire:
-                        {
-                            var fire = packet.Data as Fire;
-
-                            if (fire.FireType == Fire.Type.Fire)
+                 
+                    switch (packet?.Type)
+                    {
+                        case Packet.TypePacket.Connected:
                             {
-                                bool stepP = true;
-
-                                Dictionary<int[], bool> keys = new Dictionary<int[], bool>();
-                                foreach (var t in fire.Pointers.Keys)
-                                {
-                                    bool result = VisualElementsModel.Shot(t[0], t[1], false);
-                                    keys.Add(new int[2] { t[0], t[1] }, result);
-
-                                    if (result) stepP = false;
-                                }
-
-                                ReturnShot(keys);
-                                StepPermission = stepP;
+                                EnemyVisualElementsModel.ClientConnect();
+                                break;
                             }
-                            else if (fire.FireType == Fire.Type.Answer)
+                        case Packet.TypePacket.Message:
                             {
-                                foreach (var t in fire.Pointers)
-                                {
-                                    EnemyVisualElementsModel.Marker(t.Key[0], t.Key[1], t.Value);
-                                }
-                                if(fire.DeadShips.Count >0)
-                                {
-                                    AddEnemyDeadShip(fire.DeadShips);
-                                }
-
-                                StepPermission = fire.StepPermission;
+                                ChatMessages.Insert(0, new ChatMessage { Message = packet.Data.ToString(), Who = HorizontalAlignment.Right, BackgroundBrush = Brushes.LightGreen });
+                                break;
                             }
-                            break;
-                        }
+                        case Packet.TypePacket.Ready:
+                            {
+                                EnemyVisualElementsModel.ClientReady();
+
+                                enemyReady = true;
+                                if (IsReady && enemyReady) AllReady();
+
+                                break;
+                            }
+                        case Packet.TypePacket.Fire:
+                            {
+                                var fire = packet.Data as Fire;
+
+                                if (fire.FireType == Fire.Type.Fire)
+                                {
+                                    bool stepP = true;
+
+                                    Dictionary<int[], bool> keys = new Dictionary<int[], bool>();
+                                    foreach (var t in fire.Pointers.Keys)
+                                    {
+                                        bool result = VisualElementsModel.Shot(t[0], t[1], false);
+                                        keys.Add(new int[2] { t[0], t[1] }, result);
+
+                                        if (result) stepP = false;
+                                    }
+
+                                    ReturnShot(keys);
+                                    StepPermission = stepP;
+                                }
+                                else if (fire.FireType == Fire.Type.Answer)
+                                {
+                                    foreach (var t in fire.Pointers)
+                                    {
+                                        EnemyVisualElementsModel.Marker(t.Key[0], t.Key[1], t.Value);
+                                    }
+                                    if (fire.DeadShips.Count > 0)
+                                    {
+                                        AddEnemyDeadShip(fire.DeadShips);
+                                    }
+
+                                    StepPermission = fire.StepPermission;
+                                }
+                                break;
+                            }
+                        case Packet.TypePacket.Stop:
+                            {
+                                run = false;
+                                continue;
+                            }
+                    }
+                    if (!TCPClient.Client.Connected)
+                    {
+                        break;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                TCPClient.Close();
+                EndGame();
             }
         }
 
@@ -255,85 +291,26 @@ namespace Battleship.ViewModel
             {
                 if (value)
                 {
-                    StepString = "You Step";
-                    BackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 69, 232, 91));
+                    StepPanelStyle.AbstractString = "You Step";
+                    StepPanelStyle.AbstractBackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 69, 232, 91));
                 }
                 else
                 {
-                    StepString = "Enemy Step";
-                    BackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 0, 117, 143));
+                    StepPanelStyle.AbstractString = "Enemy Step";
+                    StepPanelStyle.AbstractBackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 0, 117, 143));
                 }
                 stepPermission = value;
             }
             get => stepPermission;
         }
-        string stepString = "Enemy Step";
-        public string StepString
-        {
-            set
-            {
-                stepString = value; OnNotify();
-
-            }
-            get => stepString;
-        }
-       
-        SolidColorBrush endGameBackgroundBrush = new SolidColorBrush(Color.FromArgb(255, 0, 117, 143));
-        public virtual SolidColorBrush EndGameBackgroundBrush
-        {
-            get => endGameBackgroundBrush;
-            set { endGameBackgroundBrush = value; OnNotify(); }
-        }
-        Visibility endGameElementVisibility = Visibility.Collapsed;
-        public Visibility EndGameElementVisibility
-        {
-            set { endGameElementVisibility = value; OnNotify(); }
-            get => endGameElementVisibility;
-        }
-        string endGameString = "You win!!";
-        public string EndGameString
-        {
-            set
-            {
-                endGameString = value; OnNotify();
-
-            }
-            get => endGameString;
-        }
-
-        SolidColorBrush backgroundBrush = new SolidColorBrush(Color.FromArgb(255, 0, 117, 143));
-        public virtual SolidColorBrush BackgroundBrush
-        {
-            get => backgroundBrush;
-            set { backgroundBrush = value; OnNotify(); }
-        }
-        Visibility visualElementVisibility = Visibility.Collapsed;
-        public Visibility VisualElementVisibility
-        {
-            set { visualElementVisibility = value; OnNotify(); }
-            get => visualElementVisibility;
-        }
-
-        Visibility stepPanelVisibility = Visibility.Collapsed;
-        public Visibility StepPanelVisibility
-        {
-            set { stepPanelVisibility = value; OnNotify(); }
-            get => stepPanelVisibility;
-        }
-
+           
         public void Show()
         {
-            VisualElementVisibility = Visibility.Visible;
+            GPanelStyle.AbstractlementVisibility = Visibility.Visible;
         }
-
         public void Back()
         {
-            VisualElementVisibility = Visibility.Collapsed;
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnNotify([CallerMemberName] string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+            GPanelStyle.AbstractlementVisibility = Visibility.Collapsed;
         }
     }
 }

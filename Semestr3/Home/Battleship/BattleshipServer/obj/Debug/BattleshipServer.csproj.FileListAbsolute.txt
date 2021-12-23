@@ -10,7 +10,6 @@ C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\bin\Debug\BattleshipServer.e
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\bin\Debug\BattleshipServer.pdb
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\bin\Debug\LibraryBattleship.dll
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\bin\Debug\LibraryBattleship.pdb
-C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csprojAssemblyReference.cache
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csproj.CoreCompileInputs.cache
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csproj.CopyComplete
 C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.exe
@@ -25,3 +24,5 @@ D:\Git\Semestr3\Home\Battleship\BattleshipServer\obj\Debug\BattleshipServer.cspr
 D:\Git\Semestr3\Home\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csproj.CopyComplete
 D:\Git\Semestr3\Home\Battleship\BattleshipServer\obj\Debug\BattleshipServer.exe
 D:\Git\Semestr3\Home\Battleship\BattleshipServer\obj\Debug\BattleshipServer.pdb
+C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csproj.AssemblyReference.cache
+C:\Users\MaZeSa\Desktop\Battleship\BattleshipServer\obj\Debug\BattleshipServer.csproj.SuggestedBindingRedirects.cache

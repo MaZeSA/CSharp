@@ -19,7 +19,10 @@ namespace LibraryBattleship
             Error,
             Message,
             Ready,
-            Fire
+            Fire,
+            Stop,
+            ServerClose,
+            ServerRestart
         } 
         public TypePacket Type { set; get; }
         public object Data { set; get; }

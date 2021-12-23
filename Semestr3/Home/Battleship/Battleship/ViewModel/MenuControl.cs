@@ -26,7 +26,7 @@ namespace Battleship.ViewModel
 
         public void ShowCteateGameMenu()
         {
-            CreateGameModel.CreateGameVisibility = Visibility.Visible;
+            CreateGameModel.CreateGamaStyle.AbstractlementVisibility = Visibility.Visible;
         }
 
         Visibility menuVisibility = Visibility.Visible;
