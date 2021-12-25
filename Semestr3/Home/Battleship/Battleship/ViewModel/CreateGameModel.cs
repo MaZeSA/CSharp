@@ -28,7 +28,7 @@ namespace Battleship.ViewModel
 
         public bool SuperWeapon { get; set; }
 
-        string iPServer = "192.168.137.1";
+        string iPServer = "127.0.0.1";
         public string IPServer 
         {
             get => iPServer;

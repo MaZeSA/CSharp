@@ -43,7 +43,7 @@ namespace Battleship.ViewModel
             get => password;
         }
 
-        string ip = "192.168.137.1";
+        string ip = "127.0.0.1";
         public string Ip
         {
             set
