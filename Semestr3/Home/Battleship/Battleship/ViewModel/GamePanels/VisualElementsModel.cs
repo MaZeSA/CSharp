@@ -1,17 +1,9 @@
-﻿using Battleship.Commands;
-using Battleship.ViewModel.GamePanels.Pixels;
+﻿using Battleship.ViewModel.GamePanels.Pixels;
 using Battleship.ViewModel.Interfaces;
-using Battleship.ViewModel.Ships;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Battleship.ViewModel.GamePanels
@@ -22,6 +14,11 @@ namespace Battleship.ViewModel.GamePanels
         public const int CONST_R = 10;
         public ObservableCollection<IVisible> VisibleObjects { set; get; } = new ObservableCollection<IVisible>();
         public GPanelView GPanelView { get; }
+
+        public void Start()
+        {
+            VisibleObjects.Clear();
+        }
 
         public bool Shot(int row, int column, bool mis)
         {
@@ -61,11 +58,16 @@ namespace Battleship.ViewModel.GamePanels
             for (int i = 0; i < CONST_R; i++)
                 for (int t = 0; t < CONST_C; t++)
                     VisibleObjects.Add(new EntityPixel(gPanelView, i, t));
-
-            //var BitmapUri = new Uri("/Battleship;component/Resources/vzriv.png", UriKind.RelativeOrAbsolute);
-
-            //VisibleObjects[33].ImageSource = new System.Windows.Media.Imaging.BitmapImage(BitmapUri);
         }
+
+        public void DeClick()
+        {
+           foreach( var item in VisibleObjects)
+            {
+                item.IsClick = false;
+            }
+        }
+
         public void AddVisibleObj(IVisible obj)
         {
             if (VisibleObjects.IndexOf(obj) > -1) return;

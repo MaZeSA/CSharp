@@ -1,13 +1,9 @@
 ﻿using Battleship.Commands;
-using Battleship.ViewModel.GamePanels;
 using Battleship.ViewModel.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -108,7 +104,9 @@ namespace Battleship.ViewModel
             get => visual;
             set { visual = value; OnNotify(); }
         }
-     
+
+        public bool IsClick { set; get; } = true;
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnNotify([CallerMemberName] string prop = "")
@@ -121,7 +119,7 @@ namespace Battleship.ViewModel
         public virtual void UIElement_OnDragEnter(object sender, DragEventArgs e) { }
         public virtual void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            GPanelView.Shot(new List<int[]> { new int[2] { this.Row, this.Column } });
+            if (IsClick) GPanelView.Shot(new List<int[]> { new int[2] { this.Row, this.Column } });
         }
         public virtual void IVisible_MouseEnter(object sender, MouseEventArgs e) { }
         public virtual void IVisible_MouseLeave(object sender, MouseEventArgs e) { }
@@ -133,7 +131,5 @@ namespace Battleship.ViewModel
         {
             throw new NotImplementedException();
         }
-
-        //public virtual void CheckMove(List<IVisible> obj){}
     }
 }

@@ -5,9 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -19,6 +17,7 @@ namespace Battleship.ViewModel
         public MenuControl MenuControl { get; }
         public ObservableCollection<LiteGame> NewGames { set; get; } = new ObservableCollection<LiteGame>();
         public Commands.CommandConnecToGames CommandConnecToGames { set; get; } 
+        public Commands.CommandUpdateGamesList CommandUpdateGamesList { set; get; }
      
         Visibility findGameVisibility = Visibility.Collapsed;
         public Visibility FindGameVisibility
@@ -28,7 +27,7 @@ namespace Battleship.ViewModel
                 findGameVisibility = value; 
                 OnNotify();
 
-                if (value == Visibility.Visible) GetGames();
+                if (value == Visibility.Visible);
             }
             get => findGameVisibility;
         }
@@ -36,11 +35,33 @@ namespace Battleship.ViewModel
         string password;
         public string Password
         {
-            set  {
+            set
+            {
                 password = value;
                 OnNotify();
             }
             get => password;
+        }
+
+        string ip = "192.168.137.1";
+        public string Ip
+        {
+            set
+            {
+                ip = value;
+                OnNotify();
+            }
+            get => ip;
+        }
+        int port = 8888;
+        public int Port
+        {
+            set
+            {
+                port = value;
+                OnNotify();
+            }
+            get => port;
         }
 
         LiteGame selectedGame;
@@ -49,22 +70,55 @@ namespace Battleship.ViewModel
             set
             {
                 selectedGame = value;
-                OnNotify();
+                OnNotify(); 
             }
             get => selectedGame;
+        }
+
+        string error = "";
+        public string Error
+        {
+            get => error;
+            set { error = value; OnNotify(); }
         }
 
         public FindGameModel(MenuControl menuControl)
         {
             CommandConnecToGames = new Commands.CommandConnecToGames(this);
+            CommandUpdateGamesList = new Commands.CommandUpdateGamesList(this);
             MenuControl = menuControl;
-            TCPClient = new TCPClient();
         }
 
-        private async void GetGames()
+        public async void GetGames()
         {
-            await TCPClient.ConnectAsync();
-            await FindGamesAsync();
+            Error = "";
+            try
+            {
+                await Connect();
+                await FindGamesAsync();
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+            }
+        }
+
+        private async Task Connect()
+        {
+            if (TCPClient is null)
+            {
+                TCPClient = new TCPClient();
+              await TCPClient.ConnectAsync(Ip, Port);
+                return;
+            }
+            else if (!TCPClient.Client.Connected)
+            {
+                TCPClient.Close();
+                TCPClient = new TCPClient();
+
+                await TCPClient.ConnectAsync(Ip, Port);
+                return;
+            }
         }
 
         public async Task<bool> FindGamesAsync()
@@ -95,6 +149,8 @@ namespace Battleship.ViewModel
         {
             Packet p = await TCPClient.ReadStreamAsync();
 
+            NewGames.Clear();
+
             if (p.Type == Packet.TypePacket.GetListGame)
             {
                 foreach (var item in p.Data as List<LiteGame>)
@@ -114,6 +170,8 @@ namespace Battleship.ViewModel
         public void Show()
         {
             FindGameVisibility = Visibility.Visible;
+
+            CommandUpdateGamesList.Execute(null);
         }
 
         public void Back()

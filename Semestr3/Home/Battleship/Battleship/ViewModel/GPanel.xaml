@@ -11,44 +11,39 @@
     <UserControl.Background>
         <ImageBrush ImageSource="/Battleship;component/Resources/world-of-warships-wargaming-5505.jpg"/>
     </UserControl.Background>
+    <UserControl.Resources>
+        <Geometry x:Key="checkStyle0">F1 M 15,21L 22,28L 32.9999,14.0001L 35.9999,17.0001L 22,34L 12.0001,24L 15,21 Z</Geometry>
+        <Geometry x:Key="door_enterStyle0">F1 M 16.0021,12.0017L 34.0046,12.0017L 34.0046,36.005L 16.0021,36.005L 16.0021,31.0043L 18.0024,31.0043L 18.0024,34.0047L 32.0043,34.0047L 32.0043,14.002L 18.0024,14.002L 18.0024,17.0024L 16.0021,17.0024L 16.0021,12.0017 Z M 12.0017,22.0031L 21.0029,22.0031L 16.0022,18.0025L 23.0032,18.0025L 30.0042,24.0034L 23.0032,30.0042L 16.0022,30.0042L 21.0029,26.0036L 12.0017,26.0036L 12.0017,22.0031 Z</Geometry>
+    </UserControl.Resources>
     <Grid DataContext="{Binding GPanelView}">
         <DockPanel>
             <Border Visibility="Visible">
                 <DockPanel>
                     <Border DockPanel.Dock="Top" Background="#C9009FDA" HorizontalAlignment="Stretch">
                         <Grid HorizontalAlignment="Stretch">
-                            <DockPanel HorizontalAlignment="Stretch">
-                                <Button Command="{Binding CommandReady}" Margin="4" Padding="5" Content="Ready"/>
-                                <TextBlock Text="Preparing for game.." Padding="10" FontSize="14" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
-                            </DockPanel>
-                            <DockPanel Visibility="{Binding StepPanelStyle.AbstractlementVisibility}" Background="{Binding StepPanelStyle.AbstractBackgroundBrush}" HorizontalAlignment="Stretch">
-                                <TextBlock Text="{Binding StepPanelStyle.AbstractString}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+                            <DockPanel>
+                                <Button DockPanel.Dock="Right" Style="{x:Null}" Width="35" BorderBrush="#FFB1B1B1" Command="{Binding GameModel.CommandEndGame}" CommandParameter="true" Background="#FF1393C7">
+                                    <Path Data="{StaticResource door_enterStyle0}" Fill="#FFF7F7F7" Stretch="Uniform"/>
+                                </Button>
+                                <DockPanel HorizontalAlignment="Stretch" DockPanel.Dock="Top" Visibility="{Binding ReadyPanelStyle.AbstractlementVisibility}">
+                                    <Button Command="{Binding CommandReady}" Margin="0" Padding="0">
+                                        <StackPanel Orientation="Horizontal" Margin="2">
+                                            <Path Width="20" Data="{StaticResource checkStyle0}" Stretch="Uniform" Fill="#FF1CE832"/>
+                                            <Label Content="Ready" Foreground="#FFA2ECAA"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <TextBlock Text="{Binding ReadyPanelStyle.AbstractString}" Padding="10" FontSize="14" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFE2E2E2"/>
+                                </DockPanel>
+                                <DockPanel Visibility="{Binding StepPanelStyle.AbstractlementVisibility}" Background="{Binding StepPanelStyle.AbstractBackgroundBrush}" HorizontalAlignment="Stretch" DockPanel.Dock="Top">
+                                    <TextBlock Text="{Binding StepPanelStyle.AbstractString}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+                                </DockPanel>
                             </DockPanel>
                         </Grid>
                     </Border>
-                    <DockPanel DockPanel.Dock="Bottom">
-                        <DockPanel DockPanel.Dock="Bottom">
-                            <Button Content="Send" Command="{Binding CommandSendChatMessage}" CommandParameter="{Binding ElementName=textMessag, Path=Text}" Padding="3" HorizontalAlignment="Center" DockPanel.Dock="Right"/>
-                            <TextBox x:Name="textMessag" Height="25" TextWrapping="Wrap" MaxLines="10" Background="#CDB7CEFF" HorizontalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto"/>
-                        </DockPanel>
-                        <ItemsControl ItemsSource="{Binding ChatMessages}" Background="#C3C8EDFF" Height="50">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Border Background="{Binding BackgroundBrush}" HorizontalAlignment="{Binding Who}" Padding="4" CornerRadius="5" Margin="7,1">
-                                        <TextBlock Margin="3" Text="{Binding Message}" FontSize="10"/>
-                                    </Border>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </DockPanel>
+                    
                     <StackPanel Margin="25" DockPanel.Dock="Top" Orientation="Horizontal">
                         <local:VisulElementController DataContext="{Binding VisualElementsModel}"/>
-                        <DockPanel DataContext="{Binding ShipController}">
+                        <DockPanel DataContext="{Binding ShipController}" VerticalAlignment="Center">
                             <Grid Width="130">
                                 <ListBox ItemsSource="{Binding Ships}" Background="{x:Null}" BorderBrush="{x:Null}">
                                     <ListBox.ItemTemplate>
@@ -80,7 +75,28 @@
                             </Grid>
                         </DockPanel>
                         <local:VisulElementController DataContext="{Binding EnemyVisualElementsModel}"/>
-                    </StackPanel>
+                    </StackPanel><DockPanel DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <DockPanel DockPanel.Dock="Bottom">
+                            <Button Margin="2" Padding="3" Width="60" Content="Send" Command="{Binding CommandSendChatMessage}" HorizontalAlignment="Center" DockPanel.Dock="Right"/>
+                            <TextBox x:Name="textMessag" Text="{Binding ChatMessage.Message}" Height="35" TextWrapping="Wrap" MaxLines="10" Background="#BD009FDA" HorizontalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" Foreground="#FFFDFDFD"/>
+                        </DockPanel>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding ChatMessages}" Background="#C3C8EDFF" MinHeight="60" MaxHeight="300">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="{Binding BackgroundBrush}" HorizontalAlignment="{Binding Who}" Padding="4" CornerRadius="5" Margin="7,1">
+                                            <TextBlock Margin="3" Text="{Binding Message}" FontSize="10"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </DockPanel>
                 </DockPanel>
             </Border>
         </DockPanel>

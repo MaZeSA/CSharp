@@ -1,9 +1,5 @@
 ﻿using Battleship.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Battleship.Commands
@@ -26,7 +22,7 @@ namespace Battleship.Commands
 
         public void Execute(object parameter)
         {
-            GPanelView.SendMessage(parameter.ToString());
+            GPanelView.SendMessage();
         }
     }
 }

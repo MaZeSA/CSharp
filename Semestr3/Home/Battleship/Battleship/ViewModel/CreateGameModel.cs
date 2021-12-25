@@ -4,22 +4,48 @@ using Battleship.Commands;
 using Battleship.ViewModel.Interfaces;
 using LibraryBattleship;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace Battleship.ViewModel
 {
-    public class CreateGameModel : IMenu
+    public class CreateGameModel : IMenu, INotifyPropertyChanged
     {
         private TCPClient TCPClient { set; get; }
         public MenuControl MenuControl { get; } 
         public CommandCreateGame CommandCreateGame { set; get; }
-        public NewGame NewGame { set; get; }
+
+        string gameName = "NewGame";
+        public string GameName 
+        {
+            get => gameName;
+            set { gameName = value; OnNotify(); }
+        }
+
+        public string Password { get; set; }
+
+        public bool SuperWeapon { get; set; }
+
+        string iPServer = "192.168.137.1";
+        public string IPServer 
+        {
+            get => iPServer;
+            set { iPServer = value; OnNotify(); }
+        }
+        int portServer = 8888;
+        public int PortServer
+        {
+            get => portServer;
+            set { portServer = value; OnNotify();}
+        }
+        string error = "";
+        public string Error
+        {
+            get => error;
+            set { error = value; OnNotify(); }
+        }
 
         public AbstractVisualStyleClass CreateGamaStyle { set; get; } = new AbstractVisualStyleClass();
         public AbstractVisualStyleClass CreateGameWaitStyle { set; get; } = new AbstractVisualStyleClass();
@@ -29,14 +55,31 @@ namespace Battleship.ViewModel
             TCPClient = new TCPClient();
             MenuControl = menuControl;
             CommandCreateGame = new CommandCreateGame(this);
-            NewGame = new NewGame() { StatusGame = NewGame.Status.New };
         }
 
         public async void CreateGame()
         {
-            await TCPClient.ConnectAsync();
-            CreateGameWaitStyle.AbstractlementVisibility = Visibility.Visible;
-            var t = await CreateGameAsync(NewGame);
+            Error = "";
+            try
+            {
+                await ConnectAsync();
+
+                CreateGameWaitStyle.AbstractlementVisibility = Visibility.Visible;
+                await CreateGameAsync();
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+                CreateGameWaitStyle.AbstractlementVisibility = Visibility.Collapsed;
+            }
+    
+        }
+        private async Task CreateGameAsync()
+        {
+            var t = await CreateGameAsync(
+                   new NewGame { GameName = GameName, Password = Password, StatusGame = NewGame.Status.New, SuperWeapon = SuperWeapon }
+                    );
+
             if (t)
             {
                 CreateGameWaitStyle.AbstractlementVisibility = Visibility.Collapsed;
@@ -44,14 +87,20 @@ namespace Battleship.ViewModel
             }
             else
             {
-                MessageBox.Show("Error Game Create");
+                CreateGameWaitStyle.AbstractlementVisibility = Visibility.Collapsed;
             }
         }
+        private async Task ConnectAsync()
+        {
+            TCPClient?.Close();
 
+            TCPClient = new TCPClient();
+            await TCPClient.ConnectAsync(IPServer, PortServer);
+        }
 
         public async Task<bool> CreateGameAsync(NewGame newGame)
         {
-            var re = await Task.Run(() => TCPClient.WriteStramAsync(new Packet { Type = Packet.TypePacket.CreateNewGame, Data = newGame }));
+            var re = await TCPClient.WriteStramAsync(new Packet { Type = Packet.TypePacket.CreateNewGame, Data = newGame });
             Packet p = await TCPClient.ReadStreamAsync();
 
             if (p.Type == Packet.TypePacket.CreateNewGame)
@@ -59,6 +108,10 @@ namespace Battleship.ViewModel
                 var nG = p.Data as NewGame;
                 if(nG.StatusGame == NewGame.Status.Created)
                     return true;
+            }
+            else if(p.Type == Packet.TypePacket.Error)
+            {
+                Error = p.ErrorMessage;
             }
             return false;
         }
@@ -71,6 +124,12 @@ namespace Battleship.ViewModel
         public void Back()
         {
             CreateGamaStyle.AbstractlementVisibility = Visibility.Collapsed;
+        }  
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnNotify([CallerMemberName] string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
     }
 }

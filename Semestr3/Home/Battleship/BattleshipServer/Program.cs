@@ -1,31 +1,31 @@
 ﻿using LibraryBattleship;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace BattleshipServer
 {
     class Program
     {
+      
         static Dictionary<string, ActualGames> DictionaryActualGames = new Dictionary<string, ActualGames>();
 
-        const int port = 8888; // порт для прослушивания подключений
         static void Main(string[] args)
         {
-
-           var proc= Process.Start(@"C:\Users\MaZeSa\Desktop\Battleship\Battleship\bin\Debug\Battleship.exe");
-
             TcpListener server = null;
             try
             {
-                IPAddress localAddr = IPAddress.Parse("127.0.0.1");
-                server = new TcpListener(localAddr, port);
+                var ip = ConfigurationManager.AppSettings["IP"];
+                var port = ConfigurationManager.AppSettings["Port"];
+
+                Console.WriteLine("Сервер запущено на: " + ip + ":" + port);
+
+                IPAddress localAddr = IPAddress.Parse(ip);
+                server = new TcpListener(localAddr, Int32.Parse(port));
 
                 // запуск слушателя
                 server.Start();
@@ -46,10 +46,8 @@ namespace BattleshipServer
             {
                 if (server != null)
                     server.Stop();
-                proc.Kill();
             }
         }
-
 
         static async void WorkClient(TCPClient Client)
         {
@@ -57,61 +55,71 @@ namespace BattleshipServer
             Console.WriteLine("Подключен клиент. Выполнение запроса... " + cldata);
 
             bool run = true;
-
-            while (run)
+            try
             {
-                Packet packet = await ReadData(Client);
-
-                switch (packet?.Type)
+                while (run)
                 {
-                    case Packet.TypePacket.CreateNewGame:
-                        {
-                            Console.WriteLine("Запрос на створення гри... " + cldata);
+                    Packet packet = await ReadData(Client);
 
-                            packet = AddNewGame(packet, Client);
-                            run = false;
-                            break;
-                        };
-                    case Packet.TypePacket.GetListGame:
-                        {
-                            Console.WriteLine("Запрос списку сворених ігор... " + cldata);
+                    switch (packet?.Type)
+                    {
+                        case Packet.TypePacket.CreateNewGame:
+                            {
+                                Console.WriteLine("Запрос на створення гри... " + cldata);
 
-                            packet = GetGames(packet);
-                            break;
-                        }
-                    case Packet.TypePacket.ConectedTo:
-                        {
-                            Console.WriteLine("Клієнт підключений " + cldata);
-                            packet = ConectedToGames(packet, Client);
-                            run = false;
-                            break;
-                        }
-                    case Packet.TypePacket.Stop:
-                        {
-                            Console.WriteLine("Клієнт відключився " + cldata);
-                            run = false;
-                            continue;
-                        }
-                    case Packet.TypePacket.ServerClose:
-                        {
-                            Environment.Exit(0);
-                            break;
-                        }
-                    case Packet.TypePacket.ServerRestart:
-                        {
-                            var path = System.IO.Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-                            Process.Start(System.IO.Path.Combine( path, "BattleshipServer.exe"));
-                            Environment.Exit(0);
-                            break;
-                        }
+                                packet = AddNewGame(packet, Client);
+                                run = false;
+                                break;
+                            };
+                        case Packet.TypePacket.GetListGame:
+                            {
+                                Console.WriteLine("Запрос списку сворених ігор... " + cldata);
+
+                                packet = GetGames(packet);
+                                break;
+                            }
+                        case Packet.TypePacket.ConectedTo:
+                            {
+                                Console.WriteLine("Клієнт підключений " + cldata);
+                                packet = ConectedToGames(packet, Client);
+                                run = false;
+                                break;
+                            }
+                        case Packet.TypePacket.Stop:
+                            {
+                                Console.WriteLine("Клієнт відключився " + cldata);
+                                run = false;
+                                continue;
+                            }
+                        case Packet.TypePacket.ServerClose:
+                            {
+                                Environment.Exit(0);
+                                break;
+                            }
+                        case Packet.TypePacket.ServerRestart:
+                            {
+                                var path = System.IO.Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
+                                Process.Start(System.IO.Path.Combine(path, "BattleshipServer.exe"));
+                                Environment.Exit(0);
+                                break;
+                            }
+                    }
+
+                    if (!Client.Client.Connected)
+                    {
+                        Console.WriteLine("Підключення розірвано " + cldata);
+                        break;
+                    }
+                    await SendData(Client, packet);
                 }
-
-                if (!Client.Client.Connected)
-                {
-                    Console.WriteLine("Підключення розірвано " + cldata);
-                    break;
-                }
-                await SendData(Client, packet);
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine("Підключення розірвано " + ex.Message);
+            }
+            finally
+            {
+                //Client.Close();
             }
         }
 
@@ -154,7 +162,6 @@ namespace BattleshipServer
             }
             
             Console.WriteLine( client.Client.Client.RemoteEndPoint.ToString());
-           // packet.Type = Packet.TypePacket.CreateNewGame;
             return packet ;
         }
 
@@ -181,6 +188,8 @@ namespace BattleshipServer
                     actual.Lissen(client);
                     actual.Lissen(actual.Server);
 
+                    DictionaryActualGames.Remove(game.GameName);
+
                     return packet;
                 }
                 else
@@ -189,6 +198,5 @@ namespace BattleshipServer
             packet.Type = Packet.TypePacket.Error;
             return packet;
         }
-
     }
 }

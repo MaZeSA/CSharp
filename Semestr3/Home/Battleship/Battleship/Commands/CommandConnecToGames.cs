@@ -1,9 +1,5 @@
 ﻿using Battleship.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Battleship.Commands
@@ -17,11 +13,15 @@ namespace Battleship.Commands
 
         public FindGameModel FindGameModel { get; }
 
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public bool CanExecute(object parameter)
         {
-           return true;
+           return !(FindGameModel.SelectedGame is null);
         }
 
         public void Execute(object parameter)

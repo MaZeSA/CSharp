@@ -1,0 +1,6 @@
+D:\Git\Semestr3\Home\Battleship\LibraryBattleship\bin\Release\LibraryBattleship.dll
+D:\Git\Semestr3\Home\Battleship\LibraryBattleship\bin\Release\LibraryBattleship.pdb
+D:\Git\Semestr3\Home\Battleship\LibraryBattleship\obj\Release\LibraryBattleship.csproj.AssemblyReference.cache
+D:\Git\Semestr3\Home\Battleship\LibraryBattleship\obj\Release\LibraryBattleship.csproj.CoreCompileInputs.cache
+D:\Git\Semestr3\Home\Battleship\LibraryBattleship\obj\Release\LibraryBattleship.dll
+D:\Git\Semestr3\Home\Battleship\LibraryBattleship\obj\Release\LibraryBattleship.pdb

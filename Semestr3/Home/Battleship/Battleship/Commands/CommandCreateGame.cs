@@ -1,9 +1,6 @@
 ﻿using Battleship.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 using System.Windows.Input;
 
 namespace Battleship.Commands
@@ -17,11 +14,22 @@ namespace Battleship.Commands
 
         public CreateGameModel CreateGameModel { get; }
 
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            if (!string.IsNullOrWhiteSpace(CreateGameModel.GameName))
+            {
+                if (IPAddress.TryParse(CreateGameModel.IPServer, out _) && CreateGameModel.PortServer > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void Execute(object parameter)

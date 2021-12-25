@@ -1,11 +1,6 @@
-﻿using Battleship.ViewModel.Interfaces;
-using Battleship.ViewModel.Ships;
-using System;
-using System.Collections.Generic;
+﻿using Battleship.ViewModel.Ships;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Battleship.ViewModel
@@ -23,15 +18,15 @@ namespace Battleship.ViewModel
             try
             {
                 Ships.Add(new ShipCruiser(GPanelView));
-                //Ships.Add(new ShipDestroyer(GPanelView, 2, 1));
-                //Ships.Add(new ShipDestroyer(GPanelView, 2, 1));
-                //Ships.Add(new ShipFrigate(GPanelView, 2, 1));
-                //Ships.Add(new ShipFrigate(GPanelView, 2, 1));
-                //Ships.Add(new ShipFrigate(GPanelView, 2, 1));
-                //Ships.Add(new ShipCorvette(GPanelView, 1, 1));
-                //Ships.Add(new ShipCorvette(GPanelView, 2, 1));
-                //Ships.Add(new ShipCorvette(GPanelView, 1, 1));
-                //Ships.Add(new ShipCorvette(GPanelView));
+                Ships.Add(new ShipDestroyer(GPanelView));
+                Ships.Add(new ShipDestroyer(GPanelView));
+                Ships.Add(new ShipFrigate(GPanelView));
+                Ships.Add(new ShipFrigate(GPanelView));
+                Ships.Add(new ShipFrigate(GPanelView));
+                Ships.Add(new ShipCorvette(GPanelView));
+                Ships.Add(new ShipCorvette(GPanelView));
+                Ships.Add(new ShipCorvette(GPanelView));
+                Ships.Add(new ShipCorvette(GPanelView));
             }
             catch { }
         }

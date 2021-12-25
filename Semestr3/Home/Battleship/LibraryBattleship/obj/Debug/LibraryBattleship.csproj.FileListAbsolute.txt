@@ -9,3 +9,4 @@ D:\Git\Semestr3\Home\Battleship\LibraryBattleship\obj\Debug\LibraryBattleship.cs
 D:\Git\Semestr3\Home\Battleship\LibraryBattleship\obj\Debug\LibraryBattleship.dll
 D:\Git\Semestr3\Home\Battleship\LibraryBattleship\obj\Debug\LibraryBattleship.pdb
 C:\Users\MaZeSa\Desktop\Battleship\LibraryBattleship\obj\Debug\LibraryBattleship.csproj.AssemblyReference.cache
+D:\Git\Semestr3\Home\Battleship\LibraryBattleship\obj\Debug\LibraryBattleship.csproj.AssemblyReference.cache

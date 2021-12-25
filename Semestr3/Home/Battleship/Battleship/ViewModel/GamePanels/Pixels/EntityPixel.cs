@@ -1,14 +1,7 @@
-﻿using Battleship.Commands;
-using Battleship.ViewModel.Interfaces;
+﻿using Battleship.ViewModel.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Battleship.ViewModel.GamePanels.Pixels
@@ -42,11 +35,5 @@ namespace Battleship.ViewModel.GamePanels.Pixels
             return false;
         }
 
-        //public override void UIElement_OnDragEnter(object sender, DragEventArgs e)
-        //{
-        //    var moved = (IVisible)e.Data.GetData("Object");
-        //    if (moved is null) return;
-        //    moved.Move(Row, Column);
-        //}
     }
 }

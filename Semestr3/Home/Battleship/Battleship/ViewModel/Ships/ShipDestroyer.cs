@@ -1,10 +1,5 @@
-﻿using Battleship.ViewModel.GamePanels;
-using Battleship.ViewModel.GamePanels.Pixels;
+﻿using Battleship.ViewModel.GamePanels.Pixels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -17,7 +12,6 @@ namespace Battleship.ViewModel.Ships
             Length = 3;
             Row = 2;
             ColumnSpan = Length;
-            //BitmapUri = new Uri("pack://application:,,,/Resources/Destroyer.png");
             BitmapUri = new Uri("/Battleship;component/Resources/Destroyer.png", UriKind.RelativeOrAbsolute);
             ImageSource = new BitmapImage(BitmapUri);
             BorderThickness = new System.Windows.Thickness(1);

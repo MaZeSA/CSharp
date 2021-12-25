@@ -170,3 +170,4 @@ D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\Battleship.pdb
 D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\Battleship.csproj.AssemblyReference.cache
 C:\Users\MaZeSa\Desktop\Battleship\Battleship\obj\Debug\Battleship.csproj.AssemblyReference.cache
 C:\Users\MaZeSa\Desktop\Battleship\Battleship\obj\Debug\Battleship.csproj.SuggestedBindingRedirects.cache
+D:\Git\Semestr3\Home\Battleship\Battleship\obj\Debug\Battleship.csproj.SuggestedBindingRedirects.cache

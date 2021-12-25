@@ -7,11 +7,6 @@ using LibraryBattleship;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -29,10 +24,13 @@ namespace Battleship.ViewModel
         public CommandReady CommandReady { set; get; }
 
         public AbstractVisualStyleClass EndGameStyle { set; get; } = new AbstractVisualStyleClass();
-        public AbstractVisualStyleClass StepPanelStyle { set; get; } = new AbstractVisualStyleClass ();
-        public AbstractVisualStyleClass GPanelStyle { set; get; } = new AbstractVisualStyleClass ();
+        public AbstractVisualStyleClass StepPanelStyle { set; get; } = new AbstractVisualStyleClass(); 
+        public AbstractVisualStyleClass ReadyPanelStyle { set; get; } = new AbstractVisualStyleClass();
+        public AbstractVisualStyleClass GPanelStyle { set; get; } = new AbstractVisualStyleClass(); 
 
         public List<Ship> DeadShips { set; get; } = new List<Ship>();
+
+        public ChatMessage ChatMessage { set; get; } = new ChatMessage ();
 
         public bool IsReady { set; get; } = false;
         bool enemyReady = false;
@@ -42,6 +40,8 @@ namespace Battleship.ViewModel
             GameModel = gameModel;
             VisualElementsModel = new VisualElementsModel(this);
             EnemyVisualElementsModel = new VisualElementsModel(this);
+            VisualElementsModel.DeClick();
+
             ShipController = new ShipController(this);
             CommandSendChatMessage = new CommandSendChatMessage(this);
             CommandReady = new CommandReady(this);
@@ -50,8 +50,14 @@ namespace Battleship.ViewModel
             IsReady = false;
 
             EnemyVisualElementsModel.WaitingClientConnect();
-            //ChatMessages.Add(new ChatMessage { Message = "test mesage", Who = HorizontalAlignment.Left, BackgroundBrush = Brushes.LightSeaGreen }); 
-            //ChatMessages.Add(new ChatMessage { Message = "Big test mesage", Who = HorizontalAlignment.Right, BackgroundBrush = Brushes.LightGreen });
+            ReadyPanelStyle.AbstractlementVisibility = Visibility.Visible;
+            ReadyPanelStyle.AbstractString = "Preparing for game..";
+        }
+
+        public void CloseGame()
+        {
+            TCPClient.Close();
+            run = false;
         }
 
         private void EndGame()
@@ -149,35 +155,53 @@ namespace Battleship.ViewModel
 
         public async void ReturnShot(Dictionary<int[], bool> keys)
         {
-            await TCPClient.WriteStramAsync(new Packet { Type = Packet.TypePacket.Fire, Data = new Fire { FireType = Fire.Type.Answer, Pointers = keys, DeadShips = GetNewDeadShip() } });
+            try
+            {
+                await TCPClient.WriteStramAsync(new Packet { Type = Packet.TypePacket.Fire, Data = new Fire { FireType = Fire.Type.Answer, Pointers = keys, DeadShips = GetNewDeadShip() } });
+            }
+            catch (Exception ex)
+            { ChatMessages.Insert(0, new ChatMessage { Message = ex.Message, Who = 0 }); }
         }
 
         public async void Shot(List<int[]> points)
         {
-            if (!StepPermission) return;
-            StepPermission = false;
-
-            Dictionary<int[], bool> keys = new Dictionary<int[], bool>();
-            foreach (int[] p in points)
+            try
             {
-                keys.Add(p, false);
+                if (!StepPermission) return;
+                StepPermission = false;
+
+                Dictionary<int[], bool> keys = new Dictionary<int[], bool>();
+                foreach (int[] p in points)
+                {
+                    keys.Add(p, false);
+                }
+
+                await TCPClient.WriteStramAsync(new Packet { Type = Packet.TypePacket.Fire, Data = new Fire { FireType = Fire.Type.Fire, Pointers = keys } });
             }
-            
-            await TCPClient.WriteStramAsync(new Packet { Type = Packet.TypePacket.Fire, Data = new Fire { FireType = Fire.Type.Fire, Pointers = keys } }) ;
+            catch (Exception ex)
+            { ChatMessages.Insert(0, new ChatMessage { Message = ex.Message, Who = 0 }); }
         }
 
         public void AllReady()
         {
             EnemyVisualElementsModel.BlackEnemyPanelVisibility = Visibility.Collapsed;
             StepPanelStyle.AbstractlementVisibility = Visibility.Visible;
+            ReadyPanelStyle.AbstractlementVisibility = Visibility.Collapsed;
         }
 
         public async void Ready()
         {
-            await TCPClient.WriteStramAsync(new Packet { Type = Packet.TypePacket.Ready });
-           
-            IsReady = true;
-            if (IsReady && enemyReady) AllReady();
+            try
+            {
+                await TCPClient.WriteStramAsync(new Packet { Type = Packet.TypePacket.Ready });
+
+                IsReady = true;
+                ReadyPanelStyle.AbstractString = "Ready! ";
+
+                if (IsReady && enemyReady) AllReady();
+            }
+            catch (Exception ex)
+            { ChatMessages.Insert(0, new ChatMessage { Message = ex.Message, Who = 0 }); }
         }
      
         public void GameStarted(TCPClient client)
@@ -188,17 +212,16 @@ namespace Battleship.ViewModel
             WaitStart();
         }
 
+        bool run = true;
         private async void WaitStart()
-        {  
+        {
+            run = true;
             try
             {
-                bool run = true;
-
                 while (run)
                 {
                     Packet packet = await TCPClient.ReadStreamAsync();
-
-                 
+                    
                     switch (packet?.Type)
                     {
                         case Packet.TypePacket.Connected:
@@ -278,10 +301,16 @@ namespace Battleship.ViewModel
             }
         }
 
-        public async void SendMessage(string message)
+        public async void SendMessage()
         {
-            ChatMessages.Insert(0, new ChatMessage { Message = message, Who = 0 });
-            await TCPClient.WriteStramAsync(new Packet { Data = message, Type = Packet.TypePacket.Message });
+            try
+            {
+                ChatMessages.Insert(0, new ChatMessage { Message = ChatMessage.Message, Who = 0 });
+                await TCPClient.WriteStramAsync(new Packet { Data = ChatMessage.Message, Type = Packet.TypePacket.Message });
+                ChatMessage.Message = "";
+            }
+            catch (Exception ex)
+            { ChatMessages.Insert(0, new ChatMessage { Message = ex.Message, Who = 0 }); }
         }
 
         bool stepPermission = false;

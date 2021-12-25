@@ -1,13 +1,6 @@
 ﻿using Battleship.ViewModel.GamePanels;
-using Battleship.ViewModel.GamePanels.Pixels;
 using Battleship.ViewModel.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -47,17 +40,6 @@ namespace Battleship.ViewModel.Ships
         public Ship(GPanelView gPanelView) : base(gPanelView)
         {
             VisulBoodies = new List<IBoody>();
-        }
-
-        public object GetMeView
-        {
-            get
-            {
-                StackPanel stackPanel = new StackPanel { Orientation = Orientation.Horizontal, Background = Brushes.Red };
-                //foreach (var item in VisulBoodies)
-                //    stackPanel.Children.Add(new Label { Background = item.Background, Width=20 });
-                return stackPanel;
-            }
         }
 
         public override void Move(int param_r, int param_c)
@@ -180,7 +162,6 @@ namespace Battleship.ViewModel.Ships
                 Rotate();
         }
            
-
         public override bool? Shot(int row, int column, bool mis)
         {
             bool? result = null;
@@ -193,7 +174,6 @@ namespace Battleship.ViewModel.Ships
                     break;
                 }
             }
-
             return result;
         }
     }

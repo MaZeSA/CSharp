@@ -1,9 +1,5 @@
 ﻿using Battleship.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Battleship.Commands
@@ -25,6 +21,8 @@ namespace Battleship.Commands
 
         public bool CanExecute(object parameter)
         {
+            if (GPanelView.IsReady) return false;
+
             return GPanelView.ShipController.CheckCorectPlace();
         }
         public void Execute(object parameter)

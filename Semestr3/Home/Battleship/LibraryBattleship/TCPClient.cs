@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
+﻿using System.IO;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryBattleship
 {
     public class TCPClient
     {
-        private const int port = 8888;
-        private const string server = "127.0.0.1";
-
         public TcpClient Client { set; get; }
         public NetworkStream Stream { set; get; }
 
@@ -22,15 +14,12 @@ namespace LibraryBattleship
             Client = client;
             Stream = Client.GetStream();
         }
-        public TCPClient() { }
+        public TCPClient() {  Client = new TcpClient();   }
 
 
-        public async Task ConnectAsync()
+        public async Task ConnectAsync(string server, int port)
         {
-            Close();
-
-            Client = new TcpClient();
-            await Client.ConnectAsync(server, port);
+            Client.Connect(server, port);
             Stream = Client.GetStream();
         }
 

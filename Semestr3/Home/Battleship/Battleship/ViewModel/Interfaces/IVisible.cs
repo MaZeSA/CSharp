@@ -1,12 +1,5 @@
 ﻿using Battleship.Commands;
-using Battleship.ViewModel.GamePanels;
-using Battleship.ViewModel.GamePanels.Pixels;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -31,7 +24,8 @@ namespace Battleship.ViewModel.Interfaces
         Thickness BorderThickness { set; get; }
         BitmapImage ImageSource { set; get; }
         string TestString { set; get; }
-        
+        bool IsClick { set; get; }
+
         void Move(int param_r, int param_c);
         //void CheckMove(List<IVisible> obj);
         void Rotate();

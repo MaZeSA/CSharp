@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Battleship.Commands
@@ -25,6 +22,14 @@ namespace Battleship.Commands
 
         public void Execute(object parameter)
         {
+            if (!(parameter is null))
+                if (bool.Parse(parameter.ToString()))
+                {
+                    var res = MessageBox.Show("Exit the game?", "Exit", MessageBoxButton.YesNo);
+                    if (res == MessageBoxResult.No)
+                        return;
+                }
+
             GameModel.Restart();
         }
     }

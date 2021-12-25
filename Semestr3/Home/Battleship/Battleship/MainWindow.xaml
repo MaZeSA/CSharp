@@ -6,11 +6,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:commands="clr-namespace:Battleship.Commands"
-        xmlns:viewmodel="clr-namespace:Battleship.ViewModel"
+        xmlns:viewmodel="clr-namespace:Battleship.ViewModel" xmlns:converters="clr-namespace:Battleship.Converters"
         mc:Ignorable="d"
-        Title="MainWindow" Height="656" Width="1011" DataContext="{DynamicResource dataContext}">
+        Title="MainWindow" Height="656" MinHeight="600" MinWidth="1000" Width="1011" DataContext="{DynamicResource dataContext}" Icon="/icon.ico" >
     <Window.Resources>
         <commands:CommandOpenMenu x:Key="CommandOpenMenu"/>
+        <Geometry x:Key="repeatStyle0">F1 M 10.0001,27L 10,16L 29.25,16L 25,12L 31.5,12L 38,18L 31.5,24L 25,24L 29.25,20L 14,20L 14,23.5L 10.0001,27 Z M 38,21L 38,32L 18.75,32L 23,36L 16.5,36L 10,30L 16.5,24L 23,24L 18.75,28L 34,28L 34,24.5L 38,21 Z</Geometry>
+        <converters:ConverterStringToInt x:Key="ConverterStringToInt"/>
     </Window.Resources>
     <Grid>
         <Grid>
@@ -28,19 +30,13 @@
                                 </LinearGradientBrush>
                             </TextBlock.Foreground>
                         </TextBlock>
-                        <TextBlock Text="v 0.1 Alpha" HorizontalAlignment="Center" Foreground="#FF474747"/>
+                        <TextBlock Text="v 0.1 Alpha" HorizontalAlignment="Center" Foreground="#FFA5A5A5"/>
                     </StackPanel>
                     <StackPanel DockPanel.Dock="Top" Margin="0,20" Width="300">
-                        <Button x:Name="buttMenu" Command="{StaticResource CommandOpenMenu}" Foreground="#FFEAEAEA" CommandParameter="{Binding MenuControl.CreateGameModel}" Height="30" Content="Create Game" DockPanel.Dock="Top">
-                            <Button.Background>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="#FF535353" Offset="0"/>
-                                    <GradientStop Color="#FF383838" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Button.Background>
-                        </Button>
-                        <Button Command="{StaticResource CommandOpenMenu}" Background="{Binding ElementName=buttMenu, Path=Background}" CommandParameter="{Binding MenuControl.FindGameModel}"  Margin="0, 10" Height="30" Content="Find Game" DockPanel.Dock="Top" Foreground="{Binding ElementName=buttMenu, Path=Foreground}"></Button>
-                        <Button Height="30" Content="Exit" Foreground="{Binding ElementName=buttMenu, Path=Foreground}" DockPanel.Dock="Top" Background="{Binding ElementName=buttMenu, Path=Background}">
+                        <Button x:Name="buttMenu" Command="{StaticResource CommandOpenMenu}" CommandParameter="{Binding MenuControl.CreateGameModel}" Height="30" Content="Create Game" DockPanel.Dock="Top"></Button>
+                        <Button Command="{StaticResource CommandOpenMenu}" CommandParameter="{Binding MenuControl.FindGameModel}"  Margin="0, 10" Height="30" Content="Find Game" DockPanel.Dock="Top"></Button>
+                        <Button Height="30" Content="Exit" DockPanel.Dock="Top">
+                         
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <ei:CallMethodAction TargetObject="{Binding MenuControl}" MethodName="Close"/>
@@ -52,9 +48,13 @@
             </Grid>
 
             <!--CreateNewGame-->
-            <Border Background="#CC8D8D8D" DataContext="{Binding MenuControl.CreateGameModel}" Visibility="{Binding CreateGamaStyle.AbstractlementVisibility}">
-                <Border Width="500" Height="300" Margin="10,35,10,10" Background="#FF3A3A3A" BorderBrush="Black" BorderThickness="2">
-                    <Grid>
+            <Border Background="#CC000000" DataContext="{Binding MenuControl.CreateGameModel}" Visibility="{Binding CreateGamaStyle.AbstractlementVisibility}">
+                <!--Visibility="{Binding CreateGamaStyle.AbstractlementVisibility}">-->
+                <Border Width="500" Height="300" Margin="10,35,10,10" BorderBrush="White" BorderThickness="1">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/Resources/look.com.ua-126246.jpg"/>
+                    </Border.Background>
+                    <Grid Background="#BD444444">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
@@ -62,31 +62,42 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <DockPanel Grid.ColumnSpan="3">
-                                <Border Background="#FFB4B4B4" DockPanel.Dock="Top" Padding="5">
-                                    <TextBlock Text="Game Create" HorizontalAlignment="Center" FontSize="18"/>
+                                <Border Background="#FFE2E2E2" DockPanel.Dock="Top" Padding="5">
+                                    <TextBlock Text="Game Create" HorizontalAlignment="Center" FontSize="19"/>
                                 </Border>
                             </DockPanel>
                             <Grid Grid.Row="1" Grid.ColumnSpan="3" Margin="20" HorizontalAlignment="Center">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="200"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Text="Game Name:"/>
-                                <TextBox Grid.Column="1" Text="{Binding NewGame.GameName}"/>
-                                <TextBlock Grid.Row="1" Text="Game Pasword:"/>
-                                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding NewGame.Password}" />
-                                <TextBlock Grid.Row="2" Text="Super boomb"/>
-                                <CheckBox Grid.Row="2" Grid.Column="1" IsChecked="{Binding NewGame.SuperWeapon}" />
+                                <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" Margin="-30,10,0,20">
+                                    <TextBlock Text="Server IP: " FontSize="14" Foreground="#FFE2E2E2" VerticalAlignment="Center" FontWeight="Bold"/>
+                                    <TextBox Text="{Binding IPServer, UpdateSourceTrigger=PropertyChanged}" Width="200" FontSize="14" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                    <TextBlock Text="Port: " Foreground="#FFE2E2E2" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
+                                    <TextBox Text="{Binding PortServer, Converter={StaticResource ConverterStringToInt}, UpdateSourceTrigger=PropertyChanged}" Width="100" FontSize="14" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                </StackPanel>
+                                <TextBlock Text="Game Name:" Grid.Row="1" Foreground="#FFC8C8C8" Margin="0,0,20,0" VerticalAlignment="Center"/>
+                                <TextBox Grid.Column="1" Grid.Row="1" Height="20" Text="{Binding GameName, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBlock Grid.Row="2" Foreground="#FFC8C8C8" Text="Game Pasword:" VerticalAlignment="Center"/>
+                                <TextBox Grid.Row="2" Height="20" Grid.Column="1" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock Grid.Row="3" Foreground="#FFC8C8C8" Text="Super boomb" VerticalAlignment="Center" Visibility="Collapsed"/>
+                                <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding SuperWeapon}" VerticalAlignment="Center" Visibility="Collapsed" />
                             </Grid>
-                            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-                                <Button Command="{Binding CommandCreateGame}" Width="100" Content="Create"/>
-                                <Button Command="{StaticResource CommandOpenMenu}" CommandParameter="{Binding MenuControl}" Width="100" Content="Back"/>
-                            </StackPanel>
+                            <DockPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-5,0,0">
+                                <TextBlock Text="{Binding Error}" TextWrapping="Wrap" DockPanel.Dock="Top" HorizontalAlignment="Center" MaxWidth="2000" MaxHeight="50" VerticalAlignment="Center" Foreground="#FFCE8282"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,10" HorizontalAlignment="Center">
+                                    <Button Command="{Binding CommandCreateGame}" CommandParameter="{Binding GameName}" Width="100" Padding="6" Content="Create"/>
+                                    <Button Command="{StaticResource CommandOpenMenu}" CommandParameter="{Binding MenuControl}" Width="100" Margin="20,0,0,0" Content="Back"/>
+                                </StackPanel>
+                            </DockPanel>
+
                         </Grid>
                         <Border Visibility="{Binding CreateGameWaitStyle.AbstractlementVisibility}" Background="#E5383838">
                             <Border Width="350" Height="100" Background="#6624B2A5">
@@ -100,16 +111,19 @@
                     </Grid>
                 </Border>
             </Border>
-            <!--Find Game-->
-            <Border DataContext="{Binding MenuControl.FindGameModel}" Visibility="{Binding FindGameVisibility}" Background="#CC2473B6">
-                <Border Width="500" Height="300" Margin="10,35,10,10" Background="#FF3A3A3A" BorderBrush="Black" BorderThickness="2">
-                    <Grid>
+            <!--Find Game--> <!--Visibility="{Binding FindGameVisibility}"-->
+            <Border DataContext="{Binding MenuControl.FindGameModel}" Visibility="{Binding FindGameVisibility}" Background="#CC000000">
+                <Border Width="500" Height="300" Margin="10,35,10,10" BorderBrush="Black" BorderThickness="2">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/Resources/look.com.ua-126246.jpg"/>
+                    </Border.Background>
+                    <Grid Background="#BD444444">
                         <DockPanel Grid.ColumnSpan="3">
                             <Border Background="#FFB4B4B4" DockPanel.Dock="Top" Padding="5">
                                 <TextBlock Text="Find Game" HorizontalAlignment="Center" FontSize="18"/>
                             </Border>
                             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Bottom">
-                                <Button Command="{Binding CommandConnecToGames}" Width="100" Content="Connect" Padding="4" Margin="5"/>
+                                <Button Command="{Binding CommandConnecToGames}" CommandParameter="{Binding SelectedGame}" Width="100" Content="Connect" Padding="4" Margin="5"/>
                                 <Button Command="{StaticResource CommandOpenMenu}" CommandParameter="{Binding MenuControl}" Width="100" Content="Back" Margin="5"/>
                             </StackPanel>
                             <Border DockPanel.Dock="Bottom" Padding="3">
@@ -118,10 +132,21 @@
                                     <TextBox Text="{Binding Password}" Width="200"/>
                                 </StackPanel>
                             </Border>
-                            <ListBox ItemsSource="{Binding NewGames}" SelectedItem="{Binding SelectedGame}">
+                            <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10" DockPanel.Dock="Top" HorizontalAlignment="Center">
+                                <TextBlock Text="Server IP: " FontSize="14" Foreground="#FFE2E2E2" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBox Text="{Binding Ip}" Width="200" FontSize="14" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                <TextBlock Text="Port: " Foreground="#FFE2E2E2" FontSize="14" Margin="10,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBox Text="{Binding Port, Converter={StaticResource ConverterStringToInt}}" Width="100" FontSize="14" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                <Button Width="30" Height="30"  Margin="15,0" Command="{Binding CommandUpdateGamesList}">
+                                    <Path Margin="3" Data="{DynamicResource repeatStyle0}" Fill="#FF4E4E4E" Stretch="Uniform"/>
+                                </Button>
+                            </StackPanel>
+                            <TextBlock Text="{Binding Error}" TextWrapping="Wrap" DockPanel.Dock="Top" HorizontalAlignment="Center" MaxWidth="2000" MaxHeight="50" VerticalAlignment="Center" Foreground="#FFCE8282"/>
+
+                            <ListBox ItemsSource="{Binding NewGames}" SelectedItem="{Binding SelectedGame}" Background="#8C9E9E9E" DockPanel.Dock="Top" Foreground="#FFB7B7B7">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <Label Content="{Binding GameName}"/>
+                                        <Label Content="{Binding GameName}" Foreground="White"/>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
