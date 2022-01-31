@@ -1,0 +1,29 @@
+
+dt{
+    background-color: rgb(12, 72, 77);
+    color: aliceblue;
+    padding: 10px 45px;
+    margin-top: 15px;
+}
+
+dd{
+    color: aliceblue;
+    background-color: rgb(35, 97, 103);
+    padding: 10px 20px;
+    margin: 0;
+}
+
+ol{
+    list-style-type: none; 
+     padding: 0; 
+     counter-reset: num;
+}
+ li{
+     padding: 1px 0px 10px;
+ }
+ ol li::before{
+     content: '[' counter(num) ']' ;
+     counter-increment: num;
+     font-weight: bold;
+     padding-right: 5px;
+ }

@@ -1,0 +1,57 @@
+ #image1{
+     min-height:350px;
+     max-height:550px;  
+     background: url("img/img-3.jpg") 100% 100% no-repeat;
+     background-size:contain;
+     background-position:center;
+     background-color: rgb(180, 180, 180); 
+     display: flex;
+     padding: 0 20px 0 20px;
+} 
+
+#image1 i{
+    border: 1px solid rgb(41, 40, 40);
+    padding: 30px 5px ;
+    color: rgb(0, 4, 255); 
+    margin-top: auto;
+    margin-bottom: auto;
+}
+#image1 i:hover{
+    background-color:grey;
+}
+#butt-right{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+
+.pictures{
+    background-color: burlywood;  
+    padding-inline-start: 5px;
+    padding-inline-end: 0;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+}
+
+.pictures *{
+   display: inline-block;
+   vertical-align:middle;
+}
+
+li img{
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    border-radius: 25%;
+}
+
+li img:hover{
+    background-color: coral;
+}
+
+.li-select{
+    background-color: rgb(44, 115, 248);
+    border-radius: 25%;
+}

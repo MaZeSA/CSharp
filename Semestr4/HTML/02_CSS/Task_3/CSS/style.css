@@ -1,0 +1,18 @@
+*{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+h3{
+    text-align: center;
+}
+.c_math{
+    text-align: center;
+    background-color: salmon;
+    margin-right: auto;
+    margin-left: auto;
+    width: max-content;
+    padding: 3px 15px;
+}
+em{
+    color: tomato;
+    font-weight: bold;
+}

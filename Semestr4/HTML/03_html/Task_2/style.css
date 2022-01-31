@@ -1,0 +1,29 @@
+
+li{
+    padding: 10px 30px;
+    list-style-image: url(icons/unchecked_16.png);
+    list-style-position:inside;
+}
+ul li::before{
+    padding: 5px;
+    content: "";
+}
+li:nth-child(2n+1){
+    background-color: rgb(164, 203, 217);
+}
+li:nth-child(2n){
+    background-color: rgb(172, 215, 229);
+}
+ul .li-check{
+    list-style-image: url(icons/checked_16.png);
+    background-color: rgb(262, 226, 226);
+    text-decoration: line-through;
+}
+
+li::after{
+    display: inline-block;
+    content: "\00D7";
+    color: brown;
+    font-weight: bold;
+    padding: 0px 10px;
+}
