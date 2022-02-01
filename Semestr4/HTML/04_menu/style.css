@@ -1,0 +1,73 @@
+.container{
+    display: flex;
+}
+
+/* ----------------Tack1---------------- */
+#menu1{
+    list-style-type:none;
+    text-transform: uppercase;
+    background-color: #808080;
+    padding: 0;
+    color:aliceblue;
+}
+#menu1 li{
+    padding: 0px 60px 0px 10px;
+}
+
+#menu1 li::before{  
+    content: '';
+    display: inline-block;
+    height: 60px;
+    width: 60px; 
+   padding-right: 10px;
+    background-repeat: no-repeat; 
+    background-size: contain;
+    vertical-align: middle;
+}
+
+#LiEdit::before{
+    background-image: url(/menuIcons/edit.png);
+}
+#LiFavorites::before{
+    background-image: url(menuIcons/favorites.png);
+}
+#LiHistory::before{
+    background-image: url(menuIcons/history.png);
+}
+#LiSecurity::before{
+    background-image: url(menuIcons/security.png);
+}
+#LiSettings::before{
+    background-image: url(menuIcons/settings.png);
+}
+
+#menu1 li:hover{
+    background-color: #5e5e5e;
+}
+
+/* ----------------Tack2---------------- */
+#menu2 {
+    list-style-type:none;
+    padding: 0;
+    color:aliceblue;
+}
+
+#menu2 i{
+    background-color: #e11c6b;
+    font-size: 25px;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    line-height: 2.7em;
+    margin-right: 35px;
+}
+
+#menu2 li{
+    background-color: #cccccc;  
+    margin: 3px;
+    padding-right: 80px;
+}
+
+#menu2 li:hover{
+    background-color:#e11c6b;
+}
