@@ -1,0 +1,342 @@
+@font-face {
+    /* // название шрифта(чтобы не запутаться лучше указать название папки со шрифтом)  */
+    font-family: "Montserrat"; 
+    /* // адрес шрифта и тип  */
+    src: url(fonts/static/Montserrat-Bold.ttf) format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+@font-face {
+        font-family: "KaushanScript"; 
+        src: url(fonts/KaushanScript-Regular.ttf) format("truetype"); 
+        font-style:normal; 
+        font-weight: normal; 
+}  
+@font-face {
+    font-family: "Roboto"; 
+    src: url(fonts/Roboto-Regular.ttf) format("truetype"); 
+    font-style:normal; 
+    font-weight: normal; 
+} 
+@font-face {
+    font-family: "SWGothg"; 
+    src: url(fonts/Montserrat-VariableFont_wght.ttf) format("truetype"); 
+    font-style:normal; 
+    font-weight: normal; 
+} 
+body{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+header {
+    background-image: -webkit-linear-gradient( 90deg, rgba(252,227,138, 0.9) 0%, rgba(243,129,129, 0.9) 100%), url("images/Layer15.png"); 
+    background-size:cover ;
+ 
+}
+
+.heder, .menu{
+    display: flex;
+    flex-direction:row;
+    justify-content:space-around;
+} 
+.heder{
+    padding-top:  20px; 
+}
+.logo{ 
+    font-size: 30px;
+    font-family: "Montserrat";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left; 
+}
+.header-content{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: stretch;
+}
+
+.menu{
+    list-style-type: none;
+    line-height: 1.2;
+    padding: 0;
+}
+.menu li{
+    padding-left: 25px;
+}
+
+.menu a{  
+    font-family: "Montserrat";
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+.menu a:hover{
+    color: rgb(252, 227, 138);
+    border: solid rgb(252, 227, 138);
+    border-top: 3px;
+    border-left: 3px;
+    border-right: 3px;
+}
+
+h2{
+    font-size: 72px;
+    font-family: "KaushanScript";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    margin: 150px 0 10px 0;
+}
+
+h1{
+    font-size:150px;
+    font-family: "Montserrat";
+    color: rgb(255, 255, 255);
+    font-weight:bold;
+    text-transform: uppercase;
+    line-height: 0.933;
+    margin: 0;
+}
+
+hr{
+    background-color: rgb(255, 255, 255);
+    height: 3px;
+    width: 60px;
+    border-width: 0;
+    margin-top: 85px;
+}
+
+.button-more{
+    font-size: 14px;
+    font-family: "Montserrat";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-transform: uppercase;
+    border-style: solid;
+    border-width: 3px;
+    border-color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
+    padding: 10px 30px;
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 50px;
+}
+
+.slider{
+    list-style-type: none;
+    margin-top: 150px;
+    position:relative;
+    bottom: 10px;
+}
+.slider li{
+    display: inline-block;
+    border: solid rgb(255, 255, 255);
+    border-bottom: 3px;
+    border-left: 3px;
+    border-right: 3px;
+    font-size: 24px;
+    font-family: "Montserrat";
+    color: rgba(255, 255, 255, 0.702);
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: left;
+    padding-top: 15px;
+    margin-right: 20px;
+    width: 280px;
+}
+
+.sliderhover{
+    content: "";
+    color: rgb(252, 227, 138);
+    border: solid rgb(252, 227, 138);
+    border-top: 3px;
+    border-left: 3px;
+    border-right: 3px;
+}
+
+h4{
+    font-size: 24px;
+    font-family: "KaushanScript";
+    color: rgb(51, 51, 51);
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+h3{
+    font-size: 30px;
+    font-family: "Montserrat";
+    color: rgb(51, 51, 51);
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.about{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.rectangle{
+    background-color: rgb(243, 129, 129);  
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+p{
+    font-size: 15px;
+    font-family: "Roboto";
+    color: rgb(153, 153, 153);
+    line-height: 1.6;
+}
+
+.pictures{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 80px;
+}
+.pics{
+   margin: 14px;
+}
+.super-team{
+    background-image: url(/images/Rectangle\ 6.png);
+    min-width: 380px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    box-shadow: 10px 10px rgb(149, 225, 211);
+    font-size: 18px;
+    font-family: "Montserrat";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.facts{
+    background-color: #95e1d3;
+    margin-top: 110px;
+}
+.facts ul{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content:center;
+    height: 270px;
+}
+.facts ul li{
+    font-size: 72px;
+    font-family: "Montserrat";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+    background-color: #95e1d3;
+    border-style: solid;
+    border-width: 0 1px;
+    border-color: #b5eae0;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.facts ul li p{
+    font-size: 14px;
+    font-family: "Montserrat";
+    color: rgb(255, 255, 255);
+}
+
+.feauture{
+    margin-top: 100px;
+}
+
+.service{
+    margin-top: 110px;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: center;
+}
+.ul-services{
+    list-style-type: none;
+    list-style-position: inside;
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-family: "Montserrat";
+    color: rgb(51, 51, 51);
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-top: 45px;
+    padding: 0;
+    width: 60%;
+}
+
+.ul-services li{
+    text-align: left;
+}
+.ul-services li p{
+    text-transform: none;
+    font-size: 15px;
+    font-family: "SWGothg";
+    color: rgb(153, 153, 153);
+    line-height: 1.6;
+    width: 272px;
+    margin-left: 40px;
+}
+
+.li-photo{
+    list-style-image: url(/images/ALARM.png);;
+}
+.li-web{
+    list-style-image: url(/images/LINE\ GRAPH.png);
+}
+.li-creativity{
+    list-style-image: url(/images/COMPUTER\ _\ OK.png);
+}
+.li-seo{
+    list-style-image: url(/images/BOOK\ 2.png);
+}
+.li-css{
+    list-style-image: url(/images/HOME.png);
+}
+.li-digital{
+    list-style-image: url(/images/IMAGE\ \(6\).png);
+}
+
+.servise2{
+    background-image: url(images/Rectangle21.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-top: 100px;
+    padding-top: 100px;
+    margin-bottom: 100px;
+}
+.display{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.iphon{
+    position:relative;
+    bottom: -140px;
+    right: -120px;
+    margin-left: -230px;
+}
