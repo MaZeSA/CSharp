@@ -1,7 +1,7 @@
-const HomePge=()=>{
-    return(
+const HomePage = () => {
+    return (
         <h1>Головна сторінка</h1>
     );
 }
 
-export default HomePge;
+export default HomePage;

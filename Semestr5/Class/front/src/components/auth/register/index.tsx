@@ -1,49 +1,98 @@
-const RegisterPge = () => {
-    return (
-        <section className="vh-100 bg-image">
-            <div className="mask d-flex align-items-center h-100 gradient-custom-3">
-                <div className="container h-100">
-                    <div className="row d-flex justify-content-center align-items-center h-100">
-                        <div className="col-12 col-md-9 col-lg-7 col-xl-6">
-                            <div className="card">
-                                <div className="card-body p-5">
-                                    <h2 className="text-uppercase text-center mb-5">Створити новий акаунт</h2>
-                                    <form className="was-validated">
+import { Form, FormikProvider, useFormik } from "formik";
+import React from "react";
+import { IRegister } from "./types";
+import { RegisterSchema } from "./validataion";
+import CropperDialog from "../../common/CropperDialog";
+import InputComponent from "../inputComponent";
 
-                                        <div className="form-outline mb-4">
-                                            <label className="form-label">Імя</label>
-                                            <input type="text" id="form3Example1cg" className="form-control form-control-lg" required />
-                                        </div>
+const RegisterPage: React.FC = () => {
+  const initialValues: IRegister = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    photo: "",
+    confirmPassword: "",
+    password: "",
+  };
+  const onHandleSubmit = async (values: IRegister) => {
+    console.log("Send server form", values);
+  };
 
-                                        <div className="form-outline mb-4">
-                                            <label className="form-label">Email</label>
-                                            <input type="email" id="form3Example3cg" className="form-control form-control-lg" required />
-                                        </div>
+  const formik = useFormik({
+    initialValues: initialValues,
+    onSubmit: onHandleSubmit,
+    validationSchema: RegisterSchema,
+  });
 
-                                        <div className="form-outline mb-4">
-                                            <label className="form-label">Пароль</label>
-                                            <input type="password" id="form3Example4cg" className="form-control form-control-lg" required />
-                                        </div>
+  //Деструктуризація
+  const { errors, touched, handleSubmit, handleChange, setFieldValue } = formik;
 
-                                        <div className="form-outline mb-4">
-                                            <label className="form-label">Повторіть пароль</label>
-                                            <input type="password" id="form3Example4cdg" className="form-control form-control-lg" required />
-                                        </div>
+  return (
+    <div className="row">
+      <div className="offset-md-3 col-md-6">
+        <h1 className="text-center">Створити новий аканут</h1>
+        <FormikProvider value={formik}>
+          <Form onSubmit={handleSubmit}>
+            <InputComponent
+              inputName="firstName"
+              title="Імя"
+              touched={touched.firstName}
+              errors={errors.firstName}
+              handleChange={handleChange}
+            ></InputComponent>
+            <InputComponent
+              inputName="lastName"
+              title="Прізвище"
+              touched={touched.lastName}
+              errors={errors.lastName}
+              handleChange={handleChange}
+            ></InputComponent>
+            <InputComponent
+              inputName="email"
+              title="Електронна пошта"
+              touched={touched.email}
+              errors={errors.email}
+              handleChange={handleChange}
+            ></InputComponent>
+            <InputComponent
+              inputName="phone"
+              title="Номер телефону"
+              touched={touched.phone}
+              errors={errors.phone}
+              handleChange={handleChange}
+            ></InputComponent>
+            <InputComponent
+              inputName="password"
+              title="Пароль"
+              touched={touched.password}
+              errors={errors.password}
+              handleChange={handleChange}
+            ></InputComponent>
+            <InputComponent
+              inputName="confirmPassword"
+              title="Повторіть пароль"
+              touched={touched.confirmPassword}
+              errors={errors.confirmPassword}
+              handleChange={handleChange}
+            ></InputComponent>
 
-                                        <div className="d-flex justify-content-center">
-                                            <button type="button"
-                                                className="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Реєстрація</button>
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <CropperDialog
+              onChange={setFieldValue}
+              field="photo"
+              error={errors.photo}
+              touched={touched.photo}
+            />
+            <div className="mb-3">
+              <button type="submit" className="btn btn-primary">
+                Реєструватися
+              </button>
             </div>
-        </section>
-    );
-}
+          </Form>
+        </FormikProvider>
+      </div>
+    </div>
+  );
+};
 
-export default RegisterPge;
+export default RegisterPage;

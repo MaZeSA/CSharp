@@ -11,5 +11,6 @@ namespace WebBackend.Data
         }
 
         public DbSet<CategoryEntity> Categories { set; get; }
+        public DbSet<UserEntity> Users { set; get; }
     }
 }

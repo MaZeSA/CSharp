@@ -1,38 +1,56 @@
-const LoginPge = () => {
-    return (
-        <div className="container">
-            <section className="vh-100 bg-image">
-                <div className="mask d-flex align-items-center h-100 gradient-custom-3">
-                    <div className="container h-100">
-                        <div className="row d-flex justify-content-center align-items-center h-100">
-                            <div className="col-12 col-md-9 col-lg-7 col-xl-6">
-                                <div className="card">
-                                    <div className="card-body p-5">
-                                        <h2 className="text-uppercase text-center mb-5">Увійти в акаунт</h2>
-                                        <form className="was-validated">
+import { Form, FormikProvider, useFormik } from "formik";
+import React from "react";
+import { ILogin } from "./types";
+import InputComponent from "../inputComponent";
+import { RegisterSchema } from "../register/validataion";
 
-                                            <div className="mb-3">
-                                                <label className="form-label">Імя користувача:</label>
-                                                <input type="text" className="form-control" id="uname" placeholder="Імя користувача" name="uname" required />
-                                                <div className="invalid-feedback">Уведійть імя користувача.</div>
-                                            </div>
-                                            <div className="mb-3">
-                                                <label className="form-label">Пароль:</label>
-                                                <input type="password" className="form-control" id="pwd" placeholder="Пароль" name="pswd" required />
-                                                <div className="invalid-feedback">Уведійть пароль.</div>
-                                            </div>
-                                            <button type="submit" className="btn btn-primary">Увійти</button>
+const LoginPage: React.FC = () => {
+  const initialValues: ILogin = {
+    email: "",
+    password: "",
+  };
+  const onHandleSubmit = async (values: ILogin) => {
+    console.log("Send server form", values);
+  };
 
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    );
-}
+  const formik = useFormik({
+    initialValues: initialValues,
+    onSubmit: onHandleSubmit,
+    validationSchema: RegisterSchema,
+  });
+  //Деструктуризація
+  const { errors, touched, handleSubmit, handleChange } = formik;
 
-export default LoginPge;
+  return (
+    <div className="row">
+      <div className="offset-md-3 col-md-6">
+        <h1 className="text-center">Увійти в аканут</h1>
+        <FormikProvider value={formik}>
+          <Form onSubmit={handleSubmit}>
+            <InputComponent
+              inputName="email"
+              title="Електронна пошта"
+              touched={touched.email}
+              errors={errors.email}
+              handleChange={handleChange}
+            ></InputComponent>
+            <InputComponent
+              inputName="password"
+              title="Пароль"
+              touched={touched.password}
+              errors={errors.password}
+              handleChange={handleChange}
+            ></InputComponent>
+            <div className="mb-3">
+              <button type="submit" className="btn btn-primary">
+                Вхід
+              </button>
+            </div>
+          </Form>
+        </FormikProvider>
+      </div>
+    </div>
+  );
+};
+
+export default LoginPage;

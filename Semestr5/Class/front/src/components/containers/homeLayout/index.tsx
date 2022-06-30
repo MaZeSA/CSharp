@@ -1,17 +1,18 @@
 import * as React from 'react';
-import {Outlet} from "react-router-dom";
+import {Outlet} from 'react-router-dom';
 import Navbar from './Navbar';
 
-const HomeLayout : React.FC=()=>{
-    return(
+const HomeLayout : React.FC =() => {
+    return (
         <>
             <Navbar/>
             <main>
-                <div className='container'>
+                <div className="container">
                     <Outlet/>
                 </div>
             </main>
         </>
-    );
+    )
 }
+
 export default HomeLayout;
