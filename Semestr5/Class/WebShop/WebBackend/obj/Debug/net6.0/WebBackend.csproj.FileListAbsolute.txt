@@ -52,3 +52,15 @@ E:\Git\Semestr5\Class\WebShop\WebBackend\obj\Debug\net6.0\refint\WebBackend.dll
 E:\Git\Semestr5\Class\WebShop\WebBackend\obj\Debug\net6.0\WebBackend.pdb
 E:\Git\Semestr5\Class\WebShop\WebBackend\obj\Debug\net6.0\WebBackend.genruntimeconfig.cache
 E:\Git\Semestr5\Class\WebShop\WebBackend\obj\Debug\net6.0\ref\WebBackend.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\AutoMapper.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\FluentValidation.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\System.Drawing.Common.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\WebBackend.xml
+E:\Git\Semestr5\Class\WebShop\WebBackend\obj\Debug\net6.0\WebBackend.xml
