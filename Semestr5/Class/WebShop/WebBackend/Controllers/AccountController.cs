@@ -42,7 +42,8 @@ namespace WebBackend.Controllers
                             Email = payload.Email,
                             UserName = payload.Email,
                             FirstName = payload.GivenName,
-                            LastName = payload.FamilyName
+                            LastName = payload.FamilyName, 
+                            Photo = payload.Picture
                         };
                         var resultCreate = await _userManager.CreateAsync(user);    
                         if(!resultCreate.Succeeded)
@@ -55,7 +56,7 @@ namespace WebBackend.Controllers
                         return BadRequest(new { error = "Щось пішло не так" });
                 }
 
-                return Ok(new {userId = user.Id});
+                return Ok(new {userId = user.Id, email = user.Email, image = user.Photo });
             }
             return Ok();
         }

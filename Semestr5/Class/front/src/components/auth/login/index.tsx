@@ -9,12 +9,17 @@ import GoogleLogin, {
   GoogleLoginResponseOffline,
 } from "react-google-login";
 import http from "../../../http_common";
+import { useDispatch } from "react-redux";
+import { AuthActionTypes, IUser } from "../store/types";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
   const initialValues: ILogin = {
     email: "",
     password: "",
   };
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     console.log("login");
@@ -34,8 +39,18 @@ const LoginPage: React.FC = () => {
       provider: "Google",
       token: (response as GoogleLoginResponse).tokenId,
     };
-    http.post("api/account/GoogleExternalLogin", model).then((x) => {
+    http.post<IUser>("api/account/GoogleExternalLogin", model).then((x) => {
       console.log("user koken", x);
+
+      dispatch({
+        type: AuthActionTypes.LOGIN_AUTH,
+        payload: {
+          email: x.data.email,
+          image: x.data.image,
+          roles: "Кабан"
+        }
+      })
+      navigate("/");
     });
   };
 

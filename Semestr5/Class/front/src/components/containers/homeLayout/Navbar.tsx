@@ -1,7 +1,11 @@
 import * as React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { AuthState } from "../../auth/store/types";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 const Navbar: React.FC = () => {
+  const { isAuth, user } = useTypedSelector((store) => store.auth);
+ 
   return (
     <header>
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -28,14 +32,34 @@ const Navbar: React.FC = () => {
                 </Link>
               </li>
             </ul>
-            <ul className="navbar-nav">
+            {isAuth ? (
+              <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link className="nav-link" to="/login">Вхід</Link>
+                  <Link className="nav-link" to="/pofile">
+                    <img src={user?.image} alt="фото користувача" width="32" style={{borderRadius: "50%"}} />
+                    {user?.email}
+                  </Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/register">Реєстрація</Link>
+                  <Link className="nav-link" to="/logout">
+                    Вихід
+                  </Link>
                 </li>
-            </ul>
+              </ul>
+            ) : (
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login">
+                    Вхід
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/register">
+                    Реєстрація
+                  </Link>
+                </li>
+              </ul>
+            )}
           </div>
         </div>
       </nav>
