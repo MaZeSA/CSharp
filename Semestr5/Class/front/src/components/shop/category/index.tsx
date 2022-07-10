@@ -16,6 +16,7 @@ const CategoryPage: React.FC = () => {
   };
 
   useEffect(() => {
+    console.log("use");
     return () => {
       getData();
     };

@@ -5,6 +5,7 @@ import { CategorySchema } from "./validataion";
 import { ICategoryItem } from "./types";
 import CropperDialog from "../../common/CropperDialog";
 import http from "../../../http_common";
+import { useNavigate } from "react-router-dom";
 
 const AddCategory: React.FC = () => {
   const initialValues: ICategoryItem = {
@@ -13,6 +14,7 @@ const AddCategory: React.FC = () => {
     image: "",
   };
 
+  const navigate = useNavigate();
   const [message, setMessage] = useState<string>();
 
   const onHandleSubmit = async (values: ICategoryItem) => {
@@ -23,7 +25,7 @@ const AddCategory: React.FC = () => {
       await http
         .post<ICategoryItem>("/api/Category/create", article)
         .then((response) => {
-          window.location.href = "./category";
+               navigate("/category");
         })
         .catch((error) => {
           setMessage(error.message);
