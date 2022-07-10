@@ -35,6 +35,8 @@ namespace WebBackend.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] CategoryCreateVM model)
         {
+            return Ok();
+
             string base64 = model.ImageBase64;
             if (base64.Contains(","))
                 base64 = base64.Split(',')[1];
@@ -50,7 +52,7 @@ namespace WebBackend.Controllers
             _appEFContext.Categories.Add(category);
            _appEFContext.SaveChanges();
 
-            return Ok();
+           return Ok();
         }
 
 

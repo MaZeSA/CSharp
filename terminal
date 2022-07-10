@@ -1,1 +1,8 @@
 npm i cropperjs formik classnames @types/cropperjs yup
+npm i axios
+
+Studio:
+AutoMapper
+AutoMapper.Extensions
+FluentValidation
+System.Drawing.Common

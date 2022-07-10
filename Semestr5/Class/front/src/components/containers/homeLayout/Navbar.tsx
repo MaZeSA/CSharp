@@ -23,8 +23,8 @@ const Navbar: React.FC = () => {
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <ul className="navbar-nav me-auto mb-2 mb-md-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
-                  Головна
+                <Link className="nav-link active" aria-current="page" to="/category">
+                  Категорії
                 </Link>
               </li>
             </ul>
