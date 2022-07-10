@@ -1,8 +1,11 @@
 npm i cropperjs formik classnames @types/cropperjs yup
 npm i axios
+npm i react-google-login --force
+npm i gapi-script - -force
 
 Studio:
 AutoMapper
 AutoMapper.Extensions
 FluentValidation
 System.Drawing.Common
+Google.Apis.Auth

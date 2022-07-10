@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using WebBackend.Data.Entities;
 
 namespace WebBackend.Data
 {
-    public class AppEFContext: DbContext
+    public class AppEFContext : IdentityDbContext<AplicattionUser>
     {
         public AppEFContext(DbContextOptions<AppEFContext> options)
             :base(options)

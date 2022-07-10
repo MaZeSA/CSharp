@@ -64,3 +64,13 @@ E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\runtimes\unix\lib\netc
 E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\WebBackend.xml
 E:\Git\Semestr5\Class\WebShop\WebBackend\obj\Debug\net6.0\WebBackend.xml
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\Google.Apis.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\Google.Apis.Auth.PlatformServices.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\Google.Apis.Auth.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\Google.Apis.Core.dll
+E:\Git\Semestr5\Class\WebShop\WebBackend\bin\Debug\net6.0\Newtonsoft.Json.dll

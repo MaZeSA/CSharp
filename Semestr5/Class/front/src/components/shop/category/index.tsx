@@ -27,7 +27,7 @@ const CategoryPage: React.FC = () => {
         <th scope="row">{item.id}</th>
         <td>{item.name}</td>
         <td>
-          <img src={http.getUri() + item.image} alt="img"></img>
+          <img src={http.getUri() + item.image} alt="img" width="150"></img>
         </td>
       </tr>
     );

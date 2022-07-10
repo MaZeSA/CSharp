@@ -1,14 +1,44 @@
 import { Form, FormikProvider, useFormik } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 import { ILogin } from "./types";
 import InputComponent from "../inputComponent";
 import { RegisterSchema } from "../register/validataion";
+import { gapi } from "gapi-script";
+import GoogleLogin, {
+  GoogleLoginResponse,
+  GoogleLoginResponseOffline,
+} from "react-google-login";
+import http from "../../../http_common";
 
 const LoginPage: React.FC = () => {
   const initialValues: ILogin = {
     email: "",
     password: "",
   };
+
+  useEffect(() => {
+    console.log("login");
+    const start = () => {
+      gapi.client.init({
+        clientId: process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID,
+        scope: "",
+      });
+    };
+  });
+
+  const responseGoogle = (
+    response: GoogleLoginResponse | GoogleLoginResponseOffline
+  ) => {
+    //console.log("Login google", response);
+    const model = {
+      provider: "Google",
+      token: (response as GoogleLoginResponse).tokenId,
+    };
+    http.post("api/account/GoogleExternalLogin", model).then((x) => {
+      console.log("user koken", x);
+    });
+  };
+
   const onHandleSubmit = async (values: ILogin) => {
     console.log("Send server form", values);
   };
@@ -45,6 +75,12 @@ const LoginPage: React.FC = () => {
               <button type="submit" className="btn btn-primary">
                 Вхід
               </button>
+              <GoogleLogin
+                clientId={process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID as string}
+                buttonText="Вхід через гугл"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+              />
             </div>
           </Form>
         </FormikProvider>
