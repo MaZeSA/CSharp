@@ -10,16 +10,13 @@ const CategoryPage: React.FC = () => {
   const getData = async () => {
     setLoadStatus(false);
     const { data } = await http.get<ICategoryItem[]>("/api/Category/list");
-    console.log(data);
     setList(data);
     setLoadStatus(false);
   };
 
   useEffect(() => {
     console.log("use");
-    return () => {
-      getData();
-    };
+    getData();
   }, []);
 
   const data = list?.map((item) => {
