@@ -2,11 +2,16 @@ package org.example.storage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -38,19 +43,32 @@ public class FileSystemStorageService implements StorageService {
 
     @Override
     public void store(MultipartFile file) {
-
+        try {
+            if (file.isEmpty()) {
+                throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
+            }
+            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+        } catch (IOException e) {
+            throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
+        }
     }
 
     @Override
     public Stream<Path> loadAll() {
-        return null;
+        try {
+            return Files.walk(this.rootLocation, 1)
+                    .filter(path -> !path.equals(this.rootLocation))
+                    .map(path -> this.rootLocation.relativize(path));
+        } catch (IOException e) {
+            throw new StorageException("Failed to read stored files", e);
+        }
+
     }
 
     @Override
     public Path load(String filename) {
-        return null;
+        return rootLocation.resolve(filename);
     }
-
     @Override
     public String store(String base64) {
         try {
@@ -64,21 +82,58 @@ public class FileSystemStorageService implements StorageService {
             byte[] bytes = new byte[0];
             bytes = decoder.decode(charArray[1]);
             String directory= rootLocation.toString() +"/"+randomFileName;
-            new FileOutputStream(directory).write(bytes);
+
+            byte [] newImage =  this.resizeImage(new ByteArrayInputStream(bytes), 150,150);
+            new FileOutputStream(directory).write(newImage);
             return randomFileName;
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new StorageException("Failed to store file ", e);
         }
 
     }
 
+    private byte[] resizeImage(InputStream uploadedInputStream, int width, int height) {
+        try {
+            BufferedImage image = ImageIO.read(uploadedInputStream);
+            int type = ((image.getType() == 0) ? BufferedImage.TYPE_INT_ARGB : image.getType());
+            BufferedImage resizedImage = new BufferedImage(width, height, type);
+
+            Graphics2D g2d = resizedImage.createGraphics();
+            g2d.drawImage(image, 0, 0, width, height, null);
+            g2d.dispose();
+            g2d.setComposite(AlphaComposite.Src);
+            g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            g2d.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ImageIO.write(resizedImage, "png", byteArrayOutputStream);
+            return byteArrayOutputStream.toByteArray();
+        } catch (IOException e) {
+            // Something is going wrong while resizing image
+            return null;
+        }
+    }
+
     @Override
     public Resource loadAsResource(String filename) {
-        return null;
+        try {
+            Path file = load(filename);
+            Resource resource = new UrlResource(file.toUri());
+            if(resource.exists() || resource.isReadable()) {
+                return resource;
+            }
+            else {
+                throw new StorageFileNotFoundException("Could not read file: " + filename);
+
+            }
+        } catch (MalformedURLException e) {
+            throw new StorageFileNotFoundException("Could not read file: " + filename, e);
+        }
     }
 
     @Override
     public void deleteAll() {
-
+        FileSystemUtils.deleteRecursively(rootLocation.toFile());
     }
 }

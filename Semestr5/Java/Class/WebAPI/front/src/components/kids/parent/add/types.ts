@@ -1,8 +1,7 @@
-export interface IParentItem{
-    id: number,
+export interface IParentAdd {
     firstName: string,
     lastName: string,
     phone: string
-    image: string;
+    imageBase64: string;
     adress: string
 }

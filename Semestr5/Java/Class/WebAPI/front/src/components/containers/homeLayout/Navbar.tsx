@@ -5,7 +5,6 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 const Navbar: React.FC = () => {
   const { isAuth, user } = useTypedSelector((store) => store.auth);
- 
   return (
     <header>
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -27,8 +26,12 @@ const Navbar: React.FC = () => {
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <ul className="navbar-nav me-auto mb-2 mb-md-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/parent">
-                Батьки
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/parent"
+                >
+                  Батьки
                 </Link>
               </li>
             </ul>

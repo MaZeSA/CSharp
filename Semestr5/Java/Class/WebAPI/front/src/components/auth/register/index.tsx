@@ -1,12 +1,11 @@
 import { Form, FormikProvider, useFormik } from "formik";
 import React from "react";
+import classNames from "classnames";
 import { IRegister } from "./types";
 import { RegisterSchema } from "./validataion";
 import CropperDialog from "../../common/CropperDialog";
-import InputComponent from "../inputComponent";
 import { useDispatch } from "react-redux";
 import { AuthActionTypes } from "../store/types";
-
 
 const RegisterPage: React.FC = () => {
   const initialValues: IRegister = {
@@ -18,9 +17,7 @@ const RegisterPage: React.FC = () => {
     confirmPassword: "",
     password: "",
   };
-
   const dispatch = useDispatch();
-   
   const onHandleSubmit = async (values: IRegister) => {
     console.log("Send server form", values);
     dispatch({
@@ -31,13 +28,12 @@ const RegisterPage: React.FC = () => {
         roles: "Кабан"
       }
     })
-
   };
 
   const formik = useFormik({
     initialValues: initialValues,
     onSubmit: onHandleSubmit,
-    validationSchema: RegisterSchema,
+    validationSchema: RegisterSchema
   });
 
   //Деструктуризація
@@ -49,60 +45,33 @@ const RegisterPage: React.FC = () => {
         <h1 className="text-center">Створити новий аканут</h1>
         <FormikProvider value={formik}>
           <Form onSubmit={handleSubmit}>
-            <InputComponent
-              inputName="firstName"
-              title="Імя"
-              touched={touched.firstName}
-              errors={errors.firstName}
-              handleChange={handleChange}
-            ></InputComponent>
-            <InputComponent
-              inputName="lastName"
-              title="Прізвище"
-              touched={touched.lastName}
-              errors={errors.lastName}
-              handleChange={handleChange}
-            ></InputComponent>
-            <InputComponent
-              inputName="email"
-              title="Електронна пошта"
-              touched={touched.email}
-              errors={errors.email}
-              handleChange={handleChange}
-            ></InputComponent>
-            <InputComponent
-              inputName="phone"
-              title="Номер телефону"
-              touched={touched.phone}
-              errors={errors.phone}
-              handleChange={handleChange}
-            ></InputComponent>
-            <InputComponent
-              inputName="password"
-              title="Пароль"
-              touched={touched.password}
-              errors={errors.password}
-              handleChange={handleChange}
-            ></InputComponent>
-            <InputComponent
-              inputName="confirmPassword"
-              title="Повторіть пароль"
-              touched={touched.confirmPassword}
-              errors={errors.confirmPassword}
-              handleChange={handleChange}
-            ></InputComponent>
-
-            <CropperDialog
+            
+            <CropperDialog 
               onChange={setFieldValue}
               field="photo"
               error={errors.photo}
               touched={touched.photo}
             />
+
             <div className="mb-3">
-              <button type="submit" className="btn btn-primary">
-                Реєструватися
-              </button>
+              <label htmlFor="email" className="form-label">
+                Електронна пошта
+              </label>
+              <input
+                type="email"
+                className={classNames("form-control",
+                    {"is-invalid": touched.email && errors.email},
+                    {"is-valid": touched.email && !errors.email}
+                )}
+                name="email"
+                id="email"
+                onChange={handleChange}
+              />
+              {touched.email && errors.email && <div className="invalid-feedback">{errors.email}</div>}
             </div>
+            <button type="submit" className="btn btn-primary">
+              Реєструватися
+            </button>
           </Form>
         </FormikProvider>
       </div>

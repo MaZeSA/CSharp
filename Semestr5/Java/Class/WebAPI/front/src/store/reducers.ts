@@ -1,4 +1,4 @@
-import { authReducer } from '../components/auth/store/reducer';
+import { authReducer } from './../components/auth/store/reducer';
 import { combineReducers } from "redux";
 
 export const rootReducer = combineReducers({
