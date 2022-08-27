@@ -1,3 +1,4 @@
+
 import React from "react";
 
 export interface IInput {
@@ -5,5 +6,6 @@ export interface IInput {
     title?: string,
     errors?: string,
     touched?: boolean,
-    handleChange:(e: React.ChangeEvent<any>)=>void
+    text?: string
+    handleChange:(e: React.ChangeEvent<any>)=>void,
 }

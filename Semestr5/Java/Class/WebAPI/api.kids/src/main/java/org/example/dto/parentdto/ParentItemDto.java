@@ -15,5 +15,7 @@ public class ParentItemDto {
     private String phone;
 
     private String image;
+    private String adress;
+
 
 }

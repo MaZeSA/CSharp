@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { IInput } from "./types";
 
@@ -7,17 +7,26 @@ const InputComponent: React.FC<IInput> = ({
   title,
   errors,
   touched,
+  text,
   handleChange,
 }) => {
- 
-    let t :IInput;
-    return (
+  var elem = document.createElement("input");
+
+  useEffect(() => {
+    if (text != undefined && inputName != undefined) {
+      var myAnchor = document.getElementById(inputName);
+      (myAnchor as HTMLInputElement).value = text;
+      console.log(myAnchor);
+    }
+  }, []);
+
+  return (
     <div className="mb-3">
       <label htmlFor={inputName} className="form-label">
-      {title}
+        {title}
       </label>
       <input
-        type= {inputName}
+        type={inputName}
         className={classNames(
           "form-control",
           { "is-invalid": touched && errors },
@@ -25,13 +34,11 @@ const InputComponent: React.FC<IInput> = ({
         )}
         name={inputName}
         id={inputName}
+        // value={text}
         onChange={handleChange}
       />
-      {touched && errors && (
-        <div className="invalid-feedback">{errors}</div>
-      )}
+      {touched && errors && <div className="invalid-feedback">{errors}</div>}
     </div>
-  
   );
 };
 

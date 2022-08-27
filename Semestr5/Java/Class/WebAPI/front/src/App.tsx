@@ -8,6 +8,8 @@ import RegisterPage from './components/auth/register';
 import HomeLayout from './components/containers/homeLayout';
 import ParentPage from './components/kids/parent/list';
 import ParentAddPage from './components/kids/parent/add';
+import ParentEditPage from './components/kids/parent/edit';
+import IParentUpdate from './components/kids/parent/edit'
 
 function App() {
   return (
@@ -15,9 +17,13 @@ function App() {
       <Route path="/" element={<HomeLayout/>}>
         <Route index element={<HomePage/>}/>
         <Route path="parent" element={<ParentPage/>}/>
-        <Route path="parent/add" element={<ParentAddPage/>}/>
+        <Route path="parent/add" element={<ParentAddPage/>}/>   
         <Route path="login" element={<LoginPage/>}/>
         <Route path="register" element={<RegisterPage/>}/>
+
+        <Route path="/parent/edit" element={<ParentEditPage />}>
+                    <Route path=":id" element={<IParentUpdate />} />
+                </Route>
       </Route>
     </Routes>
   );

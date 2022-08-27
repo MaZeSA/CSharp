@@ -1,7 +1,7 @@
 import internal from "stream";
 
-export interface IParentEdit {
-    id: number,
+export interface IParentUpdate {
+    id: string,
     firstName: string,
     lastName: string,
     phone: string
