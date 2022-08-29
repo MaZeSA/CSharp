@@ -10,15 +10,16 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const ParentEditPage: React.FC = () => {
   let { id } = useParams();
-  const initialValues: IParentUpdate = {
-    id: '-1',
+
+  const [initialValues, setInitialValues] = useState<IParentUpdate>({
+    id: -1,
     firstName: "",
     lastName: "",
     phone: "",
     imageBase64: "",
     adress: "",
-  };
- 
+  });
+
   const [parent, setparent] = useState<IParentItem>();
   const navigate = useNavigate();
   const [message, setMessage] = useState<string>();
@@ -46,12 +47,11 @@ const ParentEditPage: React.FC = () => {
     const { data } = await http.get<IParentItem>("/getparent/" + id);
     console.log("dataLoad", data);
 
-    setFieldValue("firstName", data.firstName);
+   setFieldValue("firstName", data.firstName);
     setFieldValue("lastName", data.lastName);
     setFieldValue("phone", data.phone);
     setFieldValue("adress", data.adress);
     setFieldValue("id", data.id);
-    
     setparent(data);
   };
 
@@ -59,9 +59,9 @@ const ParentEditPage: React.FC = () => {
     getData();
   }, []);
 
-  const { errors, touched, handleSubmit, handleChange, setFieldValue } = formik;
+  const { errors, touched, handleSubmit, handleChange, setFieldValue, values } = formik;
 
-//console.log("bild");
+  //console.log("bild");
 
   if (parent == undefined) {
     return (
@@ -88,7 +88,7 @@ const ParentEditPage: React.FC = () => {
                   title="Імя"
                   touched={touched.firstName}
                   errors={errors.firstName}
-                  text={parent.firstName}
+                   text={values.firstName}
                   handleChange={handleChange}
                 />
 

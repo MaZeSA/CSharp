@@ -6,3 +6,18 @@ export interface IParentItem {
     image: string;
     adress: string
 }
+
+export interface ParentState{
+    parents: IParentItem[];
+}
+
+export enum ParentActionTypes {
+    FETCH_PARENT_SUCCESS = "FETCH_PARENT_SUCCESS"
+}
+
+export interface FetchSuccessParentAction {
+    type: ParentActionTypes.FETCH_PARENT_SUCCESS;
+    payload: IParentItem[];
+}
+
+export type ParentActions = FetchSuccessParentAction;

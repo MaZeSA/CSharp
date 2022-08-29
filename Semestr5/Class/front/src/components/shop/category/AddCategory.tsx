@@ -22,6 +22,7 @@ const AddCategory: React.FC = () => {
       // update
     } else {
       const article = { Name: values.name, ImageBase64: values.image };
+      console.log(article);
       await http
         .post<ICategoryItem>("/api/Category/create", article)
         .then((response) => {

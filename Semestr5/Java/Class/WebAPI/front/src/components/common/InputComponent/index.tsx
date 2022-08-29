@@ -10,16 +10,6 @@ const InputComponent: React.FC<IInput> = ({
   text,
   handleChange,
 }) => {
-  var elem = document.createElement("input");
-
-  useEffect(() => {
-    if (text != undefined && inputName != undefined) {
-      var myAnchor = document.getElementById(inputName);
-      (myAnchor as HTMLInputElement).value = text;
-      console.log(myAnchor);
-    }
-  }, []);
-
   return (
     <div className="mb-3">
       <label htmlFor={inputName} className="form-label">
@@ -34,7 +24,7 @@ const InputComponent: React.FC<IInput> = ({
         )}
         name={inputName}
         id={inputName}
-        // value={text}
+         value={text}
         onChange={handleChange}
       />
       {touched && errors && <div className="invalid-feedback">{errors}</div>}

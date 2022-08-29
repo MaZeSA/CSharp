@@ -2,12 +2,17 @@ import { useState } from "react";
 import { Form, FormikProvider, useFormik } from "formik";
 import InputComponent from "../../../common/InputComponent";
 import { ParentAddSchema } from "./validataion";
-import { IParentAdd } from "./types";
+import { ICreateParentError, ICreateParentErrors, IParentAdd } from "./types";
 import CropperDialog from "../../../common/CropperDialog";
 import http from "../../../../http_common";
 import { useNavigate } from "react-router-dom";
+import { useActions } from "../../../../hooks/useActions";
+import { IStatus } from "../store/types";
+import { AxiosError } from "axios";
 
 const ParentAddPage: React.FC = () => {
+  const { CreateParent } = useActions();
+ 
   const initialValues: IParentAdd = {
     firstName: "",
     lastName: "",
@@ -20,18 +25,14 @@ const ParentAddPage: React.FC = () => {
   const [message, setMessage] = useState<string>();
 
   const onHandleSubmit = async (values: IParentAdd) => {
-
-      console.log(values);
-      await http
-        .post<IParentAdd>("/create", values)
-        .then((response) => {
-          console.log("response "+ response);
-          navigate("/parent");
-        })
-        .catch((error) => {
-          setMessage(error.message);
-        });
-    
+    try {
+    const res = await CreateParent(values);
+    const result = (await res) as IStatus;
+    navigate("/parent");
+    } catch (err) {
+      const serverError = err as AxiosError<ICreateParentErrors>;
+      setMessage(serverError?.message);
+    }
   };
 
   const formik = useFormik({

@@ -15,13 +15,12 @@ const CategoryPage: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log("use");
     getData();
   }, []);
 
   const data = list?.map((item) => {
     return (
-      <tr>
+      <tr key={item.id}>
         <th scope="row">{item.id}</th>
         <td>{item.name}</td>
         <td>

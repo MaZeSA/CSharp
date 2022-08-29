@@ -76,44 +76,40 @@ public class FileSystemStorageService implements StorageService {
                 throw new StorageException("Failed to store empty base64 ");
             }
             UUID uuid = UUID.randomUUID();
-            String randomFileName = uuid.toString()+".jpg";
+
             String [] charArray = base64.split(",");
+            String extension;
+            System.out.println("-----------------"+ charArray[0]);
+            switch (charArray[0]) {//check image's extension
+                case "data:image/png;base64":
+                    extension = "png";
+                    break;
+                default://should write cases for more images types
+                    extension = "jpg";
+                    break;
+            }
+
+            String randomFileName = uuid.toString()+"."+extension;
             java.util.Base64.Decoder decoder = Base64.getDecoder();
             byte[] bytes = new byte[0];
             bytes = decoder.decode(charArray[1]);
             String directory= rootLocation.toString() +"/"+randomFileName;
+// My Example
+            BufferedImage image = ImageIO.read(new ByteArrayInputStream(bytes));
+            BufferedImage newImg = ImageUtils.resizeImage(image,
+                    extension=="jpg"? ImageUtils.IMAGE_JPEG : ImageUtils.IMAGE_PNG, 200,200);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-            byte [] newImage =  this.resizeImage(new ByteArrayInputStream(bytes), 150,150);
-            new FileOutputStream(directory).write(newImage);
+            ImageIO.write(newImg, extension, byteArrayOutputStream);
+            bytes = byteArrayOutputStream.toByteArray();
+            new FileOutputStream(directory).write(bytes);
             return randomFileName;
         } catch (Exception e) {
             throw new StorageException("Failed to store file ", e);
         }
-
     }
 
-    private byte[] resizeImage(InputStream uploadedInputStream, int width, int height) {
-        try {
-            BufferedImage image = ImageIO.read(uploadedInputStream);
-            int type = ((image.getType() == 0) ? BufferedImage.TYPE_INT_ARGB : image.getType());
-            BufferedImage resizedImage = new BufferedImage(width, height, type);
 
-            Graphics2D g2d = resizedImage.createGraphics();
-            g2d.drawImage(image, 0, 0, width, height, null);
-            g2d.dispose();
-            g2d.setComposite(AlphaComposite.Src);
-            g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g2d.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
-            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
-
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            ImageIO.write(resizedImage, "png", byteArrayOutputStream);
-            return byteArrayOutputStream.toByteArray();
-        } catch (IOException e) {
-            // Something is going wrong while resizing image
-            return null;
-        }
-    }
 
     @Override
     public Resource loadAsResource(String filename) {

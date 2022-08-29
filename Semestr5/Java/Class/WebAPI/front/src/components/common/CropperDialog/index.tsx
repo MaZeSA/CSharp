@@ -19,21 +19,34 @@ const CropperDialog: React.FC<ICropperDialog> = ({
   );
   const [show, setShow] = useState<boolean>(false);
 
+  const [uploadedImageType, setUploadedImageType] = useState<string>("image/jpeg");
   const [image, setImage] = useState<string>("");
   const imgRef = useRef<HTMLImageElement>(); //посилання на тег img в модалці
   const imgPrevRef = useRef<HTMLImageElement>(); //попередній перегляд фото
   const [cropperObj, setCropperObj] = useState<Cropper>();
 
-  const handleSelectImage = (e: React.FormEvent<HTMLInputElement>) => {
-    let file = (e.currentTarget.files as FileList)[0];
-    if(file) {
+  const handleSelectImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    let files = (e.target.files as FileList);
+    if (files && files.length) {
+      const file = files[0];
+      if (/^image\/\w+/.test(file.type)) {
+        //console.log("----", file);
+        const fileType=file.type;
+        if(fileType==='image/png')
+          setUploadedImageType(file.type);
+        else
+          setUploadedImageType('image/jpeg');
         const url = URL.createObjectURL(file);
-        console.log("select image", url);
-        toggleModal();
-        setImage(url);
+        //console.log("select image", url);
+        await setShow((prev)=> !prev);
+        await setImage(url);
         cropperObj?.replace(url);
+      } else {
+        window.alert("Оберіть файл зображення.");
+      }
     }
-    e.currentTarget.value=""; //обнуляємо значення
+
+    e.target.value=""; //обнуляємо значення
   }
 
   const toggleModal = () => {
@@ -53,7 +66,7 @@ const CropperDialog: React.FC<ICropperDialog> = ({
   },[]);
 
   const handleCroppedImage = () => {
-    const base64 = cropperObj?.getCroppedCanvas().toDataURL() as string;
+    const base64 = cropperObj?.getCroppedCanvas().toDataURL(uploadedImageType) as string;
     //console.log("base64", base64);
     setCurrentImage(base64);
     toggleModal();
@@ -73,6 +86,7 @@ const CropperDialog: React.FC<ICropperDialog> = ({
       <input type="file" 
         className="d-none" 
         id="image" 
+        accept="image/*"
         onChange={handleSelectImage}
         />
 
