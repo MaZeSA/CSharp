@@ -10,9 +10,20 @@ const ParentPage = () => {
   const navigate = useNavigate();
   const { parents } = useTypedSelector((store) => store.parent);
   const { getParents } = useActions();
+  const { deleteParent } = useActions();
+  const [status, setStatus] = useState<string>();
 
   const onHandleSubmit = async (parent: IParentItem) => {
     navigate(`/parent/edit/${parent.id}`);
+  };
+  const delParent = async (id: number) => {
+    const result =  await deleteParent(id);
+    if (result === 200) {
+      setStatus('Батька видалено!')
+    }else{
+      setStatus('Response: ' + result )
+    }
+
   };
 
   useEffect(() => {
@@ -21,22 +32,29 @@ const ParentPage = () => {
 
   const data = parents.map((item: IParentItem) => {
     return (
-      <tr key={item.id}>
-        <td>
-          <img
-            src={http.defaults.baseURL + "\\files\\" + item.image}
-            width="100"
-          />
-        </td>
-        <th scope="row">{item.id}</th>
-        <td>{item.firstName}</td>
-        <td>{item.lastName}</td>
-        <td>
-          <button id="myButton" onClick={() => onHandleSubmit(item)}>
-            Click!
-          </button>
-        </td>
-      </tr>
+      <>
+        <tr key={item.id}>
+          <td>
+            <img
+              src={http.defaults.baseURL + "\\files\\" + item.image}
+              width="100"
+            />
+          </td>
+          <th scope="row">{item.id}</th>
+          <td>{item.firstName}</td>
+          <td>{item.lastName}</td>
+          <td>
+            <button id="myButton" onClick={() => onHandleSubmit(item)}>
+              Edit!
+            </button>
+          </td>
+          <td>
+            <button id="myButton" onClick={() => delParent(item.id)}>
+              Remove!
+            </button>
+          </td>
+        </tr>
+      </>
     );
   });
 
@@ -46,6 +64,7 @@ const ParentPage = () => {
       <Link className="btn btn-success" to="/parent/add">
         Додати
       </Link>
+      <h5 className="text-danger text-center"></h5>
       <table className="table">
         <thead>
           <tr>
@@ -54,6 +73,7 @@ const ParentPage = () => {
             <th scope="col">Ім'я</th>
             <th scope="col">Прізвище</th>
             <th scope="col">Редагувати</th>
+            <th scope="col">Видалити</th>
           </tr>
         </thead>
         <tbody>{data}</tbody>
