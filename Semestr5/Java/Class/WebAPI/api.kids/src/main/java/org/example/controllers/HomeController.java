@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.dto.parentdto.ParentAddDto;
 import org.example.dto.parentdto.ParentItemDto;
 import org.example.dto.parentdto.ParentUpdateDto;
+import org.example.dto.parentdto.SearchDto;
 import org.example.entities.Parent;
 import org.example.mapper.ApplicationMapper;
 import org.example.repositories.ParentRepository;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.core.io.Resource;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,17 +32,6 @@ public class HomeController {
     public List<ParentItemDto> index() {
         List<ParentItemDto> items =  mapper.parentsToParentsAllDto(parentRepository.findAll());
         return items;
-    }
-    @GetMapping("/getparent/{id}")
-    @ResponseBody
-    public ParentItemDto index(@PathVariable int id) {
-        List<ParentItemDto> items = mapper.parentsToParentsAllDto(parentRepository.findAll());
-        for (ParentItemDto item : items) {
-            if (item.getId() == id) {
-                return item;
-            }
-        }
-        return null;
     }
 
     @PostMapping("/create")
@@ -64,19 +56,46 @@ public class HomeController {
                 .body(file);
     }
 
+    @DeleteMapping("/remove/{id}")
+    public int deleteParent(@PathVariable int id) {
+        Optional<Parent> p = parentRepository.findById(id);
+        storageService.removeFile(p.get().getImage());
+        parentRepository.deleteById(id);
+        return 0;
+    }
+
     @PutMapping("/update")
-    public int updateParent(@RequestBody ParentUpdateDto parentUpdateDto) {
-        parentRepository.findById(parentUpdateDto.getId())
+    public int updateParent(@RequestBody ParentUpdateDto newParent) {
+        parentRepository.findById(newParent.getId())
                 .map(parent1 -> {
-                    parent1.setLastName(parentUpdateDto.getLastName());
-                    parent1.setFirstName(parentUpdateDto.getFirstName());
-                    parent1.setPhone(parentUpdateDto.getPhone());
-                    parent1.setAdress(parentUpdateDto.getAdress());
-                    String fileName = storageService.store(parentUpdateDto.getImageBase64());
+                    parent1.setLastName(newParent.getLastName());
+                    parent1.setFirstName(newParent.getFirstName());
+                    parent1.setPhone(newParent.getPhone());
+                    parent1.setAdress(newParent.getAdress());
+
+                    storageService.removeFile(parent1.getImage());
+                    String fileName = storageService.store(newParent.getImageBase64());
                     parent1.setImage(fileName);
                     return parentRepository.save(parent1);
                 });
 
         return 0;
+    }
+
+    @GetMapping("/search")
+    @ResponseBody
+    public List<ParentItemDto> searchParents(@RequestParam int id, @RequestParam String name) {
+        List<Parent> items = new ArrayList<Parent>(){};
+
+       for (Parent item: parentRepository.findAll() ) {
+            if(item.getFirstName().equals(name))
+                items.add(item);
+        }
+        Optional<Parent> p = parentRepository.findById(id);
+        if(!p.isEmpty()){
+            items.add(p.get());
+        }
+
+        return mapper.parentsToParentsAllDto(items);
     }
 }

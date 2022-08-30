@@ -23,7 +23,6 @@ const ParentPage = () => {
     }else{
       setStatus('Response: ' + result )
     }
-
   };
 
   useEffect(() => {
@@ -63,6 +62,8 @@ const ParentPage = () => {
       <h1>Батьки</h1>
       <Link className="btn btn-success" to="/parent/add">
         Додати
+      </Link><Link className="btn btn-warning ms-2" to="search">
+        Пошук
       </Link>
       <h5 className="text-danger text-center"></h5>
       <table className="table">

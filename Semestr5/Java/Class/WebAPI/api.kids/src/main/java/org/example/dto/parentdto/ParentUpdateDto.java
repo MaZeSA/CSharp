@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ParentUpdateDto {
-    private int id;
+    private  int id;
     private String imageBase64;
     private String firstName;
     private String lastName;

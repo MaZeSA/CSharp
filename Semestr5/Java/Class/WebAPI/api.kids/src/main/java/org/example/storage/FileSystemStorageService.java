@@ -97,7 +97,7 @@ public class FileSystemStorageService implements StorageService {
 // My Example
             BufferedImage image = ImageIO.read(new ByteArrayInputStream(bytes));
             BufferedImage newImg = ImageUtils.resizeImage(image,
-                    extension=="jpg"? ImageUtils.IMAGE_JPEG : ImageUtils.IMAGE_PNG, 200,200);
+                    extension=="jpg"? ImageUtils.IMAGE_JPEG : ImageUtils.IMAGE_PNG, 600,600);
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
             ImageIO.write(newImg, extension, byteArrayOutputStream);
@@ -131,5 +131,15 @@ public class FileSystemStorageService implements StorageService {
     @Override
     public void deleteAll() {
         FileSystemUtils.deleteRecursively(rootLocation.toFile());
+    }
+
+    @Override
+    public  void  removeFile(String removeFile){
+        Path filePath = load(removeFile);
+        File file = new File(filePath.toString());
+        if(file.delete()){
+            System.out.println(removeFile + " Файл видалено.");
+        }else System.out.println(removeFile + " Файл не знайдено.");
+
     }
 }

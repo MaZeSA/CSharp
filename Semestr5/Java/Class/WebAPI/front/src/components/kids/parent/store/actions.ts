@@ -4,6 +4,7 @@ import http from "../../../../http_common";
 import { CreateParentActions, CreateParentActionTypes, ICreateParentErrors, IParentAdd } from "../add/types";
 import { IParentItem, ParentActions, ParentActionTypes } from "../list/types";
 import { DeleteParentActions, DeleteParentActionTypes } from "../remove/type";
+import { ISearchParent, SearchParentActions, SearchParentActionTypes } from "../search/type";
 import { IStatus } from "./types";
 
 export const getParents = () => async (dispatch: Dispatch<ParentActions>) => {
@@ -56,5 +57,24 @@ export const deleteParent = (id: number): any => {
         console.log('REMOVE_PARENT_ERROR');
         return Promise.resolve(error);
       }
+  };
+};
+
+export const getSearchParentsResult = (searchRequest: ISearchParent) => {
+  return async (dispatch: Dispatch<SearchParentActions>) => {
+    try {
+      const response = await http.get<IParentItem[]>("/search", {
+        params: searchRequest,
+      });
+      const { data } = response;
+      console.log('searchRequest', data);
+      dispatch({
+        type: SearchParentActionTypes.SEARCH_PARENT_SUCCESS,
+        payload: response.data 
+      });
+      console.log('SEARCH_PARENT_SUCCESS')
+    } catch (error) {
+      console.log('SEARCH_PARENT_ERROR');
+    }
   };
 };

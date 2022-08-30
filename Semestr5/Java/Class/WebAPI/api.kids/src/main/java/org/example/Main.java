@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 @EnableConfigurationProperties(StorageProperties.class)
 public class Main {
     public static void main(String[] args) {
-        //System.out.println("Hello world!");
+        //System.setOut(new PrintStream(System.out, true, "UTF-8"));
         SpringApplication.run(Main.class, args);
     }
 

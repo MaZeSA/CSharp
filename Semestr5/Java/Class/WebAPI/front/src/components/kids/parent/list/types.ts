@@ -8,7 +8,8 @@ export interface IParentItem {
 }
 
 export interface ParentState{
-    parents: IParentItem[];
+    parents: IParentItem[],
+     searchResult:IParentItem[];
 }
 
 export enum ParentActionTypes {
