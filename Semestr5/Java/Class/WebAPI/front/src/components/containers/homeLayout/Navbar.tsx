@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { AuthState } from "../../auth/store/types";
+
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 const Navbar: React.FC = () => {

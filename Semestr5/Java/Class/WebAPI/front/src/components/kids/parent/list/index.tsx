@@ -5,10 +5,11 @@ import { IParentItem } from "./types";
 import { useNavigate } from "react-router-dom";
 import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 import { useActions } from "../../../../hooks/useActions";
+import EclipseWidget from "../../../common/eclipse";
 
 const ParentPage = () => {
   const navigate = useNavigate();
-  const { parents } = useTypedSelector((store) => store.parent);
+  const { list , loading } = useTypedSelector((store) => store.parent);
   const { getParents } = useActions();
   const { deleteParent } = useActions();
   const [status, setStatus] = useState<string>();
@@ -24,12 +25,16 @@ const ParentPage = () => {
       setStatus('Response: ' + result )
     }
   };
+  //EclipseWidget
+const getData = async () =>{
+  await getParents();
+}
 
   useEffect(() => {
-    getParents();
-  }, [getParents]);
+    getData();
+  }, []);
 
-  const data = parents.map((item: IParentItem) => {
+  const data = list.map((item: IParentItem) => {
     return (
       <>
         <tr key={item.id}>
@@ -79,6 +84,7 @@ const ParentPage = () => {
         </thead>
         <tbody>{data}</tbody>
       </table>
+      {loading && <EclipseWidget/>}
     </>
   );
 };

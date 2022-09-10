@@ -9,10 +9,10 @@ import { useNavigate } from "react-router-dom";
 import { useActions } from "../../../../hooks/useActions";
 import { IStatus } from "../store/types";
 import { AxiosError } from "axios";
+import { useTypedSelector } from "../../../../hooks/useTypedSelector";
+import EclipseWidget from "../../../common/eclipse";
 
-const ParentAddPage: React.FC = () => {
-  const { CreateParent } = useActions();
- 
+const ParentAddPage: React.FC = () => {  
   const initialValues: IParentAdd = {
     firstName: "",
     lastName: "",
@@ -21,14 +21,16 @@ const ParentAddPage: React.FC = () => {
     adress: "",
   };
 
+  const { CreateParent } = useActions();
+  const { loading } = useTypedSelector((store) => store.parent);
   const navigate = useNavigate();
   const [message, setMessage] = useState<string>();
 
   const onHandleSubmit = async (values: IParentAdd) => {
     try {
-    const res = await CreateParent(values);
-    const result = (await res) as IStatus;
-    navigate("/parent");
+      await CreateParent(values);
+
+      navigate("/parent");
     } catch (err) {
       const serverError = err as AxiosError<ICreateParentErrors>;
       setMessage(serverError?.message);
@@ -40,69 +42,69 @@ const ParentAddPage: React.FC = () => {
     onSubmit: onHandleSubmit,
     validationSchema: ParentAddSchema,
   });
-    //Деструктуризація
-    const { errors, touched, handleSubmit, handleChange, setFieldValue } = formik;
+  //Деструктуризація
+  const { errors, touched, handleSubmit, handleChange, setFieldValue } = formik;
   return (
     <>
+     {loading && <EclipseWidget/>}
       <div className="row">
-      <div className="offset-md-3 col-md-6">
-        <h1 className="text-center">Добавити категорію</h1>
-        <FormikProvider value={formik}>
-          <Form onSubmit={handleSubmit}>
+        <div className="offset-md-3 col-md-6">
+          <h1 className="text-center">Добавити категорію</h1>
+          <FormikProvider value={formik}>
+            <Form onSubmit={handleSubmit}>
+              <InputComponent
+                inputName="firstName"
+                title="Імя"
+                touched={touched.firstName}
+                errors={errors.firstName}
+                handleChange={handleChange}
+              />
 
-            <InputComponent
-              inputName="firstName"
-              title="Імя"
-              touched={touched.firstName}
-              errors={errors.firstName}
-              handleChange={handleChange}
-            />
+              <InputComponent
+                inputName="lastName"
+                title="Прізвище"
+                touched={touched.lastName}
+                errors={errors.lastName}
+                handleChange={handleChange}
+              />
 
-            <InputComponent
-              inputName="lastName"
-              title="Прізвище"
-              touched={touched.lastName}
-              errors={errors.lastName}
-              handleChange={handleChange}
-            />
+              <InputComponent
+                inputName="phone"
+                title="Телефон"
+                touched={touched.phone}
+                errors={errors.phone}
+                handleChange={handleChange}
+              />
 
-            <InputComponent
-              inputName="phone"
-              title="Телефон"
-              touched={touched.phone}
-              errors={errors.phone}
-              handleChange={handleChange}
-            />
+              <InputComponent
+                inputName="adress"
+                title="Адрес"
+                touched={touched.adress}
+                errors={errors.adress}
+                handleChange={handleChange}
+              />
 
-            <InputComponent
-              inputName="adress"
-              title="Адрес"
-              touched={touched.adress}
-              errors={errors.adress}
-              handleChange={handleChange}
-            />
+              <CropperDialog
+                onChange={setFieldValue}
+                field="imageBase64"
+                error={errors.imageBase64}
+                touched={touched.imageBase64}
+              />
 
-            <CropperDialog
-              onChange={setFieldValue}
-              field="imageBase64"
-              error={errors.imageBase64}
-              touched={touched.imageBase64}
-            />
-            
-            <div className="mb-3">
-              <button type="submit" className="btn btn-primary">
-                Добавити
-              </button>
-              {message && (
-                <div className="alert alert-danger" role="alert">
-                  {message}
-                </div>
-              )}
-            </div>
-          </Form>
-        </FormikProvider>
+              <div className="mb-3">
+                <button type="submit" className="btn btn-primary">
+                  Добавити
+                </button>
+                {message && (
+                  <div className="alert alert-danger" role="alert">
+                    {message}
+                  </div>
+                )}
+              </div>
+            </Form>
+          </FormikProvider>
+        </div>
       </div>
-    </div>
     </>
   );
 };

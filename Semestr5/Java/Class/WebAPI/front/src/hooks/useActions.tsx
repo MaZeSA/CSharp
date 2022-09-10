@@ -6,5 +6,5 @@ import ActionCreators from "../store/action-creators";
 
 export const useActions = () => {
     const dispatch = useDispatch();
-        return useMemo(() => bindActionCreators(ActionCreators, dispatch), [dispatch]);
+        return bindActionCreators(ActionCreators, dispatch);
     }

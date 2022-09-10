@@ -9,7 +9,10 @@ import { IStatus } from "./types";
 
 export const getParents = () => async (dispatch: Dispatch<ParentActions>) => {
   try {
-    const response = await http.get<IParentItem[]>("/");
+     dispatch({
+      type: ParentActionTypes.FETCH_PARENT
+    });
+    const response = await http.get<Array<IParentItem>>("/");
     dispatch({
       type: ParentActionTypes.FETCH_PARENT_SUCCESS,
       payload: response.data,
@@ -21,17 +24,19 @@ export const getParents = () => async (dispatch: Dispatch<ParentActions>) => {
   }
 };
 
-export const CreateParent = (data: IParentAdd): any => {
+export const CreateParent = (model: IParentAdd): any => {
   return async (dispatch: Dispatch<CreateParentActions>) => {
     try {
-      const response = await http.post<IStatus>("/create", data);
-      const result = response;
-
       dispatch({
-        type: CreateParentActionTypes.CREATE_PARENT_SUCCESS
+        type: CreateParentActionTypes.CREATE_PARENT
       });
-      console.log('CREATE_PARENT_SUCCESS' , result)
-      return Promise.resolve<IStatus>(result);
+      const response = await http.post<IParentItem>("/create", model);
+      dispatch({
+        type: CreateParentActionTypes.CREATE_PARENT_SUCCESS,
+        payload: response.data
+      });
+      console.log('CREATE_PARENT_SUCCESS' , response.data)
+      return Promise.resolve();
     } catch (err: any) {
         console.log('CREATE_PARENT_ERROR' , err)
         return Promise.reject(err);

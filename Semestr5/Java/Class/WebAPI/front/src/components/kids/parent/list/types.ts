@@ -8,17 +8,23 @@ export interface IParentItem {
 }
 
 export interface ParentState{
-    parents: IParentItem[],
-     searchResult:IParentItem[];
+    loading: boolean,
+    list: Array<IParentItem>,
+     searchResult:Array<IParentItem>;
 }
 
 export enum ParentActionTypes {
+    FETCH_PARENT = "FETCH_PARENTS",
     FETCH_PARENT_SUCCESS = "FETCH_PARENT_SUCCESS"
 }
 
 export interface FetchSuccessParentAction {
     type: ParentActionTypes.FETCH_PARENT_SUCCESS;
-    payload: IParentItem[];
+    payload: Array<IParentItem>;
 }
 
-export type ParentActions = FetchSuccessParentAction;
+export interface FetchParentAction{
+    type: ParentActionTypes.FETCH_PARENT;
+}
+
+export type ParentActions = FetchSuccessParentAction | FetchParentAction;
