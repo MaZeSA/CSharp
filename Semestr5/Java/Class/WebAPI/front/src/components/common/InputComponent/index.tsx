@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { IInput } from "./types";
 

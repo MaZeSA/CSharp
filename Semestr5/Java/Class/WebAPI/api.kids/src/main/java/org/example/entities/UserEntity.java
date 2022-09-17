@@ -1,52 +1,32 @@
 package org.example.entities;
 
-
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @Data
-@Table(name="users")
+@Entity
+@Table(name = "user_entities")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String username;
-
+    private long id;
+    @Column(name="name", length = 255)
+    private String name;
+    @Column(name="email", length = 255)
+    private String email;
+    @Column(name="phone", length = 20)
+    private String phone;
+    @Column(name="password", length = 255)
     private String password;
 
-    private String fullName;
-
-    @ManyToMany(cascade=CascadeType.MERGE)
+    @ManyToMany(cascade = { CascadeType.MERGE })
     @JoinTable(
-            name="tblUserRoles",
-            joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="id")},
-            inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="id")})
-    private List<RoleEntity> roles;
-
-    private boolean enabled = true;
-
-    @CreatedDate
-    private LocalDateTime createdAt;
-    @LastModifiedDate
-    private LocalDateTime modifiedAt;
-
-
-    public UserEntity() {
-        roles=new ArrayList<RoleEntity>();
-    }
-
-    public UserEntity(String username, String password) {
-        this.username = username;
-        this.password = password;
-        this.enabled = true;
-        roles=new ArrayList<RoleEntity>();
-    }
+            name = "user_roles",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "role_id") }
+    )
+    private List<RoleEntity> roles = new ArrayList<>();
 }

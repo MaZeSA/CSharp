@@ -7,6 +7,8 @@ import { setAuthUserByToken } from "../login/actions";
 export const RegisterUser = (data: IRequest) => {
     return async (dispatch: Dispatch<RegisterAction>) => {
       try {
+
+        console.log("register>> ", data)
         const response = await http.post("api/account/register", data);
         const token = await response.data.token;
         dispatch({

@@ -18,14 +18,14 @@ import static java.lang.String.format;
 @Component
 @RequiredArgsConstructor
 public class JwtTokenUtil {
-    private final String jwtSecret = "zdtlDesplk3JKyy*did56m6wTTgsNFhqzjqP";
+    private final String jwtSecret = "zdtlDeos873KjjuwodkLDPDplk3JKyy*did5sseII6m6wTTgsNFhqzjqP";
     private final String jwtIssuer = "step.io";
 
     public String generateAccessToken(UserEntity user) {
         return Jwts.builder()
-                .setSubject(format("%s,%s", user.getId(), user.getUsername()))
-                .claim("username", user.getUsername())
-                //.claim("roles", user.getUsername())
+                .setSubject(format("%s,%s", user.getId(), user.getEmail()))
+                .claim("username", user.getEmail())
+                .claim("fullName", user.getName())
                 .setIssuer(jwtIssuer)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000)) // 1 week

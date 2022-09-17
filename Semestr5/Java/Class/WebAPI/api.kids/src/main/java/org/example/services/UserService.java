@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Collection;
 
-
 @Service
 @Transactional
 public class UserService implements UserDetailsService {
@@ -23,11 +22,11 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        UserEntity user = userRepository.findByUsername(username);
+        UserEntity user = userRepository.findByEmail(username);
         if(user==null)
             throw new UsernameNotFoundException("Email "+ username +" not found");
         return new org.springframework
-                .security.core.userdetails.User(user.getUsername(),
+                .security.core.userdetails.User(user.getEmail(),
                 user.getPassword(), getAuthorities(user));
     }
 

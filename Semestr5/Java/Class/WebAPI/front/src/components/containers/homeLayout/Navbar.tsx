@@ -1,10 +1,14 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import { useActions } from "../../../hooks/useActions";
 
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
+
 const Navbar: React.FC = () => {
+  const { LogoutUser } = useActions();
   const { isAuth, user } = useTypedSelector((store) => store.auth);
+  
   return (
     <header>
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -39,12 +43,15 @@ const Navbar: React.FC = () => {
               <ul className="navbar-nav">
                 <li className="nav-item">
                   <Link className="nav-link" to="/pofile">
-                    <img src={user?.image} alt="фото користувача" width="32" style={{borderRadius: "50%"}} />
-                    {user?.email}
+                    {/* <img src={user?.image} alt="фото користувача" width="32" style={{borderRadius: "50%"}} /> */}
+                    {user?.fullName}
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/logout">
+                  <Link 
+                  className="nav-link" 
+                  to="/"
+                  onClick={() => {LogoutUser(); }}>
                     Вихід
                   </Link>
                 </li>

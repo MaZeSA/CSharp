@@ -1,11 +1,8 @@
 export interface IRegister {
-    firstName?: string,
-    lastName?: string,
-    email?: string,
-    photo?: string,
-    phone?: string,
-    password?: string,
-    confirmPassword?: string,
+    email: string,
+    password: string,
+    confirmPassword: string,
+    fullName: string
 }
 
 export enum RegisterActionTypes {
@@ -32,8 +29,13 @@ export enum RegisterActionTypes {
     | RegisterSuccessAction
   ;
 
-  export interface IRequest extends IRegister {
-    RecaptchaToken: string;
+  // export interface IRequest extends IRegister {
+  //   RecaptchaToken: string;
+  // }
+  export interface IRequest {
+    email?: string,
+    password?: string,
+    fullName?: string
   }
   
   export type RegisterError = {

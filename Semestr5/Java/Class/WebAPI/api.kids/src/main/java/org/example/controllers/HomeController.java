@@ -31,13 +31,17 @@ public class HomeController {
     private final ApplicationMapper mapper;
     private final StorageService storageService;
     private final ParentRepository parentRepository;
-    @GetMapping("/")
+    @GetMapping("/list")
     public List<ParentItemDto> index() throws InterruptedException {
         Thread.sleep(2000);
         List<ParentItemDto> items =  mapper.parentsToParentsAllDto(parentRepository.findAll());
         return items;
     }
-
+    @GetMapping("/getbyid/{id}")
+    public ParentItemDto GetById(@PathVariable int id){
+        Parent p = parentRepository.findById(id).get();
+        return mapper.parentToParentItemDto(p);
+    }
     @PostMapping("/create")
     public ParentItemDto add(@RequestBody ParentAddDto parentAddDto)throws InterruptedException  {
         Thread.sleep(2000);

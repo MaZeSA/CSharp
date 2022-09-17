@@ -6,8 +6,8 @@ export enum AuthActionTypes {
   }
   export interface IUser {
       email: string,
-      image: string,
-      roles: string
+      fullName: string
+      image: string
   }
   
   export interface AuthState {

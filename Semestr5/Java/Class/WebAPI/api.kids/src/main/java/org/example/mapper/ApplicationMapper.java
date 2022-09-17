@@ -1,6 +1,6 @@
 package org.example.mapper;
 
-import org.example.dto.authdto.UserView;
+import org.example.dto.account.UserView;
 import org.example.dto.parentdto.ParentAddDto;
 import org.example.dto.parentdto.ParentItemDto;
 import org.example.dto.parentdto.ParentUpdateDto;

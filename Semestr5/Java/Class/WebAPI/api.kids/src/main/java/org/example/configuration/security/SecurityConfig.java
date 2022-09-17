@@ -17,6 +17,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import javax.servlet.Filter;
 import javax.servlet.http.HttpServletResponse;
 
 @Configuration
@@ -26,14 +27,10 @@ import javax.servlet.http.HttpServletResponse;
         prePostEnabled = true
 )
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private UserService userService;
     private final JwtTokenFilter jwtTokenFilter;
-
-    @Value("${springdoc.api-docs.path}")
-    private String restApiDocPath;
-    @Value("${springdoc.swagger-ui.path}")
-    private String swaggerPath;
 
     public SecurityConfig(
             JwtTokenFilter jwtTokenFilter) {
@@ -42,21 +39,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Inherit security context in async function calls
         SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
     }
-    // Set password encoding schema
-//    @Bean
-//    public PasswordEncoder encoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+
+    @Value("${springdoc.api-docs.path}")
+    private String restApiDocPath;
+    @Value("${springdoc.swagger-ui.path}")
+    private String swaggerPath;
 
     @Autowired
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         auth
-                .userDetailsService(userService)
-                .passwordEncoder(encoder);
+                .userDetailsService(userService) //Як перевіряється користувач, який авторизовано
+                .passwordEncoder(encoder); //Еncoder, який шифрує пароль
     }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // Enable CORS and disable CSRF
@@ -82,35 +78,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Set permissions on endpoints
         http.authorizeRequests()
                 // Swagger endpoints must be publicly accessible
-                .antMatchers("/").permitAll()
-                .antMatchers("/create").permitAll() //.hasAuthority(Roles.Admin)
-                .antMatchers("/files/**").permitAll() //.hasAuthority(Roles.Admin)
-                .antMatchers("/remove/**").permitAll()
-                .antMatchers("/update").permitAll()
-                .antMatchers("/search").permitAll()
-                .antMatchers("/api/public/**").permitAll()
+                .antMatchers("/list").permitAll()
+                .antMatchers("/files/**").permitAll()
+                .antMatchers("/create").hasAuthority(Roles.User)
+                .antMatchers("/getBy_id/**").hasAuthority(Roles.User)
+                .antMatchers("/static/**").permitAll() //.hasAuthority(Roles.Admin)
+                .antMatchers("/api/account/**").permitAll()
                 .antMatchers(String.format("%s/**", restApiDocPath)).permitAll()
                 .antMatchers(String.format("%s/**", swaggerPath)).permitAll()
-                // Our public endpoints
-
-//                .antMatchers(HttpMethod.GET, "/api/author/**").permitAll()
-//                .antMatchers(HttpMethod.POST, "/api/author/search").permitAll()
-//                .antMatchers(HttpMethod.GET, "/api/book/**").permitAll()
-//                .antMatchers(HttpMethod.POST, "/api/book/search").permitAll()
-                // Our private endpoints
                 .anyRequest().authenticated();
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .permitAll();
         // Add JWT token filter
+
+
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
-
     // Expose authentication manager bean
-    @Override
-    @Bean
+    @Override @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+
+
 }

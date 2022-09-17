@@ -7,18 +7,20 @@ import { IParentUpdate } from "./types";
 import CropperDialog from "../../../common/CropperDialog";
 import http from "../../../../http_common";
 import { useNavigate, useParams } from "react-router-dom";
+import { useActions } from "../../../../hooks/useActions";
 
 const ParentEditPage: React.FC = () => {
   let { id } = useParams();
+  const { updateParent } = useActions();
 
-  const [initialValues, setInitialValues] = useState<IParentUpdate>({
+  const initialValues = {
     id: -1,
     firstName: "",
     lastName: "",
     phone: "",
     imageBase64: "",
     adress: "",
-  });
+  };
 
   const [parent, setparent] = useState<IParentItem>();
   const navigate = useNavigate();
@@ -26,15 +28,10 @@ const ParentEditPage: React.FC = () => {
 
   const onHandleSubmit = async (values: IParentUpdate) => {
     console.log(values);
-    await http
-      .put<IParentUpdate>("/update", values)
-      .then((response) => {
-        console.log("response " + response);
-        navigate("/parent");
-      })
-      .catch((error) => {
-        setMessage(error.message);
-      });
+    try {
+      await updateParent(values);
+      navigate("/parent");
+    } catch(error) {}
   };
 
   const formik = useFormik({
@@ -44,10 +41,10 @@ const ParentEditPage: React.FC = () => {
   });
 
   const getData = async () => {
-    const { data } = await http.get<IParentItem>("/getparent/" + id);
+    const { data } = await http.get<IParentItem>("/getbyid/" + id);
     console.log("dataLoad", data);
 
-   setFieldValue("firstName", data.firstName);
+    setFieldValue("firstName", data.firstName);
     setFieldValue("lastName", data.lastName);
     setFieldValue("phone", data.phone);
     setFieldValue("adress", data.adress);
@@ -59,11 +56,12 @@ const ParentEditPage: React.FC = () => {
     getData();
   }, []);
 
-  const { errors, touched, handleSubmit, handleChange, setFieldValue, values } = formik;
+  const { errors, touched, handleSubmit, handleChange, setFieldValue, values } =
+    formik;
 
   //console.log("bild");
 
-  if (parent == undefined) {
+  if (parent === undefined) {
     return (
       <>
         <div className="container">
@@ -88,7 +86,7 @@ const ParentEditPage: React.FC = () => {
                   title="Імя"
                   touched={touched.firstName}
                   errors={errors.firstName}
-                   text={values.firstName}
+                  text={values.firstName}
                   handleChange={handleChange}
                 />
 

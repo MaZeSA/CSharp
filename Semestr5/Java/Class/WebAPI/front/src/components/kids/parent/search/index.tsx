@@ -1,27 +1,29 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import http from "../../../../http_common";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 import { useActions } from "../../../../hooks/useActions";
 import { Form, FormikProvider, useFormik } from "formik";
 import { ISearchParent } from "./type";
 import InputComponent from "../../../common/InputComponent";
 import { IParentItem } from "../list/types";
-import { deleteParent } from "../store/actions";
 
 const SearchParentPage = () => {
-  const navigate = useNavigate();
-  const [status, setStatus] = useState<string>();
+ // const navigate = useNavigate();
+  //const [status, setStatus] = useState<string>();
   const { getSearchParentsResult } = useActions();
   const { searchResult } = useTypedSelector((store) => store.parent);
-  const [search, setSearch] = useState<ISearchParent>({
-    id: 0,
-    name:'',
-  });
+  // const [search, setSearch] = useState<ISearchParent>({
+  //   id: 0,
+  //   name:'',
+  // });
+const search ={  
+  id: 0,
+     name:'',
+ }
 
   const onHandleSubmit = async (values: ISearchParent) => {
-    const response = await getSearchParentsResult(values);
+   // const response = 
+    await getSearchParentsResult(values);
     // formik.resetForm();
   };
 
@@ -30,7 +32,7 @@ const SearchParentPage = () => {
     onSubmit: onHandleSubmit,
   });
 
-  const { handleChange, handleSubmit, values } = formik;
+  const { handleChange, handleSubmit } = formik;
   
    const data = searchResult.map((item: IParentItem) => {
     return (

@@ -6,15 +6,15 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @Data
-@Table(name="roles")
-public class RoleEntity  {
+@Entity
+@Table(name="tbl_roles")
+public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable=false)
+    @Column(length = 200, nullable=false)
     private String name;
 
     @ManyToMany(mappedBy="roles")
