@@ -1,0 +1,14 @@
+E:\Git\Semestr5\Android\MyApp\C#\DB\DB\DB\bin\Debug\net6.0\DB.deps.json
+E:\Git\Semestr5\Android\MyApp\C#\DB\DB\DB\bin\Debug\net6.0\DB.runtimeconfig.json
+E:\Git\Semestr5\Android\MyApp\C#\DB\DB\DB\bin\Debug\net6.0\DB.dll
+E:\Git\Semestr5\Android\MyApp\C#\DB\DB\DB\bin\Debug\net6.0\DB.pdb
+E:\Git\Semestr5\Android\MyApp\C#\DB\DB\DB\obj\Debug\net6.0\DB.csproj.AssemblyReference.cache
+E:\Git\Semestr5\Android\MyApp\C#\DB\DB\DB\obj\Debug\net6.0\DB.GeneratedMSBuildEditorConfig.editorconfig
+E:\Git\Semestr5\Android\MyApp\C#\DB\DB\DB\obj\Debug\net6.0\DB.AssemblyInfoInputs.cache
+E:\Git\Semestr5\Android\MyApp\C#\DB\DB\DB\obj\Debug\net6.0\DB.AssemblyInfo.cs
+E:\Git\Semestr5\Android\MyApp\C#\DB\DB\DB\obj\Debug\net6.0\DB.csproj.CoreCompileInputs.cache
+E:\Git\Semestr5\Android\MyApp\C#\DB\DB\DB\obj\Debug\net6.0\DB.dll
+E:\Git\Semestr5\Android\MyApp\C#\DB\DB\DB\obj\Debug\net6.0\refint\DB.dll
+E:\Git\Semestr5\Android\MyApp\C#\DB\DB\DB\obj\Debug\net6.0\DB.pdb
+E:\Git\Semestr5\Android\MyApp\C#\DB\DB\DB\obj\Debug\net6.0\DB.genruntimeconfig.cache
+E:\Git\Semestr5\Android\MyApp\C#\DB\DB\DB\obj\Debug\net6.0\ref\DB.dll
