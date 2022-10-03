@@ -1,9 +1,12 @@
 import classNames from "classnames";
+import { on } from "stream";
 import { IInput } from "./types";
 
 const InputComponent: React.FC<IInput> = ({
   inputName,
+  inputType = "text",
   title,
+  autocomolite = "off",
   errors,
   touched,
   text,
@@ -15,12 +18,13 @@ const InputComponent: React.FC<IInput> = ({
         {title}
       </label>
       <input
-        type={inputName}
+        type={inputType}
         className={classNames(
           "form-control",
           { "is-invalid": touched && errors },
           { "is-valid": touched && !errors }
         )}
+        autoComplete={autocomolite}
         name={inputName}
         id={inputName}
          value={text}

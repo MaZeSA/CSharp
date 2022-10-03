@@ -35,7 +35,8 @@ export enum RegisterActionTypes {
   export interface IRequest {
     email?: string,
     password?: string,
-    fullName?: string
+    fullName?: string,
+    recaptchaToken?: string
   }
   
   export type RegisterError = {

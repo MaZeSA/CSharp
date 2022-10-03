@@ -1,10 +1,11 @@
 import { Dispatch } from "react";
 import http from "../../../http_common";
 import { AuthAction, AuthActionTypes, ILoginErrors, IUser } from "./types";
-import jwt from "jsonwebtoken";
+//import jwt, {JwtPayload} from "jsonwebtoken";
 import axios, { AxiosError } from "axios";
 import setAuthToken from "../../../helpers/setAuthToken";
 import { ILogin } from "./types";
+import jwtDecode, { JwtPayload }  from "jwt-decode";
 
 export interface ILoginResponse {
    id: number,
@@ -34,20 +35,23 @@ export const LoginUser =
     }
   };
 
+//type customJwpPayload = JwtPayload & IUser;
+
 export const setAuthUserByToken = (token: string, dispatch: Dispatch<any>) => {
   setAuthToken(token);
   localStorage.token = token;
 
-  const dataUser = jwt.decode(token, { json: true });
+  const dataUser = jwtDecode<IUser>(token);
+  
   console.log("dataUser>>", dataUser);
-  const user: IUser = {
-    email: dataUser!.name,
-    image: dataUser!.image,
-    fullName: dataUser!.fullName,
-  };
+  // const user: IUser = {
+  //   email: dataUser!.email,
+  //   image: dataUser.image,
+  //   fullName: dataUser.fullName,
+  // };
   dispatch({
     type: AuthActionTypes.LOGIN_AUTH_SUCCESS,
-    payload: user,
+    payload: dataUser,
   });
 };
 

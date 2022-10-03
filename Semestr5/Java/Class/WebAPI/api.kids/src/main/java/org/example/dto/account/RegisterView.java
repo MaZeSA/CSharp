@@ -12,4 +12,5 @@ public class RegisterView {
     @NotNull
     private String password;
     private String fullName;
+    private String recaptchaToken;
 }

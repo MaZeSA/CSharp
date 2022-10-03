@@ -23,7 +23,7 @@ import { setAuthUserByToken } from './components/auth/login/actions';
 // );
 
 let token = localStorage.token;
-if (token && token != 'undefined') {
+if (token) {
   setAuthUserByToken(token, store.dispatch);
 }
 

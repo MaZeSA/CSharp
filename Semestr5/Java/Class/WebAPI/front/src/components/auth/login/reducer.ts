@@ -1,11 +1,7 @@
 import { AuthState,  AuthAction, AuthActionTypes } from './types';
 
 const initialState: AuthState = {
-      user: {
-        email: "",
-        image: "",
-        fullName: ""
-      },
+      user: undefined,
       isAuth: false,
 };
 
@@ -20,7 +16,7 @@ export const authReducer = (state=initialState, action: AuthAction) : AuthState 
         };
 
       case AuthActionTypes.LOGOUT_AUTH:
-        return {isAuth: false, user:{email: '', image:"", fullName:""} };
+        return {isAuth: false, user: undefined };
 
       default:
         return state;

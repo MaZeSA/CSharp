@@ -1,3 +1,5 @@
+import { JwtPayload } from "jwt-decode";
+
 export enum AuthActionTypes {
     LOGIN_AUTH = "LOGIN_AUTH",
     LOGIN_AUTH_SUCCESS = "LOGIN_AUTH_SUCCESS",
@@ -11,7 +13,7 @@ export enum AuthActionTypes {
   }
   
   export interface AuthState {
-    user: IUser;
+    user?: IUser;
     isAuth: boolean;
   }
   
@@ -54,3 +56,5 @@ export enum AuthActionTypes {
     errors: ILoginError,
     status: number
   }
+
+  export type customJwpPayload = JwtPayload & IUser;

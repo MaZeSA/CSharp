@@ -77,6 +77,7 @@ const LoginPage: React.FC = () => {
 
               <InputComponent
                 title="Пароль"
+                inputType="password"
                 inputName="password"
                 errors={errors.password}
                 touched={touched.password}
