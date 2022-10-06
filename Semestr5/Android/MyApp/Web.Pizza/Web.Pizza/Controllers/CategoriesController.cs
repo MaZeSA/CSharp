@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using Data.Pizza;
+using Data.Pizza.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Drawing.Imaging;
+using Web.Pizza.Helpers;
 using Web.Pizza.Models;
 
 namespace Web.Pizza.Controllers
@@ -25,5 +28,54 @@ namespace Web.Pizza.Controllers
                 .Select(x => _mapper.Map<CategoryItemViewModel>(x)).ToList();
             return Ok(model);
         }
+
+        [HttpPost("create")]
+        public async Task<IActionResult> Create([FromBody] CategoryCreateItemVM model)
+        {
+            var category = _mapper.Map<CategoryEntity>(model);
+            category.Image = ImageWorker.SaveImage(model.ImageBase64);
+            category.DateCreated = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc);
+            _appEFContext.Categories.Add(category);
+            _appEFContext.SaveChanges();
+            return Ok();
+        }
+
+        // PUT api/<controller>/5
+        [HttpPut("update")]
+        public async Task<IActionResult> Put([FromBody] CategoryUpdateeItemVM model)
+        {
+            var category = await _appEFContext.Categories.FindAsync(model.Id);
+            if (category is null)
+                return NotFound();
+            else
+            {
+                category.Name = model.Name;
+                category.Description = model.Description;   
+                category.Priority = model.Priority;
+                
+                ImageWorker.RemoveImage(category.Image);
+                category.Image = ImageWorker.SaveImage(model.ImageBase64);
+
+                _appEFContext.Update(category);
+                _appEFContext.SaveChanges();
+            }
+
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var category = await _appEFContext.Categories.FindAsync(id);
+            if (category is null)
+                return NotFound();
+            else
+            {
+                _appEFContext.Remove(category);
+                _appEFContext.SaveChanges();
+                return Ok();
+            }
+        }
+
     }
 }
