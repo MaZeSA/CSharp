@@ -24,7 +24,9 @@ namespace Web.Pizza.Controllers
         [HttpGet("list")]
         public async Task<IActionResult> List()
         {
-            var model = _appEFContext.Categories.OrderBy(c => c.Priority)
+            var model = _appEFContext.Categories
+                .Where(x=> !x.IsDelete)
+                .OrderBy(c => c.Priority)
                 .Select(x => _mapper.Map<CategoryItemViewModel>(x)).ToList();
             return Ok(model);
         }
@@ -32,11 +34,18 @@ namespace Web.Pizza.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] CategoryCreateItemVM model)
         {
-            var category = _mapper.Map<CategoryEntity>(model);
-            category.Image = ImageWorker.SaveImage(model.ImageBase64);
-            category.DateCreated = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc);
-            _appEFContext.Categories.Add(category);
-            _appEFContext.SaveChanges();
+            try
+            {
+                var category = _mapper.Map<CategoryEntity>(model);
+                category.Image = ImageWorker.SaveImage(model.ImageBase64);
+                category.DateCreated = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc);
+                _appEFContext.Categories.Add(category);
+                _appEFContext.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(new {error = ex.Message});
+            }
             return Ok();
         }
 
@@ -71,7 +80,7 @@ namespace Web.Pizza.Controllers
                 return NotFound();
             else
             {
-                _appEFContext.Remove(category);
+                category.IsDelete = true;
                 _appEFContext.SaveChanges();
                 return Ok();
             }

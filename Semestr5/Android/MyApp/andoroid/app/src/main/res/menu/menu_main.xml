@@ -1,10 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.myapp.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/m_home"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Головна"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_category"
+        android:title="Категорії"
         app:showAsAction="never" />
+
 </menu>
