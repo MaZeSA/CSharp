@@ -8,6 +8,11 @@ using FluentValidation;
 using Web.Pizza.Models;
 using Data.Pizza.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,11 +28,60 @@ builder.Services.AddIdentity<AppUser, AppRole>(options =>
     options.Password.RequireLowercase = false;
 }).AddEntityFrameworkStores<AppEFContext>().AddDefaultTokenProviders();
 // Add services to the container.
+builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
+var signkey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetValue<string>("JwtKey")));
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(cfg =>
+{
+    cfg.RequireHttpsMetadata = false;
+    cfg.SaveToken = true;
+    cfg.TokenValidationParameters = new TokenValidationParameters()
+    {
+        IssuerSigningKey = signkey,
+        ValidateAudience = false,
+        ValidateIssuer = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ClockSkew = TimeSpan.Zero
+    };
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+var assemblyName = Assembly.GetExecutingAssembly().GetName().Name;
+builder.Services.AddSwaggerGen(c =>
+{
+    var fileDoc = Path.Combine(AppContext.BaseDirectory, $"{assemblyName}.xml");
+    c.IncludeXmlComments(fileDoc);
+
+    c.AddSecurityDefinition("Bearer",
+        new OpenApiSecurityScheme
+        {
+            Description = "JWT Autorization using the Bearer scheme.",
+            Type = SecuritySchemeType.Http,
+            Scheme = "bearer"
+
+        });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+             new OpenApiSecurityScheme
+             {
+                 Reference = new OpenApiReference
+                 {
+                     Id= "Bearer",
+                     Type = ReferenceType.SecurityScheme
+                 }
+             },  new List<string>()
+        }
+    });
+});
 
 builder.Services.AddAutoMapper(typeof(AppMaperProfile));
 #pragma warning disable CS0618 // Тип или член устарел
@@ -63,6 +117,7 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.SeedData();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

@@ -6,16 +6,25 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 
 import com.example.myapp.R;
+import com.example.myapp.application.HomeApplication;
 
 public final class CommonUtils {
     private static final String TAG = CommonUtils.class.getSimpleName();
     static ProgressDialog progressDialog;
 
+    private static Context context;
+
+    public static void setContext(Context _context)
+    {
+        context = _context;
+    }
+
+
     private CommonUtils() {
         // This utility class is not publicly instantiable
     }
 
-    public static ProgressDialog showLoading(Context context) {
+    public static ProgressDialog showLoading() {
         progressDialog = new ProgressDialog(context);
         progressDialog.show();
         if (progressDialog.getWindow() != null) {

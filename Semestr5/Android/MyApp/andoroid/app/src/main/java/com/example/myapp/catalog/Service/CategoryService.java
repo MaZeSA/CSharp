@@ -1,4 +1,4 @@
-package com.example.myapp.Service;
+package com.example.myapp.catalog.Service;
 
 import com.example.myapp.constans.Urls;
 import com.example.myapp.network.CategoriesApi;

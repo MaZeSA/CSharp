@@ -106,17 +106,23 @@ namespace Web.Pizza.Helpers
                 return null;
             }
         }
-        public static string SaveImage(string imageBase64)
+   
+        public static string SaveImage(string imageBase64, string path="images", Int32 x=1200, Int32 y=1200)
         {
             string fileName = Path.GetRandomFileName() + ".jpg";
             try
             {
+                if(!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), path)))
+                {
+                    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), path));
+                }
+
                 string base64 = imageBase64;
                 if (base64.Contains(","))
                     base64 = base64.Split(',')[1];
                 var img = base64.FromBase64StringToImage();
-                string dirSave = Path.Combine(Directory.GetCurrentDirectory(), "images", fileName);
-                var saveImage = CompressImage(img, 1200, 1200, false);
+                string dirSave = Path.Combine(Directory.GetCurrentDirectory(), path, fileName);
+                var saveImage = CompressImage(img, x, y, false);
                 saveImage.Save(dirSave, ImageFormat.Jpeg);
             }
             catch
@@ -125,17 +131,18 @@ namespace Web.Pizza.Helpers
             }
             return fileName;
         }
-        public static void RemoveImage(string fileName)
+
+        public static void RemoveImage(string fileName, string dir = "images")
         {
             try
             {
-                string file = Path.Combine(Directory.GetCurrentDirectory(), "images", fileName);
+                string file = Path.Combine(Directory.GetCurrentDirectory(), dir, fileName);
                 if (System.IO.File.Exists(file))
                 {
                     System.IO.File.Delete(file);
                 }
             }
-            catch (Exception ex)
+            catch
             { }
         }
     }

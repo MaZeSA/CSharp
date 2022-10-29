@@ -1,13 +1,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/activity_register"
+        android:title="Реєстрація"/>
+    <item
+    android:id="@+id/activity_login"
+    android:title="Вхід"/>
+    <item
         android:id="@+id/m_home"
         android:orderInCategory="100"
-        android:title="Головна"
-        app:showAsAction="always" />
+        android:title="Головна" />
     <item
         android:id="@+id/action_category"
-        android:title="Категорії"
-        app:showAsAction="never" />
+        android:title="Категорії"/>
+    <item
+        android:id="@+id/action_add_category"
+        android:title="Додати категорію"/>
 
 </menu>

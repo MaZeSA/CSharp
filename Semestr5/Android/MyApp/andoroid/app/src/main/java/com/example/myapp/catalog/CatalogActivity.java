@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapp.BaseActivity;
 import com.example.myapp.R;
-import com.example.myapp.Service.CategoryService;
+import com.example.myapp.catalog.Service.CategoryService;
 import com.example.myapp.catalog.categorycard.CategoryAdapter;
 import com.example.myapp.dto.category.CategoryItemDTO;
 import com.example.myapp.utils.CommonUtils;
@@ -30,7 +30,7 @@ public class CatalogActivity extends BaseActivity {
         rcvCategory.setHasFixedSize(true);
         rcvCategory.setLayoutManager(new GridLayoutManager(this, 1,
                 RecyclerView.VERTICAL, false));
-        CommonUtils.showLoading(this);
+        CommonUtils.showLoading();
 
         CategoryService.getInstance()
                 .jsonApi()
