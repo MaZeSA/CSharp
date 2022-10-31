@@ -79,35 +79,6 @@ public class RegisterActivity  extends BaseActivity {
                     .apply(new RequestOptions().override(600,300))
                     .into(IVPreviewImage);
         }
-//        if(resultCode == SELECT_CROPPER)
-//        {
-//            String base64 = data.getStringExtra("base64");
-//        }
-//        if (resultCode == RESULT_OK) {
-//
-//            // compare the resultCode with the
-//            // SELECT_PICTURE constant
-//            if (requestCode == SELECT_PICTURE) {
-//                // Get the url of the image from data
-//                Uri uri = data.getData();
-//                // update the preview image in the layout
-//                //IVPreviewImage.setImageURI(uri);
-//                Bitmap bitmap= null;
-//                try {
-//                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//                // initialize byte stream
-//                ByteArrayOutputStream stream=new ByteArrayOutputStream();
-//                // compress Bitmap
-//                bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
-//                // Initialize byte array
-//                byte[] bytes=stream.toByteArray();
-//                // get base64 encoded string
-//                sImage= Base64.encodeToString(bytes,Base64.DEFAULT);
-//            }
-//        }
     }
 
     public void handleClickRegister(View view) {
